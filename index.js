@@ -14,13 +14,8 @@ app.use(
   app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
   })
-  app.get('/books/', (request, response) => {
-    response.json({ info: 'book endpoint' })
-    })
-//   app.get('/books/:genre', (request, response) => {
-//     response.json({ info: request.params.genre })
-//   })
 
+  //add your endpoints here
   app.get('/books/byGenre/:genre', db.getBooksByGenre)
   app.get('/books/byRating/:rating', db.getBooksByRating)
   app.get('/books/limit/:limit', db.getXBooks)

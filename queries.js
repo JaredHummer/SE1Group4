@@ -1,6 +1,8 @@
 const config = require("./config.js")
 pool = config.pool
 
+
+//add your queries here
 const getBooksByGenre = (request, response) => {
     const genre = request.params.genre
   

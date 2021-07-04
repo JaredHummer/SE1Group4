@@ -1,0 +1,23 @@
+{
+  "name": "geektext_group4",
+  "version": "1.0.0",
+  "description": "An APIService to support an online web application bookstore which targets a particular niche in technology. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaredHummer/SE1Group4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaredHummer/SE1Group4/issues"
+  },
+  "homepage": "https://github.com/JaredHummer/SE1Group4#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  }
+}

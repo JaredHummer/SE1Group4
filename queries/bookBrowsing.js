@@ -1,5 +1,5 @@
 const { request } = require("express")
-const config = require("./config.js")
+const config = require("../config")
 pool = config.pool
 
 
@@ -40,7 +40,7 @@ const getBooks = (request, response) => {
     if (rating != -1)
       query += " and rating > " + rating
   } else if (rating != -1) 
-    query += " where rating > " + rating
+    query += " where rating >= " + rating
   
   if (topSold === true)
     query += " order by number_sold desc"

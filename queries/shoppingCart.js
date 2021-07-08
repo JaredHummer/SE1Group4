@@ -9,7 +9,7 @@ const createShoppingCart = (request, response) => {
     //Validating user exists in the database before creating Shopping Cart.
     pool.query('SELECT * FROM shopping_cart WHERE username=$1', [username], (error, results) => {
         if (error) {
-            //The only possible issue that may arise is that the query cannot be executed or be sent to the database.s
+            //The only possible issue that may arise is that the query cannot be executed or be sent to the database.
           response.status(400).json({'Error':"Cannot send query to database.", 
           'Description':'Please make sure the database is currently up and running and that there isn\'t any issues with your connection.'})
         }

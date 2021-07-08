@@ -1,12 +1,11 @@
 const express = require('express')
 const app = express()
-const bookqueries = require('./bookqueries')
-const shoppingcart = require('./shopping_Cart_queries')
 const { request } = require('http')
 const port = 80
 
 //import your query file here
 const bookqueries = require('./queries/bookBrowsing')
+const shoppingcart = require('./queries/shoppingCart')
 
 const options = require('./options')
 

@@ -28,6 +28,7 @@ app.use(express())
   //Shopping Cart endpoints - Gilbert Gomez
   app.get('/shoppingcart/', shoppingcart.createShoppingCart)
   app.post('/shoppingcart/', shoppingcart.addBooktoShoppingCart)
+  app.delete('/shoppingcart/', shoppingcart.deleteBookFromShoppingCart)
 
 
   app.listen(port, () => {

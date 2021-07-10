@@ -5,7 +5,7 @@
 -- Dumped from database version 13.2
 -- Dumped by pg_dump version 13.2
 
--- Started on 2021-07-07 18:25:59
+-- Started on 2021-07-08 14:46:30
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -28,7 +28,7 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.book (
-    isbn character varying(13) NOT NULL,
+    isbn character varying(17) NOT NULL,
     title text NOT NULL,
     description text NOT NULL,
     price money NOT NULL,
@@ -92,7 +92,7 @@ ALTER SEQUENCE public.credit_card_cc_id_seq OWNED BY public.credit_card.cc_id;
 CREATE TABLE public.shopping_cart (
     item_id integer NOT NULL,
     username text,
-    isbn character varying(13)
+    isbn character varying(17)
 );
 
 
@@ -1723,7 +1723,7 @@ ALTER TABLE ONLY public.shopping_cart
 
 
 --
--- TOC entry 2873 (class 2606 OID 17800)
+-- TOC entry 2873 (class 2606 OID 18009)
 -- Name: book uniqueisbn; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1750,7 +1750,7 @@ ALTER TABLE ONLY public.credit_card
 
 
 --
--- TOC entry 2881 (class 2606 OID 17817)
+-- TOC entry 2881 (class 2606 OID 18010)
 -- Name: shopping_cart shopping_cart_isbn_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1767,7 +1767,7 @@ ALTER TABLE ONLY public.shopping_cart
     ADD CONSTRAINT shopping_cart_username_fkey FOREIGN KEY (username) REFERENCES public.users(username);
 
 
--- Completed on 2021-07-07 18:25:59
+-- Completed on 2021-07-08 14:46:30
 
 --
 -- PostgreSQL database dump complete

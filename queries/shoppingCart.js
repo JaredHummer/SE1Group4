@@ -61,7 +61,8 @@ const deleteBookFromShoppingCart = (request, response) => {
 
   console.log(username)
   console.log(isbn)
-  pool.query('delete from shopping_cart where username=$1 and isbn=$2 returning *', [username, isbn], (error,results) => {
+  pool.query('delete from shopping_Cart where username = $1 and isbn = $2 and ' + 
+             'item_id=(select MAX(item_ID) from shopping_Cart where username = $1 and isbn = $2) returning *', [username, isbn], (error,results) => {
 
     if (error) {
       response.status(400).json({'Error':"Invalid username or isbn input.", 

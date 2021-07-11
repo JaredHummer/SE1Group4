@@ -6,7 +6,7 @@ const port = 80
 //import your query file here
 const bookqueries = require('./queries/bookBrowsing')
 const shoppingcart = require('./queries/shoppingCart')
-
+const bookdetails = require('./queries/bookDetails')
 const options = require('./options')
 
 app.use(express())
@@ -19,7 +19,8 @@ app.use(express())
 
   //add your endpoints here
   app.get('/books/', bookqueries.getBooks)
-
+  app.get('/book/', bookdetails.getBookByISBN)
+ 
   //add you options here
   app.options('/books/', options.bookOptions)
   app.options('/users/', options.PMOptions)

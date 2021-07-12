@@ -1,6 +1,10 @@
 # SE1Group4
+
 Main repository for CEN4010 Summer B Group 4 project.
 
+This is a RESTFUL API Service to support an online web application bookstore which targets a particular niche in technology.
+
+We implemented our API using Postgres SQL, NODE.JS, and Express.JS.
 
 Steps to completion:
   1) Install PostgreSQL via https://www.postgresql.org/download/

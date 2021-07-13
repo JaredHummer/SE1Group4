@@ -33,6 +33,7 @@ const addBooktoShoppingCart = (request, response) => {
 
   const {username} = request.query
   const {isbn} = request.query
+  const {quantity} = request.query
 
   console.log(username)
   console.log(isbn)
@@ -46,10 +47,35 @@ const addBooktoShoppingCart = (request, response) => {
     else
     {
     console.log(results.rows)
-    response.status(200).send(results.rows)
+    response.status(200).json({'Added:':results.rows})
     }
   })
 
+
+
+}
+
+const deleteBookFromShoppingCart = (request, response) => {
+  const {username} = request.query
+  const {isbn} = request.query
+
+  console.log(username)
+  console.log(isbn)
+  pool.query('delete from shopping_Cart where username = $1 and isbn = $2 and ' + 
+             'item_id=(select MAX(item_ID) from shopping_Cart where username = $1 and isbn = $2) returning *', [username, isbn], (error,results) => {
+
+    if (error) {
+      response.status(400).json({'Error':"Invalid username or isbn input.", 
+                                'Description':'Either an non-existing username or isbn input from the database was supplied. Please make sure that the username or isbn exists before trying again.',
+                                'username:':username, 
+                                'isbn':isbn})
+    }
+    else
+    {
+    console.log(results.rows)
+    response.status(200).json({'Deleted:':results.rows})
+    }
+  })
 }
 
 
@@ -59,5 +85,7 @@ const addBooktoShoppingCart = (request, response) => {
   // so they can be seen in index.java
   module.exports = {
       createShoppingCart,
-      addBooktoShoppingCart
+      addBooktoShoppingCart,
+      deleteBookFromShoppingCart
   }
+

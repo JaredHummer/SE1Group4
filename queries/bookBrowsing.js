@@ -34,16 +34,16 @@ const getBooks = (request, response) => {
   else if (!isNaN(parseInt(request.query.limit))) limit = parseInt(request.query.limit)
 
   //build query
-  var query = "select * from book"
+  var query = "select book.*, author.first_name, author.last_name, author.publisher from book join book_authors on book.isbn = book_authors.isbn join author on book_authors.author_id = author.author_id"
   if ((typeof request.query.genre !== 'undefined')){
-    query += " where genre = '" + genre + "'"
+    query += " where book.genre = '" + genre + "'"
     if (rating != -1)
-      query += " and rating > " + rating
+      query += " and book.rating > " + rating
   } else if (rating != -1) 
-    query += " where rating >= " + rating
+    query += " where book.rating >= " + rating
   
   if (topSold === true)
-    query += " order by number_sold desc"
+    query += " order by book.number_sold desc"
   
   if ((typeof request.query.limit !== 'undefined')) 
     query += " limit " + limit

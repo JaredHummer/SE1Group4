@@ -6,6 +6,7 @@ const port = 80
 //import your query file here
 const bookqueries = require('./queries/bookBrowsing')
 const shoppingcart = require('./queries/shoppingCart')
+const userprofiles = require('./queries/userProfiles')
 const bookdetails = require('./queries/bookDetails')
 const options = require('./options')
 
@@ -31,6 +32,10 @@ app.use(express())
   app.post('/shoppingcart/', shoppingcart.addBooktoShoppingCart)
   app.delete('/shoppingcart/', shoppingcart.deleteBookFromShoppingCart)
 
+  //Profile Management Endpoints
+  app.post('/user/create', userprofiles.createUser)
+  app.get('/user/retrieve', userprofiles.retrieveUser)
+  app.put('user/update', userprofiles.updateUser)
 
   app.listen(port, () => {
     console.log(`App running on port ${port}.`)

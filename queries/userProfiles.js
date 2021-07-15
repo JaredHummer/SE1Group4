@@ -16,8 +16,6 @@ const createUser = (req,res) => {
         values: [email],
     }
 
-    const rows = await pool.query(selectquery);
-
     if(rows.rows.length == 1){
         res.status(401).json("The user already exists");
     }

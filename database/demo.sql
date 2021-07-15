@@ -5,7 +5,7 @@
 -- Dumped from database version 13.2
 -- Dumped by pg_dump version 13.2
 
--- Started on 2021-07-13 11:33:07
+-- Started on 2021-07-15 15:47:36
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -55,7 +55,7 @@ CREATE SEQUENCE public.authors_author_id_seq
 ALTER TABLE public.authors_author_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3046 (class 0 OID 0)
+-- TOC entry 3038 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: authors_author_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -76,24 +76,12 @@ CREATE TABLE public.book (
     genre text NOT NULL,
     year_published smallint NOT NULL,
     number_sold bigint DEFAULT 0,
-    rating numeric DEFAULT 0
-);
-
-
-ALTER TABLE public.book OWNER TO postgres;
-
---
--- TOC entry 208 (class 1259 OID 18104)
--- Name: book_authors; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.book_authors (
-    isbn character varying(17) NOT NULL,
+    rating numeric DEFAULT 0,
     author_id bigint NOT NULL
 );
 
 
-ALTER TABLE public.book_authors OWNER TO postgres;
+ALTER TABLE public.book OWNER TO postgres;
 
 --
 -- TOC entry 205 (class 1259 OID 17827)
@@ -128,7 +116,7 @@ CREATE SEQUENCE public.credit_card_cc_id_seq
 ALTER TABLE public.credit_card_cc_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3047 (class 0 OID 0)
+-- TOC entry 3039 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: credit_card_cc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -167,7 +155,7 @@ CREATE SEQUENCE public.shopping_cart_item_id_seq
 ALTER TABLE public.shopping_cart_item_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3048 (class 0 OID 0)
+-- TOC entry 3040 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: shopping_cart_item_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -193,7 +181,7 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO postgres;
 
 --
--- TOC entry 2884 (class 2604 OID 18090)
+-- TOC entry 2880 (class 2604 OID 18090)
 -- Name: author author_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -201,7 +189,7 @@ ALTER TABLE ONLY public.author ALTER COLUMN author_id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 2883 (class 2604 OID 17830)
+-- TOC entry 2879 (class 2604 OID 17830)
 -- Name: credit_card cc_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -209,7 +197,7 @@ ALTER TABLE ONLY public.credit_card ALTER COLUMN cc_id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 2882 (class 2604 OID 17806)
+-- TOC entry 2878 (class 2604 OID 17806)
 -- Name: shopping_cart item_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -217,7 +205,7 @@ ALTER TABLE ONLY public.shopping_cart ALTER COLUMN item_id SET DEFAULT nextval('
 
 
 --
--- TOC entry 3039 (class 0 OID 18087)
+-- TOC entry 3032 (class 0 OID 18087)
 -- Dependencies: 207
 -- Data for Name: author; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -475,1023 +463,515 @@ INSERT INTO public.author VALUES (250, 'Claire', 'Matchett', 'Devolved', 'Emard-
 
 
 --
--- TOC entry 3032 (class 0 OID 17696)
+-- TOC entry 3025 (class 0 OID 17696)
 -- Dependencies: 200
 -- Data for Name: book; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.book VALUES ('565501303-7', 'A Chinese in a Coma', 'Implant CCM pulse genrtr', '$26.47', 'Drama', 1990, 1170514, 1.25);
-INSERT INTO public.book VALUES ('745726166-4', 'The Devil Thumbs a Ride', 'Detach ret photocoag NOS', '$82.28', 'Young adult', 2010, 5779270, 1.06);
-INSERT INTO public.book VALUES ('141143158-8', 'Nick of Time', 'Percut semin ves aspirat', '$2.90', 'Diary', 2002, 7029098, 2.68);
-INSERT INTO public.book VALUES ('721486502-5', 'White Noise 2: The Light', 'Abdominal tomography NEC', '$17.19', 'Paranormal romance', 1995, 3338966, 3.22);
-INSERT INTO public.book VALUES ('905399284-7', 'Pleasures of the Flesh (Etsuraku)', 'Replace dental packing', '$94.98', 'Romance', 2007, 4768679, 1.92);
-INSERT INTO public.book VALUES ('163578512-X', 'Enter Nowhere', 'Lower limb lymphangiogrm', '$2.86', 'Crime', 2005, 9063998, 4.93);
-INSERT INTO public.book VALUES ('625773853-9', 'Kimjongilia', 'Peritoneal suture', '$86.40', 'Guide', 2011, 9752415, 2.17);
-INSERT INTO public.book VALUES ('528063907-9', 'In Vogue: The Editor?s Eye', 'Tympanosympathectomy', '$76.27', 'Cookbook', 2003, 541023, 1.84);
-INSERT INTO public.book VALUES ('837725458-1', 'Charly', 'Oth arthrotomy-wrist', '$64.94', 'Comic book', 2002, 6889000, 2.33);
-INSERT INTO public.book VALUES ('962852031-8', 'Avengers, The', 'Thermocaut/entropion rep', '$28.41', 'Guide', 2006, 2202347, 2.65);
-INSERT INTO public.book VALUES ('479204029-9', '1939: Hollywood''s Greatest Year', 'Other suture of tendon', '$1.02', 'Picture book', 2003, 2783888, 1.05);
-INSERT INTO public.book VALUES ('935595550-2', 'Bird People in China, The (Chûgoku no chôjin)', 'Other heart/pericard ops', '$94.15', 'Graphic novel', 2006, 6787124, 2.13);
-INSERT INTO public.book VALUES ('289150352-X', 'Harper', 'Pressure dressing applic', '$74.48', 'Prayer', 2012, 8911169, 1.57);
-INSERT INTO public.book VALUES ('797991817-7', 'Vacancy', 'Nonmag remov post seg FB', '$72.53', 'Coming-of-age', 2008, 4522197, 1.35);
-INSERT INTO public.book VALUES ('663355652-7', 'Conrack', 'Osteoclasis NEC', '$99.48', 'Travel', 1985, 8088713, 2.78);
-INSERT INTO public.book VALUES ('175273118-2', 'Disclosure', 'Angiocardiography NOS', '$26.37', 'True crime', 1998, 5660912, 3.32);
-INSERT INTO public.book VALUES ('779017789-3', 'Hell House', 'Eswl gb/bile duct', '$16.52', 'Comic book', 1992, 5582098, 2.6);
-INSERT INTO public.book VALUES ('244495322-3', 'You''re Next', 'Speech defect training', '$39.05', 'Math', 1994, 4463570, 2.82);
-INSERT INTO public.book VALUES ('521735461-5', 'Wrong Cops', 'Epistaxis control NEC', '$89.78', 'Cookbook', 1999, 577884, 2.72);
-INSERT INTO public.book VALUES ('231820653-8', 'Flood', 'Wide exc bony palate les', '$3.91', 'Health/fitness', 1984, 8437595, 4.25);
-INSERT INTO public.book VALUES ('858194346-2', 'Cherry Tree Lane', 'Nephrocystanastomosi NOS', '$82.05', 'Suspense', 2002, 1512946, 1.7);
-INSERT INTO public.book VALUES ('368063051-4', 'My Wife Is a Gangster 2 (Jopog manura 2: Dolaon jeonseol)', 'Joint biopsy NEC', '$41.55', 'Memoir', 2006, 9243230, 2.25);
-INSERT INTO public.book VALUES ('169291605-X', 'Confidence', 'Simple mastoidectomy', '$89.30', 'Textbook', 1984, 3874117, 1.92);
-INSERT INTO public.book VALUES ('600909947-1', 'Twilight', 'Remove bile duct prosth', '$48.96', 'Graphic novel', 1992, 3822136, 4.04);
-INSERT INTO public.book VALUES ('651466403-2', 'Lorenzo''s Oil', 'Oth part cholecystectomy', '$5.83', 'Home and garden', 1998, 4894541, 1.62);
-INSERT INTO public.book VALUES ('823957154-9', 'Harvest Month, The (Elokuu)', 'Part ostectomy-femur', '$18.44', 'Horror', 2012, 3465209, 4.17);
-INSERT INTO public.book VALUES ('567049390-7', 'Violet Tendencies', 'Cervical spine x-ray NEC', '$74.87', 'Historical fiction', 2001, 9250857, 4.44);
-INSERT INTO public.book VALUES ('349330131-6', 'Bride with White Hair, The (Bai fa mo nu zhuan)', 'Autoimmune dis immunizat', '$12.74', 'Religion, spirituality, and new age', 2005, 194146, 1.58);
-INSERT INTO public.book VALUES ('270712836-8', 'At Home by Myself... with You', 'Ovarian biopsy NEC', '$37.74', 'Sports and leisure', 2006, 5247292, 3.96);
-INSERT INTO public.book VALUES ('155749938-1', 'Fat Girl (À ma soeur!)', 'Alcoholism counselling', '$80.06', 'Paranormal romance', 2011, 7388757, 3.3);
-INSERT INTO public.book VALUES ('911999032-4', 'Murder at 1600', 'Oth arthrotomy-ankle', '$35.76', 'Textbook', 1994, 3705242, 3.95);
-INSERT INTO public.book VALUES ('062109822-1', 'Cloudy with a Chance of Meatballs', 'Skull transilluminat', '$30.52', 'Fantasy', 1991, 742705, 1.7);
-INSERT INTO public.book VALUES ('841058014-4', 'Ilsa, She Wolf of the SS', 'AICD check', '$23.98', 'Textbook', 1966, 9477633, 2.93);
-INSERT INTO public.book VALUES ('914875553-2', 'Theory of Everything, The', 'Closed testicular biopsy', '$51.44', 'Diary', 1994, 5843083, 3.05);
-INSERT INTO public.book VALUES ('764014865-0', 'Gore Gore Girls, The', 'Individ psychotherap NEC', '$90.84', 'Chick lit', 1994, 907551, 1.41);
-INSERT INTO public.book VALUES ('503237818-6', 'Like Crazy', 'Other suture of tendon', '$10.64', 'Paranormal romance', 2006, 6636843, 2.37);
-INSERT INTO public.book VALUES ('845282192-1', 'Amos & Andrew', 'Endocar cushion rep NEC', '$96.95', 'Fantasy', 1989, 8142554, 1.8);
-INSERT INTO public.book VALUES ('359217434-7', 'Big City, The (Mahanagar)', 'Injct/infus glucarpidase', '$65.33', 'True crime', 2005, 2547357, 1.52);
-INSERT INTO public.book VALUES ('476528037-3', 'Viva Villa!', 'Diaphragmatic plication', '$35.56', 'Review', 2011, 3165082, 1.47);
-INSERT INTO public.book VALUES ('711371002-6', 'America Before Columbus', 'Pros rep endocar cushion', '$59.40', 'Guide', 1986, 3881695, 2.77);
-INSERT INTO public.book VALUES ('637657825-X', 'Mr. Nice Guy (Yat goh ho yan)', 'Other eyelid incision', '$89.96', 'Journal', 1997, 1097019, 4.6);
-INSERT INTO public.book VALUES ('037146821-3', 'Texas Terror', 'Radical orbitomaxillect', '$30.71', 'Political thriller', 1969, 810625, 1.29);
-INSERT INTO public.book VALUES ('796580315-1', 'Eye for an Eye, An (Silmä silmästä)', 'Thor rep-diaph hern NOS', '$58.34', 'Science', 2009, 5680111, 1.1);
-INSERT INTO public.book VALUES ('068919983-X', 'Just the Ticket', 'Injection of larynx', '$45.48', 'Classic', 1997, 1983800, 3.38);
-INSERT INTO public.book VALUES ('012741986-1', 'Tough Ones, The (Häjyt)', 'Inject tranquilizer', '$78.22', 'Coming-of-age', 2010, 9383324, 2.42);
-INSERT INTO public.book VALUES ('007521393-1', 'Puppet Master vs. Demonic Toys (Puppet Master 9)', 'Aspiration of ovary', '$62.75', 'Romance', 2001, 8526566, 3.27);
-INSERT INTO public.book VALUES ('358245000-7', 'Ghost and Mr. Chicken, The', 'Hepatotomy', '$2.70', 'Memoir', 2004, 3914091, 4.69);
-INSERT INTO public.book VALUES ('725598712-5', 'Extreme Ops', 'Destruct larynx les NEC', '$79.59', 'Crafts/hobbies', 2009, 6141838, 3.64);
-INSERT INTO public.book VALUES ('587258898-4', 'Here Comes Peter Cottontail ', 'Open bronchial biopsy', '$84.92', 'Political thriller', 2004, 5277996, 2.68);
-INSERT INTO public.book VALUES ('256035178-1', 'My Gun is Quick', 'Tendon trnsfr/transplant', '$58.64', 'Western', 2001, 8786375, 2.01);
-INSERT INTO public.book VALUES ('357279663-6', 'We Are from the Future (My iz budushchego)', 'Closed thyroid gland bx', '$46.10', 'Western', 1989, 1126396, 2.28);
-INSERT INTO public.book VALUES ('012467595-6', 'The Magnet', 'Hip structure division', '$67.90', 'Crafts/hobbies', 1995, 5647815, 3.38);
-INSERT INTO public.book VALUES ('399282166-8', 'Frankenhooker', 'Ventr septa def rep NEC', '$57.94', 'Encyclopedia', 2003, 9989466, 1.23);
-INSERT INTO public.book VALUES ('496223091-3', 'Key Largo', 'Pelvic evisceration', '$38.86', 'Encyclopedia', 2012, 3805837, 4.31);
-INSERT INTO public.book VALUES ('758283987-0', 'Son of the Bride (Hijo de la novia, El)', 'Imp/rep CRT defib genat', '$25.92', 'Cookbook', 2012, 9488348, 1.7);
-INSERT INTO public.book VALUES ('779546661-3', 'Pekka ja Pätkä puistotäteinä', 'Dental operation NEC', '$60.73', 'Encyclopedia', 1992, 6928851, 2.92);
-INSERT INTO public.book VALUES ('210021148-X', 'Bubble Boy', 'Left heart cardiac cath', '$80.54', 'True crime', 2011, 6970508, 1.21);
-INSERT INTO public.book VALUES ('020197894-6', 'Apollo 18', 'Other transanal enema', '$17.49', 'Philosophy', 2000, 559148, 2.62);
-INSERT INTO public.book VALUES ('705291331-3', 'Nanny Diaries, The', 'Bil fem hern repair NEC', '$29.74', 'History', 1990, 2111862, 4.8);
-INSERT INTO public.book VALUES ('689276258-1', 'Long Ride Home, The', 'Other bone dx proc NEC', '$72.78', 'Math', 2005, 6586408, 4.04);
-INSERT INTO public.book VALUES ('859727177-9', 'Halloween is Grinch Night', 'Auto bone mt w/o purg', '$55.76', 'Romance', 2012, 3503289, 3.54);
-INSERT INTO public.book VALUES ('714841295-1', 'Moolaadé', 'Conduit artium-pulm art', '$42.56', 'Coming-of-age', 1996, 7976522, 1.95);
-INSERT INTO public.book VALUES ('915194193-7', 'C.H.O.M.P.S.', 'Destruc-ankle lesion NEC', '$97.13', 'Philosophy', 2010, 9111272, 3.05);
-INSERT INTO public.book VALUES ('772346633-1', 'Pride and Prejudice', 'Aspir curett uterus NEC', '$54.33', 'Classic', 2001, 9531322, 4.99);
-INSERT INTO public.book VALUES ('680805713-3', 'United States of Secrets (Part One): The Program', 'Eustachian tube ops', '$58.56', 'Religion, spirituality, and new age', 2003, 1446812, 1.35);
-INSERT INTO public.book VALUES ('179787434-9', 'Perfect World, A', 'Esophageal manometry', '$8.46', 'History', 2003, 7001170, 1.81);
-INSERT INTO public.book VALUES ('979066769-8', 'In the Navy', 'Replace cystostomy tube', '$45.37', 'Chick lit', 2008, 1039244, 4.57);
-INSERT INTO public.book VALUES ('089913188-3', 'Arena', 'Mid & inner ear biopsy', '$69.71', 'Review', 1994, 2350647, 3.1);
-INSERT INTO public.book VALUES ('349173947-0', 'Mac and Me', 'Micro exam-blood NEC', '$27.05', 'Art/architecture', 2010, 1027550, 4.27);
-INSERT INTO public.book VALUES ('585564762-5', 'Under Fire', 'Splenic cyst marsupial', '$67.31', 'Dictionary', 2012, 6835987, 3.33);
-INSERT INTO public.book VALUES ('204725391-8', 'Love''s Deadly Triangle: The Texas Cadet Murder', 'Local excis rectal les', '$82.19', 'Picture book', 1996, 6819929, 4.43);
-INSERT INTO public.book VALUES ('056302205-1', 'Beverly Hills Ninja', 'Ileostomy NOS', '$49.74', 'Prayer', 2011, 3315631, 1.55);
-INSERT INTO public.book VALUES ('956132571-3', 'Vessel of Wrath', 'Closure of proctostomy', '$32.33', 'Anthology', 2008, 199430, 1.51);
-INSERT INTO public.book VALUES ('452263482-X', 'Children of the Corn', 'Repair retina detach NEC', '$19.25', 'Fantasy', 2009, 3824839, 4.06);
-INSERT INTO public.book VALUES ('795267525-7', 'Zookeeper', 'Music therapy', '$69.38', 'Review', 2012, 6922256, 3.13);
-INSERT INTO public.book VALUES ('798754430-2', 'Gentlemen Broncos', 'Thoracoscopc lung biopsy', '$65.85', 'Guide', 2010, 4910997, 1.86);
-INSERT INTO public.book VALUES ('661467673-3', 'Olympia Part Two: Festival of Beauty (Olympia 2. Teil - Fest der Schönheit)', 'Bone marrow ops NEC', '$46.91', 'Biography', 2009, 3972804, 4.78);
-INSERT INTO public.book VALUES ('831627765-4', 'Very Bad Things', 'Ins inflate penis prosth', '$80.06', 'Prayer', 2007, 9965566, 1.07);
-INSERT INTO public.book VALUES ('916412825-3', 'Journey to the West: Conquering the Demons (Daai wa sai you chi Chui mo chun kei)', 'Lac punctum incision', '$15.76', 'Romance', 2002, 597188, 4.21);
-INSERT INTO public.book VALUES ('306075133-1', '8 Diagram Pole Fighter, The (a.k.a. Invincible Pole Fighter) (Wu Lang ba gua gun)', 'Alveoloplasty', '$20.73', 'Cookbook', 2003, 8016553, 4.18);
-INSERT INTO public.book VALUES ('420224614-4', 'The Tattooist', 'Hypogloss-facial anastom', '$67.26', 'True crime', 1992, 3071014, 4.29);
-INSERT INTO public.book VALUES ('532243709-6', 'Fantastic Fear of Everything, A', 'Dx procedure thorax NEC', '$10.07', 'Political thriller', 2011, 405896, 1.03);
-INSERT INTO public.book VALUES ('387008359-X', 'I Start Counting', 'Periren/vesicle excision', '$45.93', 'Home and garden', 2011, 5878639, 3.69);
-INSERT INTO public.book VALUES ('182599326-2', 'Honeymoon', 'Open uterine biopsy', '$40.61', 'Satire', 2002, 7351142, 3.4);
-INSERT INTO public.book VALUES ('094081671-7', 'Frank', 'Extraoc musc inj repair', '$32.59', 'Crime', 1954, 7062335, 1.69);
-INSERT INTO public.book VALUES ('490888836-1', 'La Bande du drugstore', 'Cnt intraart bld gas mon', '$9.60', 'Self help', 1999, 7755405, 2.44);
-INSERT INTO public.book VALUES ('681048275-X', 'Attack from Space', 'Ovarian denervation', '$23.89', 'Paranormal romance', 2010, 9427336, 1.67);
-INSERT INTO public.book VALUES ('863967300-4', 'Breath, The (Nefes: Vatan sagolsun)', 'Endolymphatic shunt', '$54.27', 'Autobiography', 1991, 6502215, 3.42);
-INSERT INTO public.book VALUES ('953469093-7', 'By the Bluest of Seas (U samogo sinego morya)', 'Open reduc-metac/car fx', '$92.40', 'Satire', 1973, 1181082, 1.66);
-INSERT INTO public.book VALUES ('129400156-6', 'Constant Gardener, The', 'Perianal excision NEC', '$89.65', 'Humor', 1995, 2871874, 1.53);
-INSERT INTO public.book VALUES ('216824768-4', 'Hard Day''s Night, A', 'Abdominal wall sinogram', '$83.57', 'Home and garden', 2003, 4570114, 3.54);
-INSERT INTO public.book VALUES ('869446853-0', 'Dr. Mabuse: The Gambler (Dr. Mabuse, der Spieler)', 'Limb length-metacar/car', '$75.63', 'True crime', 1998, 2710086, 2.77);
-INSERT INTO public.book VALUES ('048275792-2', 'Bomber', 'Occlude leg artery NEC', '$88.36', 'Science', 1998, 6409182, 3.98);
-INSERT INTO public.book VALUES ('197360679-8', 'Omagh', 'Subtalr jt arthroereisis', '$28.18', 'Suspense', 1987, 1657156, 4.91);
-INSERT INTO public.book VALUES ('616739403-2', 'Charleston', 'Gastric tube irrigat NEC', '$16.85', 'Prayer', 2000, 3083261, 1.15);
-INSERT INTO public.book VALUES ('784155968-2', 'Ip Man', 'Lap total abdominal hyst', '$84.46', 'Graphic novel', 1998, 758716, 1.1);
-INSERT INTO public.book VALUES ('752472954-5', 'Bishop Murder Case, The', 'Amputation stump revis', '$99.79', 'Young adult', 2008, 6497595, 1.45);
-INSERT INTO public.book VALUES ('634444131-3', 'Balance, La', 'Nasophary contrast x-ray', '$83.89', 'Alternate history', 2008, 9354363, 4.27);
-INSERT INTO public.book VALUES ('012573390-9', 'Bully', 'Hand fasciectomy NEC', '$80.23', 'Paranormal romance', 2000, 673733, 2.01);
-INSERT INTO public.book VALUES ('996146139-8', 'Heart in Winter, A (Un coeur en hiver)', 'Pneumoencephalogram', '$5.57', 'Horror', 2008, 1381496, 4.78);
-INSERT INTO public.book VALUES ('373833352-5', 'Bounce: Behind the Velvet Rope', 'Autopsy', '$26.29', 'Historical fiction', 2004, 7414420, 1.67);
-INSERT INTO public.book VALUES ('529804966-4', 'Death Ship', 'Subarach-ureteral shunt', '$64.11', 'Science', 2007, 3535732, 1.3);
-INSERT INTO public.book VALUES ('817072394-9', 'Pyx, The', 'Emphysema bleb plication', '$37.67', 'Crime', 1993, 4615424, 2.15);
-INSERT INTO public.book VALUES ('391768959-6', 'Men with Guns', 'Insert/repl oth neurost', '$21.99', 'Prayer', 1984, 9726432, 2.05);
-INSERT INTO public.book VALUES ('063888040-8', 'My Little Pony: Equestria Girls', 'Scleral buckle w implant', '$13.44', 'Philosophy', 2010, 6692704, 2.04);
-INSERT INTO public.book VALUES ('629550450-7', 'Are You Scared?', 'Remove head/neck dev NEC', '$91.61', 'Graphic novel', 2003, 3901047, 3.68);
-INSERT INTO public.book VALUES ('235868244-6', 'Mothra (Mosura)', 'Fat grft skin/subq tiss', '$4.69', 'Poetry', 2010, 2138214, 4.03);
-INSERT INTO public.book VALUES ('245838298-3', 'Heist', 'Orbitotomy NEC', '$22.49', 'Journal', 1998, 4272840, 4.23);
-INSERT INTO public.book VALUES ('253819714-7', 'Adopted', 'Thyroid suture', '$33.54', 'Travel', 1986, 9711467, 1.53);
-INSERT INTO public.book VALUES ('933376029-6', 'Terminator 2: Judgment Day', 'Hearing examination NOS', '$51.20', 'Fairytale', 2012, 7899865, 4.4);
-INSERT INTO public.book VALUES ('765870162-9', 'Kwik Stop', 'Clos large bowel biopsy', '$8.13', 'Memoir', 2010, 4626735, 1.38);
-INSERT INTO public.book VALUES ('448584918-X', 'Left-Hand Side of the Fridge, The (Moitié gauche du frigo, La)', 'Hepatic injection NEC', '$87.72', 'Self help', 2009, 1514125, 1.95);
-INSERT INTO public.book VALUES ('002519595-6', 'Winter Soldier', 'Micro exam-nervous NEC', '$79.99', 'Classic', 1996, 849939, 4.68);
-INSERT INTO public.book VALUES ('489988033-2', 'Inseparable', 'Destruc-shoulder les NEC', '$74.86', 'Review', 2012, 8961129, 3.99);
-INSERT INTO public.book VALUES ('494723217-X', 'Poor Us: An Animated History of Poverty', 'Plaster jacket applicat', '$21.94', 'Romance', 1994, 9787654, 1.63);
-INSERT INTO public.book VALUES ('759953884-4', 'Rififi (Du rififi chez les hommes)', 'Opn rt hemicolectomy NEC', '$97.70', 'Romance', 1997, 5676634, 4.07);
-INSERT INTO public.book VALUES ('592518419-X', 'Fast Life', 'Oth arthrotomy-hip', '$29.56', 'Comic book', 2012, 8297646, 4.88);
-INSERT INTO public.book VALUES ('808741882-4', 'Diary of a Mad Housewife', 'Injection into pericard', '$48.11', 'Business/economics', 2003, 2175801, 2.26);
-INSERT INTO public.book VALUES ('195062912-0', 'Storm Warriors, The (Fung wan II)', 'Hysterotomy', '$87.75', 'Fairytale', 2012, 4141320, 2.3);
-INSERT INTO public.book VALUES ('683442384-2', 'Up in Arms', 'Elecmag hear dev implant', '$61.84', 'Suspense', 2011, 176472, 4.49);
-INSERT INTO public.book VALUES ('112411821-7', 'Stitches', 'Sutur capsul/ligamen arm', '$54.40', 'Health/fitness', 1990, 7900068, 2.6);
-INSERT INTO public.book VALUES ('847776827-7', 'Emperor''s New Groove 2: Kronk''s New Groove, The', 'Revise disc prost thora', '$42.77', 'Journal', 1988, 1288345, 2.03);
-INSERT INTO public.book VALUES ('266695649-0', 'Nurse 3D', 'Papillary muscle ops', '$4.19', 'Young adult', 2005, 9017776, 4.89);
-INSERT INTO public.book VALUES ('663080344-2', 'Andy Hardy''s Double Life', 'Lap radical vaginal hyst', '$5.89', 'Math', 1993, 5447697, 1.24);
-INSERT INTO public.book VALUES ('255189015-2', 'Ballad of Little Jo, The', 'Cervical canal dilation', '$97.16', 'Drama', 2011, 448466, 5.0);
-INSERT INTO public.book VALUES ('634774350-7', 'Cheech & Chong: Still Smokin''', 'Pharyngeal dilation', '$23.48', 'Drama', 2007, 8007617, 4.56);
-INSERT INTO public.book VALUES ('241701753-9', 'Naughty Room, The', 'Other pleural excision', '$38.64', 'Thriller', 2011, 2992280, 2.61);
-INSERT INTO public.book VALUES ('935962845-X', 'The Wonders', 'Micro exam-lower GI NEC', '$95.56', 'Romance', 2001, 2669179, 1.67);
-INSERT INTO public.book VALUES ('779002953-3', 'Russell Peters: Outsourced', 'Abd vein resect & anast', '$75.26', 'Travel', 1986, 9140340, 2.71);
-INSERT INTO public.book VALUES ('484440151-3', 'Hollywood Between Paranoia and Sci-Fi. The Power of Myth', 'Pass musculosk exer NEC', '$82.11', 'Western', 2008, 9001096, 2.59);
-INSERT INTO public.book VALUES ('410190780-3', 'White Cliffs of Dover, The', 'Carporadial fusion', '$88.81', 'Home and garden', 2000, 1596316, 3.29);
-INSERT INTO public.book VALUES ('260314263-1', 'Apartment Zero', 'Pros rep atrial def-opn', '$85.72', 'Memoir', 1999, 5442231, 4.79);
-INSERT INTO public.book VALUES ('826383883-5', 'Star Wars: Episode I - The Phantom Menace', 'Urethral repair NEC', '$12.76', 'Comic book', 2008, 3550361, 4.17);
-INSERT INTO public.book VALUES ('579325145-6', 'K-11', 'Insert nasopharyn airway', '$16.72', 'Crafts/hobbies', 1998, 8437892, 1.22);
-INSERT INTO public.book VALUES ('891119616-9', 'Thunder Bay', 'Portal contr phlebogram', '$14.63', 'Prayer', 1996, 5664815, 3.04);
-INSERT INTO public.book VALUES ('304881958-4', 'Freedom Downtime', 'Mastoid incision', '$28.09', 'Fairytale', 1993, 8102030, 2.25);
-INSERT INTO public.book VALUES ('288228019-X', 'The Second Best Exotic Marigold Hotel', 'C & s-op wound', '$83.86', 'Action and adventure', 2011, 801781, 3.95);
-INSERT INTO public.book VALUES ('439372847-5', 'Cuban Fury', 'Therapeutc leukopheresis', '$10.89', 'Western', 1993, 6139759, 3.71);
-INSERT INTO public.book VALUES ('388476736-4', 'Double Whammy', 'Oth arthrotomy-hip', '$19.29', 'Biography', 2003, 198176, 4.08);
-INSERT INTO public.book VALUES ('789193562-9', 'Envy (Kiskanmak)', 'Pulmonary scan', '$73.71', 'Satire', 2001, 8957377, 4.08);
-INSERT INTO public.book VALUES ('546357952-0', 'Seventh Cross, The', 'Suture scrotal lacerat', '$36.31', 'Biography', 1999, 3751459, 4.74);
-INSERT INTO public.book VALUES ('936482083-5', 'Sorrow and the Pity, The (Le chagrin et la pitié)', 'Cls reduc-sep epiphy NEC', '$35.96', 'Short story', 2001, 3111282, 2.52);
-INSERT INTO public.book VALUES ('298252107-5', 'Astro Boy', 'Remov vas deferens valve', '$18.34', 'Suspense', 1994, 8278796, 2.68);
-INSERT INTO public.book VALUES ('984797181-1', 'Julian Po', 'Repair rectovag fistula', '$52.75', 'Alternate history', 2012, 8550753, 1.14);
-INSERT INTO public.book VALUES ('135822340-8', 'Barbary Coast Gent (Gold Town) (Honest Thief, The)', 'Temp endovsc occls vessl', '$42.97', 'Fantasy', 2006, 8133539, 1.22);
-INSERT INTO public.book VALUES ('055458067-5', 'Class Action', 'Applic ext fix dev NOS', '$71.83', 'Short story', 2000, 5078897, 3.95);
-INSERT INTO public.book VALUES ('255096780-1', 'Two English Girls (Les deux anglaises et le continent)', 'Open incis hern-grft NEC', '$32.39', 'Mystery', 1995, 5283085, 1.06);
-INSERT INTO public.book VALUES ('110551282-7', 'Mortadelo & Filemon: The Big Adventure (La gran aventura de Mortadelo y Filemón)', 'Thyr/parathy dx proc NEC', '$43.24', 'Picture book', 1997, 1317520, 2.6);
-INSERT INTO public.book VALUES ('049149534-X', 'Under the North Star (Täällä Pohjantähden alla)', 'Upper GI series', '$72.62', 'Comic book', 2004, 8683035, 1.49);
-INSERT INTO public.book VALUES ('912235265-1', 'Certified Copy (Copie conforme)', 'Unil femor hrn rep-grft', '$52.94', 'History', 2006, 7698326, 3.88);
-INSERT INTO public.book VALUES ('415928600-3', 'Tokyo Sonata', 'Repl cardiodefib genratr', '$75.53', 'Short story', 2000, 4927833, 2.77);
-INSERT INTO public.book VALUES ('225786832-3', 'Up in Arms', 'Remov vaginal diaphragm', '$64.06', 'Crafts/hobbies', 1996, 4648680, 4.31);
-INSERT INTO public.book VALUES ('551029289-X', 'I''m Crazy About Iris Blond', 'Other fasciectomy', '$56.42', 'Chick lit', 1994, 7868545, 3.94);
-INSERT INTO public.book VALUES ('804430979-9', 'Nanny, The', 'Leg vein resect/anastom', '$83.42', 'Horror', 1995, 3370247, 1.72);
-INSERT INTO public.book VALUES ('392919280-2', 'Maria Bamford: The Special Special Special!', 'Perc ather intracran vsl', '$96.77', 'Science', 1990, 5014922, 3.61);
-INSERT INTO public.book VALUES ('269045513-7', 'Mob, The', 'Tibia & fibula biopsy', '$54.63', 'Religion, spirituality, and new age', 1987, 8649568, 1.91);
-INSERT INTO public.book VALUES ('610775534-9', '1911 (Xinhai geming)', 'Other transanal enema', '$54.30', 'Action and adventure', 2007, 7983871, 4.55);
-INSERT INTO public.book VALUES ('057844142-X', 'Identity', 'Open coronry angioplasty', '$72.43', 'Prayer', 2005, 1008255, 2.94);
-INSERT INTO public.book VALUES ('756692961-5', 'Shape of Things, The', 'Percu gastrojejunostomy', '$69.28', 'Western', 1999, 7447251, 4.82);
-INSERT INTO public.book VALUES ('232333651-7', 'Son of the Bride (Hijo de la novia, El)', 'Disarticulation of ankle', '$8.88', 'Dictionary', 2012, 9086283, 3.87);
-INSERT INTO public.book VALUES ('700767437-2', 'Distant (Uzak)', 'Upper arm reattachment', '$27.94', 'Suspense', 2000, 2465064, 3.35);
-INSERT INTO public.book VALUES ('637158448-0', 'Knockout', 'Drug addict counselling', '$45.45', 'Drama', 2002, 8694173, 3.7);
-INSERT INTO public.book VALUES ('468303695-9', 'Final, The', 'Partial sialoadenectomy', '$20.14', 'Picture book', 1996, 945231, 4.57);
-INSERT INTO public.book VALUES ('581955340-3', 'Holy Man', 'Remove int fix face bone', '$31.87', 'Textbook', 2007, 2798872, 2.71);
-INSERT INTO public.book VALUES ('637705024-0', 'Wolfman, The', 'Corneal incision', '$21.58', 'Suspense', 1992, 4236782, 4.84);
-INSERT INTO public.book VALUES ('059906440-4', '127 Hours', 'Osteoclasis-chest cage', '$92.32', 'Guide', 2005, 9258517, 2.06);
-INSERT INTO public.book VALUES ('299089474-8', 'Brain Dead', 'Gas hysterosalpingogram', '$44.34', 'Art/architecture', 2008, 3053235, 3.35);
-INSERT INTO public.book VALUES ('985687655-9', 'Eros (Men and Women) (Noite Vazia)', 'Plethysmogram', '$36.02', 'Drama', 2011, 1856277, 2.37);
-INSERT INTO public.book VALUES ('611895414-3', 'I Am Bruce Lee', 'Stern esophagocolos NEC', '$80.27', 'Art/architecture', 1997, 971856, 1.62);
-INSERT INTO public.book VALUES ('618186888-7', 'In the Shadow of Doubt (Epäilyksen varjossa)', 'Arthrocentesis', '$20.14', 'Prayer', 1995, 8540875, 3.07);
-INSERT INTO public.book VALUES ('749487553-0', 'Overlord', 'Int/comb version w extr', '$89.46', 'Suspense', 2001, 3637798, 3.51);
-INSERT INTO public.book VALUES ('450576210-6', 'Vampyr', 'Pacemaker impedance chck', '$27.13', 'Young adult', 1986, 5402121, 3.76);
-INSERT INTO public.book VALUES ('095825458-3', '17 Again', 'Hemodialysis', '$59.06', 'Children''s', 1984, 7353824, 1.98);
-INSERT INTO public.book VALUES ('708925873-4', 'Panic in the Streets', 'Spleen operation NEC', '$11.97', 'Young adult', 1997, 2757736, 3.04);
-INSERT INTO public.book VALUES ('560781563-3', 'Gurren Lagann: The Lights in the Sky are Stars (Gekijô ban Tengen toppa guren ragan: Ragan hen)', 'Repair conjunct lacerat', '$38.80', 'Romance', 1993, 7339924, 1.16);
-INSERT INTO public.book VALUES ('924502256-0', 'Human Lanterns (Ren pi deng long)', 'Neurologic examination', '$80.01', 'Autobiography', 2001, 8443786, 4.68);
-INSERT INTO public.book VALUES ('891764604-2', 'Sugar Town', 'Urethroves junct plicat', '$18.92', 'Fantasy', 2010, 4283885, 1.19);
-INSERT INTO public.book VALUES ('741644622-8', 'Man on the Train (Homme du train, L'')', 'Lid lacer rx-prt th NEC', '$40.75', 'Encyclopedia', 2005, 2814398, 4.51);
-INSERT INTO public.book VALUES ('987313498-0', 'Black Orchid, The', 'Ureteral operation NEC', '$97.01', 'Classic', 2004, 7263696, 1.37);
-INSERT INTO public.book VALUES ('130987216-3', 'MacGyver: Lost Treasure of Atlantis', 'Male genital op NEC', '$83.32', 'Fantasy', 2006, 7470209, 4.13);
-INSERT INTO public.book VALUES ('295525808-3', 'Our Man in Havana', 'Other brain dx procedure', '$88.49', 'Religion, spirituality, and new age', 2001, 9136720, 1.11);
-INSERT INTO public.book VALUES ('825307248-1', 'Children of the Corn III', 'Total esophagectomy', '$64.98', 'Coming-of-age', 1994, 3016644, 3.28);
-INSERT INTO public.book VALUES ('603718711-8', 'Life 2.0', 'Incision uterine septum', '$32.28', 'Home and garden', 1988, 1490769, 3.13);
-INSERT INTO public.book VALUES ('472596990-7', 'Viola', 'Skin excision for graft', '$81.17', 'Western', 1995, 6655555, 2.03);
-INSERT INTO public.book VALUES ('190938711-8', 'Persona', 'Esophagoscopy thru stoma', '$84.17', 'Science fiction', 1997, 2887578, 1.02);
-INSERT INTO public.book VALUES ('394598519-6', 'Secret Garden, The', 'Excis metatar/tar-graft', '$16.82', 'Satire', 1996, 2735215, 1.06);
-INSERT INTO public.book VALUES ('264072693-5', 'Laws of Attraction', 'Incis larynx trachea NEC', '$18.20', 'Suspense', 2000, 9372442, 1.67);
-INSERT INTO public.book VALUES ('987599799-4', 'Devil''s Eye, The (Djävulens öga)', 'Adrenal incision', '$72.27', 'Autobiography', 2012, 2487166, 1.28);
-INSERT INTO public.book VALUES ('273177602-1', 'Four Feathers, The', 'Nonexc destr cil bod les', '$58.25', 'Paranormal romance', 1997, 7270840, 4.66);
-INSERT INTO public.book VALUES ('933661665-X', 'Friend Zone (Pagafantas)', 'Open lung biopsy', '$69.67', 'Prayer', 1991, 6520109, 4.03);
-INSERT INTO public.book VALUES ('466677357-6', 'These Final Hours', 'Remove imp dev-metat/tar', '$97.21', 'Paranormal romance', 2002, 7818776, 4.53);
-INSERT INTO public.book VALUES ('797823140-2', 'The Apocalypse', 'Thorac esophag anast NEC', '$78.01', 'Travel', 1996, 9549019, 4.72);
-INSERT INTO public.book VALUES ('864197998-0', 'GasLand', 'Skel xray-upper limb NOS', '$5.48', 'Short story', 2010, 7320384, 3.15);
-INSERT INTO public.book VALUES ('114584286-0', 'Lot Like Love, A', 'Pericardiocentesis', '$97.15', 'Fairytale', 1987, 4972831, 2.66);
-INSERT INTO public.book VALUES ('452522709-5', 'Saints and Soldiers', 'Partial ostectomy NEC', '$47.47', 'Journal', 2009, 9703397, 3.86);
-INSERT INTO public.book VALUES ('621854255-6', 'Curious George', 'Head/neck ves incis NEC', '$58.99', 'Art/architecture', 2009, 5672373, 2.01);
-INSERT INTO public.book VALUES ('901153852-8', 'Vincent & Theo', 'Endo ins/re brnc val,mul', '$24.35', 'Cookbook', 1990, 4547506, 4.65);
-INSERT INTO public.book VALUES ('785513696-7', 'Hypocrites', 'Evac ob hemat vulva/vag', '$57.20', 'Encyclopedia', 2006, 100578, 1.02);
-INSERT INTO public.book VALUES ('983589321-7', 'iSteve', 'Ventr septa def rep NEC', '$34.26', 'Action and adventure', 1984, 4320328, 4.14);
-INSERT INTO public.book VALUES ('462228616-5', 'Hickey and Boggs', 'Breast xerography', '$8.14', 'Diary', 2004, 5769464, 1.89);
-INSERT INTO public.book VALUES ('755686002-7', 'Interrupters, The', 'Rubella vaccination', '$35.08', 'Fantasy', 2009, 336795, 3.67);
-INSERT INTO public.book VALUES ('162357283-5', 'Alone (Issiz adam)', 'Dental x-ray NEC', '$66.73', 'True crime', 2006, 530707, 1.32);
-INSERT INTO public.book VALUES ('660703244-3', 'Birth', 'Bile duct incision NEC', '$49.98', 'Drama', 1999, 6340730, 4.87);
-INSERT INTO public.book VALUES ('125704596-2', '"Great Performances" Cats', 'Aortocor bypas-3 cor art', '$30.90', 'Travel', 1993, 5071859, 2.5);
-INSERT INTO public.book VALUES ('970772357-2', 'Longest Yard, The', 'Peritoneal lavage', '$31.31', 'Encyclopedia', 1988, 2338452, 1.36);
-INSERT INTO public.book VALUES ('587553305-6', 'Summer Place, A', 'Lap gastric restric proc', '$61.02', 'Science', 1998, 5603494, 3.27);
-INSERT INTO public.book VALUES ('442512297-6', 'Class of 1999', 'Destruct peritoneal tiss', '$53.90', 'Paranormal romance', 2005, 6207782, 3.46);
-INSERT INTO public.book VALUES ('813672755-4', 'Possession of Joel Delaney, The', 'Ins intra-ansm pres mntr', '$97.94', 'Chick lit', 2011, 6955086, 1.59);
-INSERT INTO public.book VALUES ('496476054-5', 'Hideous Sun Demon, The', 'Bilateral vulvectomy', '$1.97', 'Home and garden', 1985, 7095775, 4.62);
-INSERT INTO public.book VALUES ('257089292-0', 'Five Children and It', 'Totl reconstc breast NOS', '$21.18', 'Paranormal romance', 1986, 8345688, 3.44);
-INSERT INTO public.book VALUES ('545395722-0', 'The Hire: Hostage', 'Cardiac mapping', '$18.91', 'Crime', 1999, 1932471, 1.36);
-INSERT INTO public.book VALUES ('945918848-6', 'Tokyo Decadence (Topâzu)', 'Repl cardiodefib leads', '$75.47', 'Short story', 1998, 2270410, 2.13);
-INSERT INTO public.book VALUES ('493111511-X', 'Saints and Soldiers', 'Choledochohepat intubat', '$12.10', 'Diary', 1996, 1287224, 2.77);
-INSERT INTO public.book VALUES ('900954159-2', 'Final Approach', 'Sphenoidotomy', '$1.68', 'Journal', 2005, 2097175, 3.96);
-INSERT INTO public.book VALUES ('033191203-1', 'Armadillo', 'Tm manipulation NEC', '$55.60', 'Travel', 2010, 4046578, 4.57);
-INSERT INTO public.book VALUES ('779523141-1', 'Superman III', 'Tm contrast arthrogram', '$4.45', 'Political thriller', 2008, 8346611, 3.71);
-INSERT INTO public.book VALUES ('714974033-2', 'Tall Guy, The', 'Op red-int fix tib/fibul', '$33.41', 'Diary', 2007, 2081048, 4.5);
-INSERT INTO public.book VALUES ('326731155-1', 'Skeleton Crew', 'Other chest cage incis', '$66.76', 'True crime', 1990, 514552, 2.04);
-INSERT INTO public.book VALUES ('685289132-1', 'Ju-on: The Curse 2', 'Esophagomyotomy', '$62.65', 'Drama', 2009, 3748675, 3.28);
-INSERT INTO public.book VALUES ('761627436-6', 'Peppermint Candy (Bakha satang)', 'Limb lengthen proc NEC', '$32.43', 'Alternate history', 2002, 3428507, 2.29);
-INSERT INTO public.book VALUES ('670638047-4', 'Skins', 'Homograft to skin', '$42.52', 'Cookbook', 2011, 9566108, 3.51);
-INSERT INTO public.book VALUES ('850553356-9', 'Order, The', 'Ins/rep mul pul gn,rechg', '$60.63', 'Short story', 2012, 9698397, 4.86);
-INSERT INTO public.book VALUES ('984908053-1', 'Blue Sunshine', 'Vent shunt extracran NEC', '$31.32', 'Math', 2003, 1149668, 1.58);
-INSERT INTO public.book VALUES ('248605712-9', 'Caravaggio', 'Inject implant urethra', '$64.11', 'True crime', 2001, 2594192, 3.56);
-INSERT INTO public.book VALUES ('171513250-5', 'East is East', 'Low forceps operation', '$36.59', 'Dictionary', 1992, 8401143, 1.89);
-INSERT INTO public.book VALUES ('559666805-2', 'Bones Brigade: An Autobiography', 'Sympath nerve inject NEC', '$27.07', 'Graphic novel', 2007, 7325658, 4.52);
-INSERT INTO public.book VALUES ('784837272-3', 'Hannie Caulder', 'Other tenonectomy', '$45.12', 'Children''s', 1993, 4053753, 3.99);
-INSERT INTO public.book VALUES ('897587618-7', 'Allan Quatermain and the Temple of Skulls', 'Brain meninge repair NEC', '$76.12', 'Fairytale', 1999, 1726692, 3.33);
-INSERT INTO public.book VALUES ('886828123-6', 'Commandos Strike at Dawn', 'Insert perm tube esophag', '$81.01', 'Science fiction', 2000, 8815387, 4.7);
-INSERT INTO public.book VALUES ('333868171-2', 'Jungo Goes Bananas: Jungo III (Jungledyret Hugo: Fræk, flabet og fri)', 'Arth/pros rem wo re-wrst', '$24.68', 'Classic', 1997, 8538240, 4.02);
-INSERT INTO public.book VALUES ('578416852-5', 'Dogwalker, The', 'Subtalr jt arthroereisis', '$76.03', 'Religion, spirituality, and new age', 2009, 5461145, 2.7);
-INSERT INTO public.book VALUES ('568276930-9', 'Ainoat Oikeat', 'Rad subtot pancreatectom', '$6.50', 'Historical fiction', 2000, 1566496, 4.51);
-INSERT INTO public.book VALUES ('329738049-7', 'Hogfather (Terry Pratchett''s Hogfather)', 'Multiple sinus incision', '$52.32', 'True crime', 2007, 6288246, 3.73);
-INSERT INTO public.book VALUES ('379568142-1', 'Lady in Cement', 'Chorioret les rad implan', '$21.60', 'Religion, spirituality, and new age', 2012, 1564503, 2.39);
-INSERT INTO public.book VALUES ('065382914-0', 'Rahtree: Flower of the Night (Buppha Rahtree)', 'Skin & subq dx proc NEC', '$39.82', 'Chick lit', 1964, 4856107, 1.1);
-INSERT INTO public.book VALUES ('682257814-5', 'Rendez-vous d''Anna, Les (Meetings of Anna, The)', 'Adjust lid position NEC', '$90.03', 'Autobiography', 2000, 1709938, 1.91);
-INSERT INTO public.book VALUES ('514395606-4', 'Rustlers'' Rhapsody', 'Stretching of foreskin', '$31.07', 'Prayer', 1995, 5065782, 2.69);
-INSERT INTO public.book VALUES ('527756877-8', 'Innocent Blood', 'Other tracheal repair', '$35.57', 'Biography', 2008, 9225405, 1.04);
-INSERT INTO public.book VALUES ('883379866-6', 'Reel Injun', 'Ther ultrasound of heart', '$14.88', 'Encyclopedia', 2003, 7980711, 4.69);
-INSERT INTO public.book VALUES ('446515304-X', 'Pool Without Water, A (Mizu no nai puuru)', 'Remov post segmnt FB NOS', '$29.14', 'Math', 1993, 3094208, 3.39);
-INSERT INTO public.book VALUES ('296602147-0', 'Night to Remember, A', 'Gingivoplasty', '$67.76', 'Chick lit', 2007, 7023065, 1.3);
-INSERT INTO public.book VALUES ('766000120-5', 'Salt of the Earth', 'Cervical biopsy NEC', '$10.51', 'Journal', 2011, 6894287, 1.42);
-INSERT INTO public.book VALUES ('280240332-X', 'ChromeSkull: Laid to Rest 2', 'Pelvic dye contrast xray', '$13.45', 'Picture book', 2003, 2559444, 4.98);
-INSERT INTO public.book VALUES ('208851355-8', 'Saw III', 'Impl fallop tube prosth', '$32.88', 'Crime', 2010, 3617516, 3.87);
-INSERT INTO public.book VALUES ('892803338-1', 'Pool of London', 'Saliv lesion excis NEC', '$15.53', 'Chick lit', 2008, 8770182, 2.79);
-INSERT INTO public.book VALUES ('902926331-8', 'August (Elokuu) ', 'Ovarian wedge resection', '$33.30', 'True crime', 2010, 3299207, 1.92);
-INSERT INTO public.book VALUES ('567122343-1', 'Looking for Eric', 'Root canal w apicoectomy', '$52.73', 'Memoir', 1984, 9057424, 4.47);
-INSERT INTO public.book VALUES ('375459457-5', 'Glory Daze', 'Pelvic gas contrast xray', '$1.98', 'Thriller', 2008, 2118802, 4.63);
-INSERT INTO public.book VALUES ('788626786-9', 'Summer Wishes, Winter Dreams', 'Sm bowel segment isolat', '$19.35', 'Travel', 2006, 6158379, 2.98);
-INSERT INTO public.book VALUES ('133235316-9', 'Grand Canyon', 'Meninge vessel ligation', '$6.26', 'Science fiction', 1986, 5315109, 3.88);
-INSERT INTO public.book VALUES ('329764334-X', 'Mr. Moto''s Gamble', 'Remov intrauterine pack', '$56.67', 'Classic', 1987, 565716, 4.08);
-INSERT INTO public.book VALUES ('841931901-5', 'Grass', 'Mastoid incision', '$63.02', 'Science', 2001, 9239904, 1.34);
-INSERT INTO public.book VALUES ('809226378-7', 'Lost Boys: The Tribe', 'Lap radical vaginal hyst', '$23.52', 'Dictionary', 2009, 6643117, 3.78);
-INSERT INTO public.book VALUES ('445239445-0', 'Great Silence, The (Grande silenzio, Il)', 'Diagnostic imaging NOS', '$85.87', 'Humor', 2007, 2027630, 1.54);
-INSERT INTO public.book VALUES ('493935519-5', 'King Lear (Korol Lir)', 'Simple sut-common duct', '$71.19', 'Journal', 2010, 2970720, 4.52);
-INSERT INTO public.book VALUES ('997493694-2', 'Panic Button', 'Sphinct of oddi measure', '$70.21', 'Picture book', 2002, 8368208, 4.66);
-INSERT INTO public.book VALUES ('016838251-2', 'Get on Up', 'Keratophakia', '$12.64', 'Horror', 2006, 5851643, 4.14);
-INSERT INTO public.book VALUES ('646377394-8', 'Dead & Buried', 'Stapedect w replac incus', '$50.19', 'Anthology', 1963, 3623193, 4.37);
-INSERT INTO public.book VALUES ('056743658-6', 'West Is West', 'Inject tendon of hand', '$86.62', 'Short story', 2008, 3680142, 3.59);
-INSERT INTO public.book VALUES ('817962099-9', 'Valachi Papers,The', 'Proctopexy NEC', '$58.21', 'History', 2001, 9186353, 4.92);
-INSERT INTO public.book VALUES ('803889509-6', 'Wild Geese, The', 'Rvrs totl shldr replacmt', '$5.21', 'Anthology', 2011, 4098418, 1.16);
-INSERT INTO public.book VALUES ('903882619-2', 'Marriage Italian Style (Matrimonio all''italiana)', 'Revis bile tract anastom', '$67.78', 'Textbook', 1996, 2251305, 4.36);
-INSERT INTO public.book VALUES ('920661357-X', 'White Hunter, Black Heart', 'Endo rem bronch devc/sub', '$67.36', 'Diary', 1989, 7532622, 3.78);
-INSERT INTO public.book VALUES ('595282637-7', 'Man from Down Under, The', 'Neuroleptic therapy', '$60.64', 'Classic', 1996, 4362204, 2.43);
-INSERT INTO public.book VALUES ('822800477-X', 'Stella Maris', 'Post nasal pac for epist', '$3.83', 'Crafts/hobbies', 1996, 2111202, 2.27);
-INSERT INTO public.book VALUES ('025428193-1', 'Brainstorm', 'Pulmon art wedge monitor', '$44.65', 'Textbook', 2003, 7224993, 3.49);
-INSERT INTO public.book VALUES ('267756349-5', 'Jesse Stone: Thin Ice', 'Open uterine ligament bx', '$28.81', 'Textbook', 2011, 8742220, 2.67);
-INSERT INTO public.book VALUES ('986792926-8', 'Bomb It', 'Sphinct of oddi op NEC', '$74.84', 'Drama', 2000, 5531923, 2.63);
-INSERT INTO public.book VALUES ('419090537-2', 'Like Minds (Murderous Intent)', 'Rehab for the blind NEC', '$70.25', 'Philosophy', 2010, 6284735, 4.0);
-INSERT INTO public.book VALUES ('168115051-4', 'You''re Missing the Point', 'Procedure-three vessels', '$21.00', 'Journal', 2010, 2237758, 3.32);
-INSERT INTO public.book VALUES ('355962207-7', 'Gas, Food, Lodging', 'Leg vein resect/anastom', '$59.59', 'Diary', 2009, 4136733, 4.41);
-INSERT INTO public.book VALUES ('965436958-3', 'Kabul Express', 'Hemorr contrl post T & A', '$67.04', 'Humor', 2011, 7273436, 3.3);
-INSERT INTO public.book VALUES ('329416658-3', 'Charlotte''s Web 2: Wilbur''s Great Adventure', 'Bone graft-metatar/tar', '$73.66', 'Philosophy', 2002, 4950133, 4.34);
-INSERT INTO public.book VALUES ('416906563-8', 'Jesus'' Son', 'Contrast arthrogram', '$18.23', 'Fairytale', 1992, 7610161, 2.72);
-INSERT INTO public.book VALUES ('377423422-1', 'Architecture of Doom, The (Undergångens arkitektur)', 'Urethral pressure profil', '$84.84', 'Art/architecture', 1989, 7888545, 1.52);
-INSERT INTO public.book VALUES ('161622304-9', 'Blast from the Past', 'Salivary repair NEC', '$66.64', 'Mystery', 1984, 6623143, 1.17);
-INSERT INTO public.book VALUES ('953489508-3', 'Machine Gun Kelly', 'Abdominal artery excis', '$44.46', 'True crime', 1994, 3906621, 4.5);
-INSERT INTO public.book VALUES ('050555210-8', 'Relax... It''s Just Sex', 'Heart repair revision', '$76.89', 'Fantasy', 2007, 6172003, 4.67);
-INSERT INTO public.book VALUES ('614189703-7', 'Inside Daisy Clover', 'Per nerve adhesiolys NEC', '$55.35', 'Cookbook', 2008, 1516018, 1.57);
-INSERT INTO public.book VALUES ('027342942-6', 'Simple-Minded Murder, The (Enfaldige mördaren, Den)', 'Inject insulin', '$18.73', 'Cookbook', 2009, 4741241, 4.48);
-INSERT INTO public.book VALUES ('519454738-2', 'Promise Me This (Zavet)', 'Other nasal sinus ops', '$43.04', 'Memoir', 2007, 7224398, 4.23);
-INSERT INTO public.book VALUES ('860954062-6', 'Mass Transit', 'Oth arthrotomy-elbow', '$44.66', 'Short story', 2004, 3004684, 4.4);
-INSERT INTO public.book VALUES ('851608780-8', 'Knife in the Water (Nóz w wodzie)', 'Isotope inject/instill', '$58.77', 'Alternate history', 2003, 5019682, 1.52);
-INSERT INTO public.book VALUES ('527751168-7', 'Dylan Moran: Yeah, Yeah', 'Op bi dr/in ig hr-gr NEC', '$41.13', 'Suspense', 2007, 1210315, 4.35);
-INSERT INTO public.book VALUES ('301768357-5', 'Moving Violations', 'Femur injury op NOS', '$70.71', 'Horror', 2011, 851560, 3.92);
-INSERT INTO public.book VALUES ('694130412-X', 'Hippie Revolution, The', 'Delayed clos abd wound', '$4.27', 'Review', 1987, 4992382, 4.32);
-INSERT INTO public.book VALUES ('743491433-5', 'Weird Woman', 'Intra-op electron rad rx', '$97.50', 'Autobiography', 2008, 6569452, 2.16);
-INSERT INTO public.book VALUES ('101598473-8', 'Knowing', 'Arthrodesis of hip', '$75.52', 'Home and garden', 1997, 5587655, 2.24);
-INSERT INTO public.book VALUES ('389792066-2', 'Skeletons', 'Other radius/ulna incis', '$58.97', 'Math', 2007, 5846131, 3.19);
-INSERT INTO public.book VALUES ('675399726-1', 'Real McCoy, The', 'Oth op on >l extraoc mus', '$75.47', 'Thriller', 2011, 14833, 4.35);
-INSERT INTO public.book VALUES ('809250742-2', 'Before and After', 'Arterial puncture NEC', '$80.75', 'Action and adventure', 2008, 9657459, 3.11);
-INSERT INTO public.book VALUES ('574913292-7', 'Out to Sea', 'Repair of spleen', '$39.74', 'Journal', 1999, 168765, 3.53);
-INSERT INTO public.book VALUES ('113493206-5', 'Jeanne Dielman, 23 Quai du Commerce, 1080 Bruxelles', 'Dx proc fetus/amnion NEC', '$69.08', 'Encyclopedia', 2006, 2387856, 3.63);
-INSERT INTO public.book VALUES ('889332835-6', 'Tales from the Hood', 'Mri spinal canal', '$44.61', 'Drama', 1992, 3510757, 4.31);
-INSERT INTO public.book VALUES ('283821856-5', 'Overlord', 'Educational therapy', '$65.17', 'Poetry', 2007, 8447700, 3.27);
-INSERT INTO public.book VALUES ('096416549-X', 'Mr. Pip', 'Insert oropharyn airway', '$12.18', 'Crime', 2005, 746448, 2.39);
-INSERT INTO public.book VALUES ('249753744-5', 'Ski Party', 'Residual root removal', '$2.36', 'Encyclopedia', 2003, 9685147, 5.0);
-INSERT INTO public.book VALUES ('433346207-X', 'My Childhood', 'Cystostomy closure', '$13.89', 'Crafts/hobbies', 1993, 5554237, 1.42);
-INSERT INTO public.book VALUES ('449296180-1', 'At Midnight I''ll Take Your Soul (À Meia-Noite Levarei Sua Alma)', 'Chorioretin les cryother', '$47.95', 'History', 2009, 963644, 4.72);
-INSERT INTO public.book VALUES ('934944123-3', 'Pillow of Death', 'Mediastinal pneumogram', '$41.22', 'Short story', 1968, 4304291, 1.42);
-INSERT INTO public.book VALUES ('032261152-0', 'In the Mirror of Maya Deren (Im Spiegel der Maya Deren)', 'Replace vag/vulv packing', '$90.61', 'Classic', 2003, 9712626, 3.0);
-INSERT INTO public.book VALUES ('166827111-7', 'Vizontele Tuuba', 'Low cervical c-section', '$84.89', 'Humor', 2011, 3487815, 1.51);
-INSERT INTO public.book VALUES ('866517390-0', 'Clone (Womb)', 'Radical excis skin les', '$60.88', 'Travel', 2007, 5206472, 2.27);
-INSERT INTO public.book VALUES ('720455977-0', 'Freeway', 'Suture urethral lacerat', '$25.33', 'Business/economics', 2009, 2924198, 1.7);
-INSERT INTO public.book VALUES ('019561007-5', 'Kill Theory', 'Enuc socket revis NEC', '$43.73', 'Biography', 2012, 1390638, 2.59);
-INSERT INTO public.book VALUES ('949200254-X', 'Sleeping with the Enemy', 'Closed red-int fix femur', '$23.58', 'Thriller', 2001, 6261991, 2.07);
-INSERT INTO public.book VALUES ('531182103-5', 'The Inspector', 'Excis cul-de-sac lesion', '$73.86', 'Horror', 2000, 9049872, 2.2);
-INSERT INTO public.book VALUES ('850205702-2', 'Kids in the Hall: Brain Candy', 'Ippb', '$14.58', 'Fairytale', 2009, 1614567, 4.98);
-INSERT INTO public.book VALUES ('967276006-X', 'It''s a Gift', 'Insert vasc access dev', '$31.55', 'Graphic novel', 2002, 4728258, 3.63);
-INSERT INTO public.book VALUES ('586919215-3', 'Long Hello and Short Goodbye', 'Type 4 tympanoplasty', '$41.23', 'Fantasy', 1968, 4744506, 2.33);
-INSERT INTO public.book VALUES ('928791370-6', 'Osmosis Jones', 'Replantation of scalp', '$23.55', 'Suspense', 2009, 8045357, 4.9);
-INSERT INTO public.book VALUES ('913616867-X', 'Something Wild', 'Pyeloscopy', '$60.29', 'Math', 2005, 9840959, 3.84);
-INSERT INTO public.book VALUES ('143487435-4', 'Search, The', 'Insertion of iud', '$36.03', 'Suspense', 2004, 2494616, 2.48);
-INSERT INTO public.book VALUES ('649299294-6', 'Inbetweeners Movie, The', 'Pectus deformity repair', '$62.85', 'Textbook', 1992, 1893806, 3.36);
-INSERT INTO public.book VALUES ('727406782-6', 'Pandemonium', 'Lap sigmoidectomy', '$50.14', 'Anthology', 1998, 1466799, 3.39);
-INSERT INTO public.book VALUES ('889207288-9', 'Power and Terror: Noam Chomsky in Our Times', 'Polio vaccine administra', '$74.98', 'Cookbook', 2007, 6551505, 2.72);
-INSERT INTO public.book VALUES ('051984010-0', 'Sugar Town', 'Other glossotomy', '$86.44', 'Religion, spirituality, and new age', 2011, 671428, 3.02);
-INSERT INTO public.book VALUES ('271036017-9', 'Loser Takes All! (Qui perd gagne !)', 'Tooth implantation', '$68.85', 'Home and garden', 2012, 1740103, 2.85);
-INSERT INTO public.book VALUES ('435361424-X', 'Heima', 'Oth spinal thecal shunt', '$94.14', 'Home and garden', 2003, 7526240, 2.18);
-INSERT INTO public.book VALUES ('317318204-9', 'Scooby-Doo! The Mystery Begins', 'Manual reduc rect prolap', '$79.38', 'Humor', 2006, 1466539, 4.38);
-INSERT INTO public.book VALUES ('692043203-X', 'Anarchist Cookbook, The', 'Endosc lg bowel thru st', '$35.17', 'Science fiction', 2006, 5911476, 2.52);
-INSERT INTO public.book VALUES ('929121382-9', 'Purgatory', 'Pack ext auditory canal', '$28.41', 'Mystery', 2007, 2368944, 2.85);
-INSERT INTO public.book VALUES ('624585427-X', 'Sita Sings the Blues', 'Pharyngoscopy', '$81.40', 'Math', 1986, 269360, 5.0);
-INSERT INTO public.book VALUES ('853868979-7', 'How I Live Now', 'Oth transmyo revascular', '$62.35', 'Review', 2004, 4010882, 2.0);
-INSERT INTO public.book VALUES ('080664477-X', 'Return of the Vampire, The', 'Cystostomy closure', '$43.06', 'Diary', 1989, 8830493, 4.73);
-INSERT INTO public.book VALUES ('236861800-7', 'Pelle Svanslös', 'Atrial cardioversion', '$32.70', 'Business/economics', 1993, 840373, 2.8);
-INSERT INTO public.book VALUES ('717006571-1', 'Black and White', 'Eye enuc/implan/musc att', '$79.19', 'Western', 1962, 5356681, 2.52);
-INSERT INTO public.book VALUES ('004222471-3', 'Seven Swords (Chat gim)', 'Rejected kidney nephrect', '$51.50', 'Textbook', 1996, 6270369, 1.82);
-INSERT INTO public.book VALUES ('253421158-7', 'Jessabelle', 'Inject/infuse electrolyt', '$52.94', 'Business/economics', 2008, 9075176, 3.7);
-INSERT INTO public.book VALUES ('119493863-9', 'Elite Squad: The Enemy Within (Tropa de Elite 2 - O Inimigo Agora É Outro)', 'Interview & evaluat NEC', '$27.17', 'Action and adventure', 1986, 4374698, 4.56);
-INSERT INTO public.book VALUES ('936326617-6', 'Four Feathers, The', 'Anal anastomosis', '$33.53', 'Anthology', 2005, 2784904, 4.53);
-INSERT INTO public.book VALUES ('571594735-9', 'Rough Magic', 'Clos bx saliv gland/duct', '$80.55', 'Textbook', 2010, 6587507, 2.19);
-INSERT INTO public.book VALUES ('422031947-6', 'Ill-Fated Love (Doomed Love) (Amor de Perdição)', 'Tu adhesiolysis bladder', '$73.97', 'True crime', 2008, 9352058, 1.48);
-INSERT INTO public.book VALUES ('359496499-X', 'Class Act', 'Open reduct mandible fx', '$19.81', 'Alternate history', 2008, 4268982, 2.75);
-INSERT INTO public.book VALUES ('131242321-8', 'Once Around', 'Delayed clos abd wound', '$86.60', 'Classic', 2008, 4809414, 4.37);
-INSERT INTO public.book VALUES ('620402036-6', '2019: After the Fall of New York', 'Cervical spine x-ray NEC', '$27.93', 'Picture book', 2012, 4370877, 2.68);
-INSERT INTO public.book VALUES ('814063892-7', 'Phase IV', 'Opn rep umb hrn-grft NEC', '$31.74', 'Travel', 1994, 1719430, 2.93);
-INSERT INTO public.book VALUES ('586709303-4', 'Stag Night', 'Free skin graft NEC', '$74.77', 'Memoir', 2006, 3895329, 3.14);
-INSERT INTO public.book VALUES ('315028214-4', 'Big Bad Wolf', 'Bladder neck dilation', '$13.86', 'History', 2002, 4774504, 3.2);
-INSERT INTO public.book VALUES ('017376297-2', 'El tren de la memoria', 'Endarterectomy of aorta', '$37.43', 'Memoir', 2002, 2031949, 4.08);
-INSERT INTO public.book VALUES ('085809405-3', 'Feed', 'Pros repair atria def-cl', '$34.04', 'Political thriller', 1996, 4292681, 1.28);
-INSERT INTO public.book VALUES ('273736069-2', 'Three Wise Men (Kolme viisasta miestä)', 'Dermabrasion', '$75.62', 'Western', 2006, 6371022, 2.34);
-INSERT INTO public.book VALUES ('922743000-8', 'Frontrunners', 'Construction of penis', '$62.57', 'Classic', 2000, 6536694, 4.04);
-INSERT INTO public.book VALUES ('163739070-X', 'Old Man and the Sea, The', 'Part gast w jej transpos', '$84.03', 'Suspense', 1985, 4686000, 3.81);
-INSERT INTO public.book VALUES ('323991176-0', 'What Ever Happened to Baby Jane?', 'Closure of mouth fistula', '$36.59', 'Humor', 2012, 1291832, 3.24);
-INSERT INTO public.book VALUES ('661562407-9', 'Soldier, The', 'Endo emb hd/nk,bare coil', '$6.86', 'Memoir', 2000, 6182072, 3.76);
-INSERT INTO public.book VALUES ('181954119-3', 'Librarian: Return to King Solomon''s Mines, The', 'Hrt revas byps anas NEC', '$43.27', 'Guide', 1987, 2680349, 4.31);
-INSERT INTO public.book VALUES ('167836346-4', 'Repast (Meshi)', 'Nephrotomogram NEC', '$66.60', 'Classic', 2004, 9100267, 1.17);
-INSERT INTO public.book VALUES ('117141265-7', 'Diamonds', 'Suture chest wall lacer', '$94.67', 'Suspense', 1988, 3686146, 2.15);
-INSERT INTO public.book VALUES ('566564397-1', 'Code Conspiracy, The', 'Scleral fistula repair', '$86.46', 'Math', 2008, 9758341, 3.29);
-INSERT INTO public.book VALUES ('349845049-2', 'Dive! (Dive!: Living off America''s Waste)', 'Cryotherap cornea lesion', '$24.82', 'Math', 1984, 4189519, 2.28);
-INSERT INTO public.book VALUES ('070087873-4', 'Joshua', 'Choledochoplasty', '$14.16', 'Science', 2002, 1671895, 2.07);
-INSERT INTO public.book VALUES ('402156218-4', 'Quatermass 2 (Enemy from Space)', 'Sutur capsul/ligamen arm', '$18.08', 'Travel', 1997, 904131, 2.25);
-INSERT INTO public.book VALUES ('738391648-4', 'Nobody Loves Me (Keiner liebt mich)', 'Opn rep ind ing hern NEC', '$89.74', 'Self help', 1997, 8458979, 3.21);
-INSERT INTO public.book VALUES ('310645434-2', 'Blood and Roses (Et mourir de plaisir) (To Die with Pleasure)', 'C-vasc scan/isotop funct', '$86.54', 'Health/fitness', 1993, 5758756, 2.33);
-INSERT INTO public.book VALUES ('332485487-3', 'Rocks in my Pockets', 'Replace vaginal pessary', '$48.53', 'Political thriller', 2012, 3086701, 4.64);
-INSERT INTO public.book VALUES ('416755800-9', 'Operation ''Y'' & Other Shurik''s Adventures', 'Removal superfic FB eye', '$33.90', 'Health/fitness', 2007, 9103269, 1.07);
-INSERT INTO public.book VALUES ('249529400-6', 'Cactus Flower', 'Sm bowel segment isolat', '$94.50', 'Home and garden', 1992, 5517298, 2.17);
-INSERT INTO public.book VALUES ('799712104-8', 'Not Fade Away', 'Fit below knee prosthes', '$41.11', 'Art/architecture', 2009, 8692286, 2.66);
-INSERT INTO public.book VALUES ('501147207-8', 'Dragon Inn (Sun lung moon hak chan)', 'Other chordotomy', '$28.39', 'Romance', 2004, 3094656, 2.97);
-INSERT INTO public.book VALUES ('364579669-X', 'Bedroom Window, The', 'Uterine repair NEC', '$17.49', 'Anthology', 2002, 517281, 2.27);
-INSERT INTO public.book VALUES ('595526640-2', 'House of Wax', 'Hemorrhoid injection', '$39.92', 'Sports and leisure', 1998, 6200970, 1.78);
-INSERT INTO public.book VALUES ('717860103-5', 'Whirlygirl', 'Excision of hydrocele', '$54.44', 'Mystery', 2008, 806085, 1.05);
-INSERT INTO public.book VALUES ('347254513-5', 'Dark Blue World (Tmavomodrý svet)', 'Upper limb lymphangiogrm', '$76.41', 'Chick lit', 1998, 9039761, 4.6);
-INSERT INTO public.book VALUES ('029434417-9', 'Time to Kill (Tempo di uccidere)', 'Sutur capsul/lig leg NEC', '$10.84', 'Comic book', 2004, 4339760, 1.93);
-INSERT INTO public.book VALUES ('115855096-0', 'Allan Quatermain and the Temple of Skulls', 'Pancreatic tube irrigat', '$10.50', 'Autobiography', 2008, 1908299, 4.66);
-INSERT INTO public.book VALUES ('220291156-1', 'Powder', 'Opn bx larynx or trachea', '$86.20', 'Review', 2008, 7349299, 4.14);
-INSERT INTO public.book VALUES ('363719677-8', 'The Golden Voyage of Sinbad', 'Other acupuncture', '$48.65', 'Art/architecture', 1999, 4337972, 4.21);
-INSERT INTO public.book VALUES ('296535889-7', 'Autómata (Automata)', 'Endoscopic ileal conduit', '$22.43', 'Western', 2006, 8787805, 1.64);
-INSERT INTO public.book VALUES ('105556924-3', 'City Below, The (Unter dir die Stadt)', 'Pelvic evisceration', '$1.77', 'Horror', 2005, 1457461, 2.89);
-INSERT INTO public.book VALUES ('267460045-4', 'The Raid', 'Lacrimal gland biopsy', '$28.75', 'Coming-of-age', 1986, 8811050, 4.25);
-INSERT INTO public.book VALUES ('167647977-5', 'Three Smart Girls Grow Up', 'Destruct abd wall lesion', '$14.15', 'Biography', 1996, 6021430, 4.28);
-INSERT INTO public.book VALUES ('582356881-9', 'Baghban', 'Int fix w/o fx reduc NOS', '$24.39', 'Mystery', 1998, 8226121, 2.99);
-INSERT INTO public.book VALUES ('973016551-3', 'Chopping Mall (a.k.a. Killbots)', 'Visual field study', '$42.04', 'Health/fitness', 2003, 342061, 2.28);
-INSERT INTO public.book VALUES ('834369229-2', 'Mother of Mine (Äideistä parhain)', 'Elbow joint biopsy', '$23.73', 'Paranormal romance', 1964, 6387280, 3.18);
-INSERT INTO public.book VALUES ('457970599-8', 'Sokkotanssi', 'Open bladder biopsy', '$68.25', 'Satire', 2010, 4851974, 1.51);
-INSERT INTO public.book VALUES ('646459739-6', 'Attack, The', 'Other femoral incision', '$78.59', 'Fantasy', 1999, 1773153, 3.42);
-INSERT INTO public.book VALUES ('153542927-5', 'Fire on the Mountain', 'Prolapsed iris excision', '$7.92', 'Horror', 2011, 1713501, 2.63);
-INSERT INTO public.book VALUES ('453171579-9', 'Babylon 5: The Gathering', 'Replace cast NEC', '$95.77', 'Guide', 2007, 1997130, 2.07);
-INSERT INTO public.book VALUES ('916193377-5', 'Civil Brand', 'Lap tot intr-ab colectmy', '$28.04', 'Crime', 2003, 9043930, 3.05);
-INSERT INTO public.book VALUES ('246550660-9', '10 minutes (10 minuta)', 'Proximal pancreatectomy', '$58.32', 'Alternate history', 2003, 807093, 3.37);
-INSERT INTO public.book VALUES ('373338582-9', 'Rally On! (Ralliraita)', 'Abdominal tomography NEC', '$64.44', 'Business/economics', 2009, 6643863, 3.83);
-INSERT INTO public.book VALUES ('470722880-1', 'Over Her Dead Body', 'Total wrist replacement', '$2.40', 'Paranormal romance', 2001, 3595526, 2.18);
-INSERT INTO public.book VALUES ('023049136-7', 'Dragon Eyes', 'Vessel resect/replac NOS', '$62.93', 'Health/fitness', 1997, 2085754, 2.43);
-INSERT INTO public.book VALUES ('206023506-5', 'Reality Bites', 'Ins bone void filler', '$59.78', 'Prayer', 1999, 9374137, 4.26);
-INSERT INTO public.book VALUES ('415684273-8', 'If These Walls Could Talk 2', 'Omt to move tissue fluid', '$39.23', 'Cookbook', 2012, 5306390, 1.09);
-INSERT INTO public.book VALUES ('287293886-9', 'Double Dare', 'Stern esophagogastrostom', '$30.45', 'Romance', 2006, 3486493, 1.42);
-INSERT INTO public.book VALUES ('736556969-7', 'Blow-Up (Blowup)', 'Vascular cath irrigation', '$16.75', 'True crime', 2002, 3840352, 3.02);
-INSERT INTO public.book VALUES ('393467053-9', 'Beasts of the Southern Wild', 'Rectal perirect op NEC', '$98.53', 'Paranormal romance', 2007, 2626480, 3.42);
-INSERT INTO public.book VALUES ('919450036-3', 'Grace', 'Opn reduc disloc-ft/toe', '$96.49', 'History', 2001, 3122337, 3.69);
-INSERT INTO public.book VALUES ('856221626-7', 'Just Visiting', 'Repl stent in bile duct', '$21.92', 'Children''s', 2012, 9304319, 4.35);
-INSERT INTO public.book VALUES ('831485992-3', 'I Married a Monster from Outer Space', 'Oth dx proc-metacar/car', '$40.34', 'Political thriller', 1994, 2197950, 4.87);
-INSERT INTO public.book VALUES ('437683075-5', 'Zeisters (Fat Guy Goes Nutzoid)', 'Contrast x-ray of orbit', '$96.34', 'Sports and leisure', 2008, 6645159, 1.77);
-INSERT INTO public.book VALUES ('587066345-8', 'Invisible Woman, The', 'Blepharorrhaphy severing', '$57.24', 'Fairytale', 2003, 5313877, 2.34);
-INSERT INTO public.book VALUES ('067252962-9', 'Offside', 'Distal pancreatectomy', '$9.73', 'Sports and leisure', 1992, 1222740, 3.39);
-INSERT INTO public.book VALUES ('956317964-1', 'Crossfire Trail (Louis L''Amour''s ''Crossfire Trail'')', 'Extracap lens extrac NEC', '$58.57', 'Math', 2012, 675098, 1.37);
-INSERT INTO public.book VALUES ('689541540-8', 'Boys Are Back, The', 'Culture-op wound', '$48.38', 'Children''s', 1996, 1393430, 3.02);
-INSERT INTO public.book VALUES ('856000745-8', 'Terri', 'Oth exc/dest intvrt disc', '$80.08', 'True crime', 2004, 70629, 4.35);
-INSERT INTO public.book VALUES ('381248910-4', 'Nightwing', 'Tendon sheath explorat', '$64.71', 'Prayer', 1972, 7591111, 4.3);
-INSERT INTO public.book VALUES ('487898377-9', 'O Último Mergulho', 'Thorac incision thymus', '$71.46', 'Children''s', 2007, 3266528, 4.89);
-INSERT INTO public.book VALUES ('955860017-2', 'Skin', 'Other heart/pericard ops', '$99.20', 'Drama', 2008, 1029694, 1.79);
-INSERT INTO public.book VALUES ('812908378-7', 'Kotch', 'Gastric gavage', '$30.11', 'Home and garden', 1996, 2556404, 2.35);
-INSERT INTO public.book VALUES ('607877822-6', 'Rent', 'Oth metacarp/carp incis', '$77.83', 'Cookbook', 1999, 1688620, 1.65);
-INSERT INTO public.book VALUES ('226995063-1', 'Hugh Hefner: Playboy, Activist and Rebel', 'Repair of vessel NEC', '$90.46', 'Anthology', 2003, 2493080, 1.92);
-INSERT INTO public.book VALUES ('337150800-5', 'South, The (Sur, El)', 'Pineal operation NEC', '$94.70', 'Review', 2004, 9978272, 4.04);
-INSERT INTO public.book VALUES ('280846030-9', 'Rude', 'Replace prolapsed cord', '$30.43', 'Humor', 1985, 9009086, 2.47);
-INSERT INTO public.book VALUES ('728806327-5', 'Chasing Amy', 'Lap radical abdomnl hyst', '$10.90', 'True crime', 1996, 3162438, 1.46);
-INSERT INTO public.book VALUES ('036301747-X', 'Sweet Hereafter, The', 'Electrocochleography', '$90.05', 'Picture book', 1992, 683272, 1.12);
-INSERT INTO public.book VALUES ('348057019-4', 'Rocket Gibraltar', 'Bact smear-peritoneum', '$63.85', 'Review', 1999, 302746, 1.17);
-INSERT INTO public.book VALUES ('842026936-0', 'Aria', 'Remov urin drainage NEC', '$48.30', 'Poetry', 2001, 9401787, 1.11);
-INSERT INTO public.book VALUES ('554286479-1', 'From Above', 'Nasal lesion excis NOS', '$93.92', 'Action and adventure', 2007, 2741196, 4.56);
-INSERT INTO public.book VALUES ('347323445-1', 'Marquis', 'Exc maj les lid ful-thic', '$78.15', 'Comic book', 2000, 809606, 2.3);
-INSERT INTO public.book VALUES ('017199855-3', 'Gregory Go Boom', 'Elbow joint biopsy', '$3.26', 'Health/fitness', 2001, 5513287, 2.96);
-INSERT INTO public.book VALUES ('477280932-5', 'Thing with Two Heads, The', 'Rad pancreaticoduodenect', '$18.69', 'Coming-of-age', 1998, 5511722, 3.58);
-INSERT INTO public.book VALUES ('648579857-9', 'Hitchcock', 'Esoph fistula repair NEC', '$77.49', 'Paranormal romance', 2001, 8624325, 3.82);
-INSERT INTO public.book VALUES ('793595670-7', 'Piece of the Action, A', 'Ovarian wedge resection', '$91.68', 'Horror', 2009, 7192283, 2.59);
-INSERT INTO public.book VALUES ('708677220-8', 'All Is Lost', 'Femoral division NEC', '$15.20', 'Science fiction', 1998, 7464632, 4.79);
-INSERT INTO public.book VALUES ('804245477-5', 'RFK Must Die: The Assassination of Bobby Kennedy', 'Anoscopy', '$87.76', 'Children''s', 2009, 639429, 3.34);
-INSERT INTO public.book VALUES ('519499644-6', 'Batman: Under the Red Hood', 'Vena cav angiocardiogram', '$73.75', 'Thriller', 1996, 7004248, 2.0);
-INSERT INTO public.book VALUES ('546534789-9', 'Patriotism (Yûkoku)', 'Cl reduc disloc-hand/fng', '$78.84', 'Alternate history', 2002, 8272017, 4.76);
-INSERT INTO public.book VALUES ('531793868-6', 'Lookin'' to Get Out', 'Open reduct face fx NEC', '$22.20', 'Satire', 2000, 9406743, 4.66);
-INSERT INTO public.book VALUES ('571551337-5', 'Victim', 'Decompression chamber', '$53.80', 'Fairytale', 1995, 6541354, 2.39);
-INSERT INTO public.book VALUES ('164145097-5', 'From the Sky Down', 'Intraspin nerve root div', '$69.77', 'Encyclopedia', 2013, 7028413, 2.09);
-INSERT INTO public.book VALUES ('289164072-1', 'Good Neighbours (a.k.a. Good Neighbors)', 'Oth arthrotomy-foot/toe', '$7.78', 'Philosophy', 1994, 5973763, 3.76);
-INSERT INTO public.book VALUES ('843157042-3', 'I''m So Excited (Los amantes pasajeros)', 'Toxicology-endocrine', '$1.42', 'Textbook', 2005, 6200564, 2.18);
-INSERT INTO public.book VALUES ('862320205-8', 'Phantom', 'Oth exc, fus, repair toe', '$11.03', 'Drama', 1993, 7663365, 4.98);
-INSERT INTO public.book VALUES ('555681127-X', 'Scorpio', 'Transab lg bowel endosc', '$94.48', 'Journal', 2004, 2792892, 4.19);
-INSERT INTO public.book VALUES ('600090633-1', 'Reconstituirea (Reconstruction)', 'Postop vasc op hem contr', '$33.93', 'Historical fiction', 1994, 6429177, 3.47);
-INSERT INTO public.book VALUES ('553085834-1', 'Phantom of the Paradise', 'Esophagogastroplasty', '$45.42', 'True crime', 2005, 9223017, 2.49);
-INSERT INTO public.book VALUES ('919107922-5', 'Tipping the Velvet', 'Lysis cortical adhesion', '$66.73', 'Short story', 2002, 6569553, 2.4);
-INSERT INTO public.book VALUES ('812300651-9', 'W Delta Z (a.k.a. The Killing Gene)', 'Intestinal op NEC', '$22.45', 'Anthology', 2004, 9743052, 1.77);
-INSERT INTO public.book VALUES ('596219649-X', 'Champ, The', 'Dx ultrasound-vascular', '$14.01', 'Encyclopedia', 2007, 245698, 3.61);
-INSERT INTO public.book VALUES ('867289177-5', 'Shifty', 'Extracran-intracr bypass', '$86.43', 'Fairytale', 1994, 1472934, 2.17);
-INSERT INTO public.book VALUES ('991686751-8', 'Mirror, The (Zerkalo)', 'Appl ext fix-metatar/tar', '$8.74', 'Prayer', 1992, 1407610, 3.36);
-INSERT INTO public.book VALUES ('988127899-6', 'Go for Zucker! (Alles auf Zucker!)', 'Facial bone/jnt op NEC', '$60.09', 'Science', 2012, 2057459, 3.98);
-INSERT INTO public.book VALUES ('445021449-8', 'City of Sadness, A (Bei qing cheng shi)', 'Incise bartholin''s gland', '$38.89', 'Anthology', 2005, 4683734, 1.39);
-INSERT INTO public.book VALUES ('519491786-4', 'Little Girl Who Conquered Time, The (Toki o kakeru shôjo)', 'Remove both testes', '$58.04', 'Encyclopedia', 2000, 8296543, 4.37);
-INSERT INTO public.book VALUES ('059528283-0', 'Romance of Astrea and Celadon, The (Les amours d''Astrée et de Céladon)', 'Cranial osteoplasty NEC', '$46.24', 'True crime', 1994, 1277452, 4.2);
-INSERT INTO public.book VALUES ('823895870-9', 'Battle in Seattle', 'Unspec op bone inj NOS', '$68.77', 'Crime', 1999, 8863770, 1.65);
-INSERT INTO public.book VALUES ('430132456-9', 'Catch Me If You Can', 'Head soft tiss x-ray NEC', '$90.54', 'Business/economics', 2009, 3536560, 1.85);
-INSERT INTO public.book VALUES ('932475725-3', 'Godfather: Part II, The', 'Other tenoplasty of hand', '$51.22', 'Fantasy', 1998, 7537035, 1.01);
-INSERT INTO public.book VALUES ('753001788-8', 'Night Watch (Nochnoy dozor)', 'Micro exam-femal gen NEC', '$20.68', 'Fairytale', 2006, 4195955, 2.91);
-INSERT INTO public.book VALUES ('708617794-6', 'Moonlighting', 'Other joint mobilization', '$13.53', 'Alternate history', 2005, 634068, 2.68);
-INSERT INTO public.book VALUES ('326165997-1', 'Winter Break', 'Appl ext fix-radius/ulna', '$20.05', 'Young adult', 2006, 396026, 1.93);
-INSERT INTO public.book VALUES ('274720391-3', 'Doctor Who', 'Bone graft to chest cage', '$22.63', 'Romance', 2003, 9131158, 1.32);
-INSERT INTO public.book VALUES ('877680598-0', 'House on Telegraph Hill, The', 'Post nasal pac for epist', '$76.82', 'Guide', 1987, 2898626, 3.1);
-INSERT INTO public.book VALUES ('523354551-9', 'Debt, The', 'Mastoidectomy revision', '$14.66', 'Anthology', 1993, 8555437, 4.41);
-INSERT INTO public.book VALUES ('437077584-1', 'Pieta', 'Bronchoscopy thru stoma', '$20.31', 'Children''s', 2000, 2814086, 3.14);
-INSERT INTO public.book VALUES ('638985428-5', 'Memories of Matsuko (Kiraware Matsuko no isshô)', 'Auxiliary liver transpl', '$87.51', 'Historical fiction', 2005, 1586622, 1.01);
-INSERT INTO public.book VALUES ('661060210-7', 'The Radio Pirates', 'Alcohol detoxification', '$51.95', 'Prayer', 2003, 1138289, 2.57);
-INSERT INTO public.book VALUES ('809581611-6', 'The Divine Woman', 'Facial bone incision NEC', '$89.65', 'Action and adventure', 1998, 1018085, 1.77);
-INSERT INTO public.book VALUES ('909674142-0', 'Date with Judy, A', 'Intra-abd lg bowel manip', '$27.11', 'Short story', 2008, 7755389, 4.57);
-INSERT INTO public.book VALUES ('737109515-4', 'Reclaim', 'Incis rectal stricture', '$87.07', 'Short story', 2005, 6491947, 2.83);
-INSERT INTO public.book VALUES ('413935955-2', 'Three Smart Girls Grow Up', 'Thoracoscopc decort lung', '$48.09', 'Fantasy', 2003, 2187603, 2.71);
-INSERT INTO public.book VALUES ('311253609-6', 'Sword of the Valiant', 'Total removal sm bowel', '$54.39', 'Religion, spirituality, and new age', 2009, 5048182, 3.08);
-INSERT INTO public.book VALUES ('732537273-6', 'Egg and I, The', 'Internal fix-patella', '$81.18', 'Dictionary', 1997, 3800964, 4.1);
-INSERT INTO public.book VALUES ('574016917-8', 'Hot Saturday', 'Incision of testes', '$18.44', 'Children''s', 2008, 6238398, 1.41);
-INSERT INTO public.book VALUES ('285407383-5', 'Wer', 'Iridencleisis/iridotasis', '$62.54', 'Fairytale', 1994, 8119949, 3.59);
-INSERT INTO public.book VALUES ('933151684-3', 'House of Fools', 'Adrenal vessel ligation', '$6.78', 'Horror', 2001, 403272, 1.31);
-INSERT INTO public.book VALUES ('833053956-3', 'Hannibal', 'Transabdomin gastroscopy', '$71.58', 'True crime', 2004, 7548399, 3.52);
-INSERT INTO public.book VALUES ('654117020-7', 'Lady and the Tramp II: Scamp''s Adventure', 'Ins/rep mul pul gn,rechg', '$78.44', 'Classic', 1991, 2369237, 3.04);
-INSERT INTO public.book VALUES ('715876640-3', 'Three Burials of Melquiades Estrada, The', 'Lap hern ant abd-gft NEC', '$65.74', 'Fairytale', 2011, 8599371, 1.96);
-INSERT INTO public.book VALUES ('774073311-3', 'Casanova''s Big Night', 'Close rectal fist NEC', '$86.65', 'Classic', 2009, 4734756, 2.83);
-INSERT INTO public.book VALUES ('388053663-5', '1911 (Xinhai geming)', 'Meninge vessel ligation', '$44.08', 'Textbook', 2005, 1400306, 4.76);
-INSERT INTO public.book VALUES ('067304123-9', 'Legend of Drunken Master, The (Jui kuen II)', 'Rev hip repl-liner/head', '$50.99', 'Thriller', 1989, 719800, 4.01);
-INSERT INTO public.book VALUES ('200756859-4', 'Heartbeats (Les amours imaginaires)', 'Ther ult head & neck ves', '$44.19', 'Philosophy', 1993, 1765297, 1.65);
-INSERT INTO public.book VALUES ('543638786-1', 'Shiloh', 'Peripheral nerve ops NEC', '$95.57', 'Political thriller', 1988, 5101010, 4.54);
-INSERT INTO public.book VALUES ('111189791-3', 'Xanadu', 'Hand muscle reattachment', '$72.54', 'Philosophy', 2007, 2395090, 4.13);
-INSERT INTO public.book VALUES ('899600131-7', 'Glorious Technicolor', 'Reimplan aberr renal ves', '$94.04', 'Crime', 1993, 4252309, 1.94);
-INSERT INTO public.book VALUES ('268520013-4', 'Inside the Twin Towers', 'Bladder anastomosis NEC', '$33.35', 'Mystery', 2009, 4340379, 4.39);
-INSERT INTO public.book VALUES ('098127157-X', 'Panic', 'Insert perm tube esophag', '$7.77', 'Philosophy', 1999, 2475, 3.43);
-INSERT INTO public.book VALUES ('404812627-X', 'Grandma''s Boy', 'Temporary ileostomy', '$78.79', 'Review', 2011, 9484749, 3.97);
-INSERT INTO public.book VALUES ('227470428-7', 'Prisoner of Zenda, The', 'Insert intercostal cath', '$82.64', 'Travel', 2002, 2803850, 2.54);
-INSERT INTO public.book VALUES ('087876405-4', 'Crow: City of Angels, The', 'Shoulder disarticulation', '$26.83', 'Art/architecture', 1994, 7505411, 4.75);
-INSERT INTO public.book VALUES ('886730172-1', 'Kid Galahad', 'Imp/rep schan coch pros', '$40.78', 'Historical fiction', 2007, 3190527, 1.26);
-INSERT INTO public.book VALUES ('200134920-3', 'Last Remake of Beau Geste, The', 'Cholangiogram NEC', '$31.73', 'Horror', 2003, 4578438, 1.53);
-INSERT INTO public.book VALUES ('164933482-6', 'Dark Girls', 'Rectocele repair', '$92.96', 'Business/economics', 1985, 6174054, 3.39);
-INSERT INTO public.book VALUES ('809334023-8', 'No Small Affair', 'Operations on clitoris', '$64.69', 'Diary', 2010, 9878602, 3.45);
-INSERT INTO public.book VALUES ('328630611-8', 'Papa', 'Percu bx gb/bile duct', '$60.55', 'Satire', 2006, 29136, 3.61);
-INSERT INTO public.book VALUES ('159817092-9', 'Jack-Jack Attack', 'Tot osteoplasty maxilla', '$61.24', 'Crafts/hobbies', 2009, 8340038, 3.71);
-INSERT INTO public.book VALUES ('549849176-X', 'Somewhere in the Night', 'Destruct cornea les NEC', '$29.32', 'Business/economics', 2007, 5841049, 1.53);
-INSERT INTO public.book VALUES ('618435655-0', 'Next Three Days, The', 'Interruption vena cava', '$84.12', 'Chick lit', 2008, 774429, 3.95);
-INSERT INTO public.book VALUES ('339348822-8', 'Paranormal Activity', 'Nasophary contrast x-ray', '$29.01', 'Satire', 2000, 7391951, 2.99);
-INSERT INTO public.book VALUES ('928659391-0', 'Eversmile, New Jersey', 'Ins part disc pros lumb', '$82.24', 'Autobiography', 1991, 8584651, 3.2);
-INSERT INTO public.book VALUES ('204154143-1', 'Stonewall', 'Op on 1 extraoc musc NEC', '$67.66', 'Philosophy', 2008, 9152852, 3.21);
-INSERT INTO public.book VALUES ('713726123-X', 'Shot in the Dark, A', 'Arm ves resect w replace', '$97.68', 'Crime', 2011, 1790310, 4.46);
-INSERT INTO public.book VALUES ('144348626-4', '1939: Hollywood''s Greatest Year', 'Lap total abdominal hyst', '$64.65', 'Anthology', 1994, 6725629, 2.71);
-INSERT INTO public.book VALUES ('400088677-0', 'Sons of Perdition', 'Removal iud', '$6.04', 'Classic', 2008, 6046230, 3.71);
-INSERT INTO public.book VALUES ('895919336-4', 'No Looking Back', 'Rev crtd sinus stm leads', '$82.40', 'Historical fiction', 1994, 6458441, 2.91);
-INSERT INTO public.book VALUES ('799928971-X', 'Starbuck', 'Endarterectomy NOS', '$67.66', 'Fantasy', 2003, 9468477, 4.12);
-INSERT INTO public.book VALUES ('325665536-X', '13Hrs', 'Stapedectomy NEC', '$67.94', 'Review', 2013, 895241, 2.73);
-INSERT INTO public.book VALUES ('364668437-2', 'Secrets', 'Cell blk/pap-op wound', '$68.60', 'Drama', 1995, 5704584, 4.92);
-INSERT INTO public.book VALUES ('320695670-6', 'Commandments', 'Aspir curett uterus NEC', '$67.57', 'Philosophy', 1997, 3162119, 2.5);
-INSERT INTO public.book VALUES ('853548157-5', '2 + 2 (Dos más dos)', 'Intestinal op NEC', '$20.37', 'Crafts/hobbies', 1986, 3047317, 4.62);
-INSERT INTO public.book VALUES ('098310166-3', 'Secret of NIMH, The', 'Total ostectomy NEC', '$13.60', 'Diary', 1994, 7705992, 3.52);
-INSERT INTO public.book VALUES ('925160301-4', 'Railroaded!', 'Insert vasc access dev', '$47.78', 'Review', 1994, 4884002, 4.15);
-INSERT INTO public.book VALUES ('588088642-5', 'Ready to Wear (Pret-A-Porter)', 'Metatar/tar division NEC', '$23.48', 'Diary', 2009, 142059, 3.01);
-INSERT INTO public.book VALUES ('465838220-2', 'Letter, The', 'Dx ultrasound-thorax NEC', '$41.09', 'Business/economics', 2009, 3909886, 4.39);
-INSERT INTO public.book VALUES ('087935617-0', 'Tonight and Every Night', 'Intracereb cth-burr hole', '$42.90', 'Review', 2012, 989982, 4.79);
-INSERT INTO public.book VALUES ('576176060-6', 'Dark of the Sun', 'Tot mandibulec w reconst', '$6.73', 'Diary', 2011, 7687922, 2.37);
+INSERT INTO public.book VALUES ('565501303-7', 'A Chinese in a Coma', 'Implant CCM pulse genrtr', '$26.47', 'Drama', 1990, 1170514, 1.25, 36);
+INSERT INTO public.book VALUES ('745726166-4', 'The Devil Thumbs a Ride', 'Detach ret photocoag NOS', '$82.28', 'Young adult', 2010, 5779270, 1.06, 48);
+INSERT INTO public.book VALUES ('141143158-8', 'Nick of Time', 'Percut semin ves aspirat', '$2.90', 'Diary', 2002, 7029098, 2.68, 186);
+INSERT INTO public.book VALUES ('721486502-5', 'White Noise 2: The Light', 'Abdominal tomography NEC', '$17.19', 'Paranormal romance', 1995, 3338966, 3.22, 178);
+INSERT INTO public.book VALUES ('905399284-7', 'Pleasures of the Flesh (Etsuraku)', 'Replace dental packing', '$94.98', 'Romance', 2007, 4768679, 1.92, 20);
+INSERT INTO public.book VALUES ('163578512-X', 'Enter Nowhere', 'Lower limb lymphangiogrm', '$2.86', 'Crime', 2005, 9063998, 4.93, 97);
+INSERT INTO public.book VALUES ('625773853-9', 'Kimjongilia', 'Peritoneal suture', '$86.40', 'Guide', 2011, 9752415, 2.17, 151);
+INSERT INTO public.book VALUES ('528063907-9', 'In Vogue: The Editor?s Eye', 'Tympanosympathectomy', '$76.27', 'Cookbook', 2003, 541023, 1.84, 7);
+INSERT INTO public.book VALUES ('837725458-1', 'Charly', 'Oth arthrotomy-wrist', '$64.94', 'Comic book', 2002, 6889000, 2.33, 110);
+INSERT INTO public.book VALUES ('962852031-8', 'Avengers, The', 'Thermocaut/entropion rep', '$28.41', 'Guide', 2006, 2202347, 2.65, 114);
+INSERT INTO public.book VALUES ('479204029-9', '1939: Hollywood''s Greatest Year', 'Other suture of tendon', '$1.02', 'Picture book', 2003, 2783888, 1.05, 224);
+INSERT INTO public.book VALUES ('935595550-2', 'Bird People in China, The (Chûgoku no chôjin)', 'Other heart/pericard ops', '$94.15', 'Graphic novel', 2006, 6787124, 2.13, 216);
+INSERT INTO public.book VALUES ('289150352-X', 'Harper', 'Pressure dressing applic', '$74.48', 'Prayer', 2012, 8911169, 1.57, 159);
+INSERT INTO public.book VALUES ('797991817-7', 'Vacancy', 'Nonmag remov post seg FB', '$72.53', 'Coming-of-age', 2008, 4522197, 1.35, 92);
+INSERT INTO public.book VALUES ('663355652-7', 'Conrack', 'Osteoclasis NEC', '$99.48', 'Travel', 1985, 8088713, 2.78, 50);
+INSERT INTO public.book VALUES ('175273118-2', 'Disclosure', 'Angiocardiography NOS', '$26.37', 'True crime', 1998, 5660912, 3.32, 199);
+INSERT INTO public.book VALUES ('779017789-3', 'Hell House', 'Eswl gb/bile duct', '$16.52', 'Comic book', 1992, 5582098, 2.6, 181);
+INSERT INTO public.book VALUES ('244495322-3', 'You''re Next', 'Speech defect training', '$39.05', 'Math', 1994, 4463570, 2.82, 136);
+INSERT INTO public.book VALUES ('521735461-5', 'Wrong Cops', 'Epistaxis control NEC', '$89.78', 'Cookbook', 1999, 577884, 2.72, 229);
+INSERT INTO public.book VALUES ('231820653-8', 'Flood', 'Wide exc bony palate les', '$3.91', 'Health/fitness', 1984, 8437595, 4.25, 242);
+INSERT INTO public.book VALUES ('858194346-2', 'Cherry Tree Lane', 'Nephrocystanastomosi NOS', '$82.05', 'Suspense', 2002, 1512946, 1.7, 54);
+INSERT INTO public.book VALUES ('368063051-4', 'My Wife Is a Gangster 2 (Jopog manura 2: Dolaon jeonseol)', 'Joint biopsy NEC', '$41.55', 'Memoir', 2006, 9243230, 2.25, 148);
+INSERT INTO public.book VALUES ('169291605-X', 'Confidence', 'Simple mastoidectomy', '$89.30', 'Textbook', 1984, 3874117, 1.92, 181);
+INSERT INTO public.book VALUES ('600909947-1', 'Twilight', 'Remove bile duct prosth', '$48.96', 'Graphic novel', 1992, 3822136, 4.04, 248);
+INSERT INTO public.book VALUES ('651466403-2', 'Lorenzo''s Oil', 'Oth part cholecystectomy', '$5.83', 'Home and garden', 1998, 4894541, 1.62, 173);
+INSERT INTO public.book VALUES ('823957154-9', 'Harvest Month, The (Elokuu)', 'Part ostectomy-femur', '$18.44', 'Horror', 2012, 3465209, 4.17, 81);
+INSERT INTO public.book VALUES ('567049390-7', 'Violet Tendencies', 'Cervical spine x-ray NEC', '$74.87', 'Historical fiction', 2001, 9250857, 4.44, 164);
+INSERT INTO public.book VALUES ('349330131-6', 'Bride with White Hair, The (Bai fa mo nu zhuan)', 'Autoimmune dis immunizat', '$12.74', 'Religion, spirituality, and new age', 2005, 194146, 1.58, 55);
+INSERT INTO public.book VALUES ('270712836-8', 'At Home by Myself... with You', 'Ovarian biopsy NEC', '$37.74', 'Sports and leisure', 2006, 5247292, 3.96, 101);
+INSERT INTO public.book VALUES ('155749938-1', 'Fat Girl (À ma soeur!)', 'Alcoholism counselling', '$80.06', 'Paranormal romance', 2011, 7388757, 3.3, 24);
+INSERT INTO public.book VALUES ('911999032-4', 'Murder at 1600', 'Oth arthrotomy-ankle', '$35.76', 'Textbook', 1994, 3705242, 3.95, 36);
+INSERT INTO public.book VALUES ('062109822-1', 'Cloudy with a Chance of Meatballs', 'Skull transilluminat', '$30.52', 'Fantasy', 1991, 742705, 1.7, 102);
+INSERT INTO public.book VALUES ('841058014-4', 'Ilsa, She Wolf of the SS', 'AICD check', '$23.98', 'Textbook', 1966, 9477633, 2.93, 98);
+INSERT INTO public.book VALUES ('914875553-2', 'Theory of Everything, The', 'Closed testicular biopsy', '$51.44', 'Diary', 1994, 5843083, 3.05, 118);
+INSERT INTO public.book VALUES ('764014865-0', 'Gore Gore Girls, The', 'Individ psychotherap NEC', '$90.84', 'Chick lit', 1994, 907551, 1.41, 227);
+INSERT INTO public.book VALUES ('503237818-6', 'Like Crazy', 'Other suture of tendon', '$10.64', 'Paranormal romance', 2006, 6636843, 2.37, 69);
+INSERT INTO public.book VALUES ('845282192-1', 'Amos & Andrew', 'Endocar cushion rep NEC', '$96.95', 'Fantasy', 1989, 8142554, 1.8, 196);
+INSERT INTO public.book VALUES ('359217434-7', 'Big City, The (Mahanagar)', 'Injct/infus glucarpidase', '$65.33', 'True crime', 2005, 2547357, 1.52, 127);
+INSERT INTO public.book VALUES ('476528037-3', 'Viva Villa!', 'Diaphragmatic plication', '$35.56', 'Review', 2011, 3165082, 1.47, 217);
+INSERT INTO public.book VALUES ('711371002-6', 'America Before Columbus', 'Pros rep endocar cushion', '$59.40', 'Guide', 1986, 3881695, 2.77, 37);
+INSERT INTO public.book VALUES ('637657825-X', 'Mr. Nice Guy (Yat goh ho yan)', 'Other eyelid incision', '$89.96', 'Journal', 1997, 1097019, 4.6, 238);
+INSERT INTO public.book VALUES ('037146821-3', 'Texas Terror', 'Radical orbitomaxillect', '$30.71', 'Political thriller', 1969, 810625, 1.29, 50);
+INSERT INTO public.book VALUES ('796580315-1', 'Eye for an Eye, An (Silmä silmästä)', 'Thor rep-diaph hern NOS', '$58.34', 'Science', 2009, 5680111, 1.1, 180);
+INSERT INTO public.book VALUES ('068919983-X', 'Just the Ticket', 'Injection of larynx', '$45.48', 'Classic', 1997, 1983800, 3.38, 199);
+INSERT INTO public.book VALUES ('012741986-1', 'Tough Ones, The (Häjyt)', 'Inject tranquilizer', '$78.22', 'Coming-of-age', 2010, 9383324, 2.42, 19);
+INSERT INTO public.book VALUES ('007521393-1', 'Puppet Master vs. Demonic Toys (Puppet Master 9)', 'Aspiration of ovary', '$62.75', 'Romance', 2001, 8526566, 3.27, 153);
+INSERT INTO public.book VALUES ('358245000-7', 'Ghost and Mr. Chicken, The', 'Hepatotomy', '$2.70', 'Memoir', 2004, 3914091, 4.69, 143);
+INSERT INTO public.book VALUES ('725598712-5', 'Extreme Ops', 'Destruct larynx les NEC', '$79.59', 'Crafts/hobbies', 2009, 6141838, 3.64, 13);
+INSERT INTO public.book VALUES ('587258898-4', 'Here Comes Peter Cottontail ', 'Open bronchial biopsy', '$84.92', 'Political thriller', 2004, 5277996, 2.68, 108);
+INSERT INTO public.book VALUES ('256035178-1', 'My Gun is Quick', 'Tendon trnsfr/transplant', '$58.64', 'Western', 2001, 8786375, 2.01, 3);
+INSERT INTO public.book VALUES ('357279663-6', 'We Are from the Future (My iz budushchego)', 'Closed thyroid gland bx', '$46.10', 'Western', 1989, 1126396, 2.28, 171);
+INSERT INTO public.book VALUES ('012467595-6', 'The Magnet', 'Hip structure division', '$67.90', 'Crafts/hobbies', 1995, 5647815, 3.38, 171);
+INSERT INTO public.book VALUES ('399282166-8', 'Frankenhooker', 'Ventr septa def rep NEC', '$57.94', 'Encyclopedia', 2003, 9989466, 1.23, 222);
+INSERT INTO public.book VALUES ('496223091-3', 'Key Largo', 'Pelvic evisceration', '$38.86', 'Encyclopedia', 2012, 3805837, 4.31, 185);
+INSERT INTO public.book VALUES ('758283987-0', 'Son of the Bride (Hijo de la novia, El)', 'Imp/rep CRT defib genat', '$25.92', 'Cookbook', 2012, 9488348, 1.7, 105);
+INSERT INTO public.book VALUES ('779546661-3', 'Pekka ja Pätkä puistotäteinä', 'Dental operation NEC', '$60.73', 'Encyclopedia', 1992, 6928851, 2.92, 229);
+INSERT INTO public.book VALUES ('210021148-X', 'Bubble Boy', 'Left heart cardiac cath', '$80.54', 'True crime', 2011, 6970508, 1.21, 76);
+INSERT INTO public.book VALUES ('020197894-6', 'Apollo 18', 'Other transanal enema', '$17.49', 'Philosophy', 2000, 559148, 2.62, 121);
+INSERT INTO public.book VALUES ('705291331-3', 'Nanny Diaries, The', 'Bil fem hern repair NEC', '$29.74', 'History', 1990, 2111862, 4.8, 245);
+INSERT INTO public.book VALUES ('689276258-1', 'Long Ride Home, The', 'Other bone dx proc NEC', '$72.78', 'Math', 2005, 6586408, 4.04, 52);
+INSERT INTO public.book VALUES ('859727177-9', 'Halloween is Grinch Night', 'Auto bone mt w/o purg', '$55.76', 'Romance', 2012, 3503289, 3.54, 213);
+INSERT INTO public.book VALUES ('714841295-1', 'Moolaadé', 'Conduit artium-pulm art', '$42.56', 'Coming-of-age', 1996, 7976522, 1.95, 170);
+INSERT INTO public.book VALUES ('915194193-7', 'C.H.O.M.P.S.', 'Destruc-ankle lesion NEC', '$97.13', 'Philosophy', 2010, 9111272, 3.05, 135);
+INSERT INTO public.book VALUES ('772346633-1', 'Pride and Prejudice', 'Aspir curett uterus NEC', '$54.33', 'Classic', 2001, 9531322, 4.99, 76);
+INSERT INTO public.book VALUES ('680805713-3', 'United States of Secrets (Part One): The Program', 'Eustachian tube ops', '$58.56', 'Religion, spirituality, and new age', 2003, 1446812, 1.35, 45);
+INSERT INTO public.book VALUES ('179787434-9', 'Perfect World, A', 'Esophageal manometry', '$8.46', 'History', 2003, 7001170, 1.81, 84);
+INSERT INTO public.book VALUES ('979066769-8', 'In the Navy', 'Replace cystostomy tube', '$45.37', 'Chick lit', 2008, 1039244, 4.57, 155);
+INSERT INTO public.book VALUES ('089913188-3', 'Arena', 'Mid & inner ear biopsy', '$69.71', 'Review', 1994, 2350647, 3.1, 98);
+INSERT INTO public.book VALUES ('349173947-0', 'Mac and Me', 'Micro exam-blood NEC', '$27.05', 'Art/architecture', 2010, 1027550, 4.27, 60);
+INSERT INTO public.book VALUES ('585564762-5', 'Under Fire', 'Splenic cyst marsupial', '$67.31', 'Dictionary', 2012, 6835987, 3.33, 248);
+INSERT INTO public.book VALUES ('204725391-8', 'Love''s Deadly Triangle: The Texas Cadet Murder', 'Local excis rectal les', '$82.19', 'Picture book', 1996, 6819929, 4.43, 107);
+INSERT INTO public.book VALUES ('056302205-1', 'Beverly Hills Ninja', 'Ileostomy NOS', '$49.74', 'Prayer', 2011, 3315631, 1.55, 152);
+INSERT INTO public.book VALUES ('956132571-3', 'Vessel of Wrath', 'Closure of proctostomy', '$32.33', 'Anthology', 2008, 199430, 1.51, 165);
+INSERT INTO public.book VALUES ('452263482-X', 'Children of the Corn', 'Repair retina detach NEC', '$19.25', 'Fantasy', 2009, 3824839, 4.06, 233);
+INSERT INTO public.book VALUES ('795267525-7', 'Zookeeper', 'Music therapy', '$69.38', 'Review', 2012, 6922256, 3.13, 169);
+INSERT INTO public.book VALUES ('798754430-2', 'Gentlemen Broncos', 'Thoracoscopc lung biopsy', '$65.85', 'Guide', 2010, 4910997, 1.86, 63);
+INSERT INTO public.book VALUES ('661467673-3', 'Olympia Part Two: Festival of Beauty (Olympia 2. Teil - Fest der Schönheit)', 'Bone marrow ops NEC', '$46.91', 'Biography', 2009, 3972804, 4.78, 232);
+INSERT INTO public.book VALUES ('831627765-4', 'Very Bad Things', 'Ins inflate penis prosth', '$80.06', 'Prayer', 2007, 9965566, 1.07, 189);
+INSERT INTO public.book VALUES ('916412825-3', 'Journey to the West: Conquering the Demons (Daai wa sai you chi Chui mo chun kei)', 'Lac punctum incision', '$15.76', 'Romance', 2002, 597188, 4.21, 67);
+INSERT INTO public.book VALUES ('306075133-1', '8 Diagram Pole Fighter, The (a.k.a. Invincible Pole Fighter) (Wu Lang ba gua gun)', 'Alveoloplasty', '$20.73', 'Cookbook', 2003, 8016553, 4.18, 1);
+INSERT INTO public.book VALUES ('420224614-4', 'The Tattooist', 'Hypogloss-facial anastom', '$67.26', 'True crime', 1992, 3071014, 4.29, 35);
+INSERT INTO public.book VALUES ('532243709-6', 'Fantastic Fear of Everything, A', 'Dx procedure thorax NEC', '$10.07', 'Political thriller', 2011, 405896, 1.03, 114);
+INSERT INTO public.book VALUES ('387008359-X', 'I Start Counting', 'Periren/vesicle excision', '$45.93', 'Home and garden', 2011, 5878639, 3.69, 161);
+INSERT INTO public.book VALUES ('182599326-2', 'Honeymoon', 'Open uterine biopsy', '$40.61', 'Satire', 2002, 7351142, 3.4, 246);
+INSERT INTO public.book VALUES ('094081671-7', 'Frank', 'Extraoc musc inj repair', '$32.59', 'Crime', 1954, 7062335, 1.69, 237);
+INSERT INTO public.book VALUES ('490888836-1', 'La Bande du drugstore', 'Cnt intraart bld gas mon', '$9.60', 'Self help', 1999, 7755405, 2.44, 198);
+INSERT INTO public.book VALUES ('681048275-X', 'Attack from Space', 'Ovarian denervation', '$23.89', 'Paranormal romance', 2010, 9427336, 1.67, 129);
+INSERT INTO public.book VALUES ('863967300-4', 'Breath, The (Nefes: Vatan sagolsun)', 'Endolymphatic shunt', '$54.27', 'Autobiography', 1991, 6502215, 3.42, 25);
+INSERT INTO public.book VALUES ('953469093-7', 'By the Bluest of Seas (U samogo sinego morya)', 'Open reduc-metac/car fx', '$92.40', 'Satire', 1973, 1181082, 1.66, 221);
+INSERT INTO public.book VALUES ('129400156-6', 'Constant Gardener, The', 'Perianal excision NEC', '$89.65', 'Humor', 1995, 2871874, 1.53, 172);
+INSERT INTO public.book VALUES ('216824768-4', 'Hard Day''s Night, A', 'Abdominal wall sinogram', '$83.57', 'Home and garden', 2003, 4570114, 3.54, 238);
+INSERT INTO public.book VALUES ('869446853-0', 'Dr. Mabuse: The Gambler (Dr. Mabuse, der Spieler)', 'Limb length-metacar/car', '$75.63', 'True crime', 1998, 2710086, 2.77, 195);
+INSERT INTO public.book VALUES ('048275792-2', 'Bomber', 'Occlude leg artery NEC', '$88.36', 'Science', 1998, 6409182, 3.98, 144);
+INSERT INTO public.book VALUES ('197360679-8', 'Omagh', 'Subtalr jt arthroereisis', '$28.18', 'Suspense', 1987, 1657156, 4.91, 76);
+INSERT INTO public.book VALUES ('616739403-2', 'Charleston', 'Gastric tube irrigat NEC', '$16.85', 'Prayer', 2000, 3083261, 1.15, 246);
+INSERT INTO public.book VALUES ('784155968-2', 'Ip Man', 'Lap total abdominal hyst', '$84.46', 'Graphic novel', 1998, 758716, 1.1, 95);
+INSERT INTO public.book VALUES ('752472954-5', 'Bishop Murder Case, The', 'Amputation stump revis', '$99.79', 'Young adult', 2008, 6497595, 1.45, 172);
+INSERT INTO public.book VALUES ('634444131-3', 'Balance, La', 'Nasophary contrast x-ray', '$83.89', 'Alternate history', 2008, 9354363, 4.27, 54);
+INSERT INTO public.book VALUES ('012573390-9', 'Bully', 'Hand fasciectomy NEC', '$80.23', 'Paranormal romance', 2000, 673733, 2.01, 122);
+INSERT INTO public.book VALUES ('996146139-8', 'Heart in Winter, A (Un coeur en hiver)', 'Pneumoencephalogram', '$5.57', 'Horror', 2008, 1381496, 4.78, 177);
+INSERT INTO public.book VALUES ('373833352-5', 'Bounce: Behind the Velvet Rope', 'Autopsy', '$26.29', 'Historical fiction', 2004, 7414420, 1.67, 129);
+INSERT INTO public.book VALUES ('529804966-4', 'Death Ship', 'Subarach-ureteral shunt', '$64.11', 'Science', 2007, 3535732, 1.3, 184);
+INSERT INTO public.book VALUES ('817072394-9', 'Pyx, The', 'Emphysema bleb plication', '$37.67', 'Crime', 1993, 4615424, 2.15, 153);
+INSERT INTO public.book VALUES ('391768959-6', 'Men with Guns', 'Insert/repl oth neurost', '$21.99', 'Prayer', 1984, 9726432, 2.05, 12);
+INSERT INTO public.book VALUES ('063888040-8', 'My Little Pony: Equestria Girls', 'Scleral buckle w implant', '$13.44', 'Philosophy', 2010, 6692704, 2.04, 226);
+INSERT INTO public.book VALUES ('629550450-7', 'Are You Scared?', 'Remove head/neck dev NEC', '$91.61', 'Graphic novel', 2003, 3901047, 3.68, 116);
+INSERT INTO public.book VALUES ('235868244-6', 'Mothra (Mosura)', 'Fat grft skin/subq tiss', '$4.69', 'Poetry', 2010, 2138214, 4.03, 155);
+INSERT INTO public.book VALUES ('245838298-3', 'Heist', 'Orbitotomy NEC', '$22.49', 'Journal', 1998, 4272840, 4.23, 16);
+INSERT INTO public.book VALUES ('253819714-7', 'Adopted', 'Thyroid suture', '$33.54', 'Travel', 1986, 9711467, 1.53, 101);
+INSERT INTO public.book VALUES ('933376029-6', 'Terminator 2: Judgment Day', 'Hearing examination NOS', '$51.20', 'Fairytale', 2012, 7899865, 4.4, 105);
+INSERT INTO public.book VALUES ('765870162-9', 'Kwik Stop', 'Clos large bowel biopsy', '$8.13', 'Memoir', 2010, 4626735, 1.38, 121);
+INSERT INTO public.book VALUES ('448584918-X', 'Left-Hand Side of the Fridge, The (Moitié gauche du frigo, La)', 'Hepatic injection NEC', '$87.72', 'Self help', 2009, 1514125, 1.95, 104);
+INSERT INTO public.book VALUES ('002519595-6', 'Winter Soldier', 'Micro exam-nervous NEC', '$79.99', 'Classic', 1996, 849939, 4.68, 188);
+INSERT INTO public.book VALUES ('489988033-2', 'Inseparable', 'Destruc-shoulder les NEC', '$74.86', 'Review', 2012, 8961129, 3.99, 144);
+INSERT INTO public.book VALUES ('494723217-X', 'Poor Us: An Animated History of Poverty', 'Plaster jacket applicat', '$21.94', 'Romance', 1994, 9787654, 1.63, 89);
+INSERT INTO public.book VALUES ('759953884-4', 'Rififi (Du rififi chez les hommes)', 'Opn rt hemicolectomy NEC', '$97.70', 'Romance', 1997, 5676634, 4.07, 147);
+INSERT INTO public.book VALUES ('592518419-X', 'Fast Life', 'Oth arthrotomy-hip', '$29.56', 'Comic book', 2012, 8297646, 4.88, 131);
+INSERT INTO public.book VALUES ('808741882-4', 'Diary of a Mad Housewife', 'Injection into pericard', '$48.11', 'Business/economics', 2003, 2175801, 2.26, 31);
+INSERT INTO public.book VALUES ('195062912-0', 'Storm Warriors, The (Fung wan II)', 'Hysterotomy', '$87.75', 'Fairytale', 2012, 4141320, 2.3, 81);
+INSERT INTO public.book VALUES ('683442384-2', 'Up in Arms', 'Elecmag hear dev implant', '$61.84', 'Suspense', 2011, 176472, 4.49, 220);
+INSERT INTO public.book VALUES ('112411821-7', 'Stitches', 'Sutur capsul/ligamen arm', '$54.40', 'Health/fitness', 1990, 7900068, 2.6, 94);
+INSERT INTO public.book VALUES ('847776827-7', 'Emperor''s New Groove 2: Kronk''s New Groove, The', 'Revise disc prost thora', '$42.77', 'Journal', 1988, 1288345, 2.03, 140);
+INSERT INTO public.book VALUES ('266695649-0', 'Nurse 3D', 'Papillary muscle ops', '$4.19', 'Young adult', 2005, 9017776, 4.89, 165);
+INSERT INTO public.book VALUES ('663080344-2', 'Andy Hardy''s Double Life', 'Lap radical vaginal hyst', '$5.89', 'Math', 1993, 5447697, 1.24, 61);
+INSERT INTO public.book VALUES ('255189015-2', 'Ballad of Little Jo, The', 'Cervical canal dilation', '$97.16', 'Drama', 2011, 448466, 5.0, 105);
+INSERT INTO public.book VALUES ('634774350-7', 'Cheech & Chong: Still Smokin''', 'Pharyngeal dilation', '$23.48', 'Drama', 2007, 8007617, 4.56, 83);
+INSERT INTO public.book VALUES ('241701753-9', 'Naughty Room, The', 'Other pleural excision', '$38.64', 'Thriller', 2011, 2992280, 2.61, 99);
+INSERT INTO public.book VALUES ('935962845-X', 'The Wonders', 'Micro exam-lower GI NEC', '$95.56', 'Romance', 2001, 2669179, 1.67, 78);
+INSERT INTO public.book VALUES ('779002953-3', 'Russell Peters: Outsourced', 'Abd vein resect & anast', '$75.26', 'Travel', 1986, 9140340, 2.71, 45);
+INSERT INTO public.book VALUES ('484440151-3', 'Hollywood Between Paranoia and Sci-Fi. The Power of Myth', 'Pass musculosk exer NEC', '$82.11', 'Western', 2008, 9001096, 2.59, 156);
+INSERT INTO public.book VALUES ('410190780-3', 'White Cliffs of Dover, The', 'Carporadial fusion', '$88.81', 'Home and garden', 2000, 1596316, 3.29, 161);
+INSERT INTO public.book VALUES ('260314263-1', 'Apartment Zero', 'Pros rep atrial def-opn', '$85.72', 'Memoir', 1999, 5442231, 4.79, 158);
+INSERT INTO public.book VALUES ('826383883-5', 'Star Wars: Episode I - The Phantom Menace', 'Urethral repair NEC', '$12.76', 'Comic book', 2008, 3550361, 4.17, 194);
+INSERT INTO public.book VALUES ('579325145-6', 'K-11', 'Insert nasopharyn airway', '$16.72', 'Crafts/hobbies', 1998, 8437892, 1.22, 72);
+INSERT INTO public.book VALUES ('891119616-9', 'Thunder Bay', 'Portal contr phlebogram', '$14.63', 'Prayer', 1996, 5664815, 3.04, 50);
+INSERT INTO public.book VALUES ('304881958-4', 'Freedom Downtime', 'Mastoid incision', '$28.09', 'Fairytale', 1993, 8102030, 2.25, 243);
+INSERT INTO public.book VALUES ('288228019-X', 'The Second Best Exotic Marigold Hotel', 'C & s-op wound', '$83.86', 'Action and adventure', 2011, 801781, 3.95, 187);
+INSERT INTO public.book VALUES ('439372847-5', 'Cuban Fury', 'Therapeutc leukopheresis', '$10.89', 'Western', 1993, 6139759, 3.71, 187);
+INSERT INTO public.book VALUES ('388476736-4', 'Double Whammy', 'Oth arthrotomy-hip', '$19.29', 'Biography', 2003, 198176, 4.08, 32);
+INSERT INTO public.book VALUES ('789193562-9', 'Envy (Kiskanmak)', 'Pulmonary scan', '$73.71', 'Satire', 2001, 8957377, 4.08, 152);
+INSERT INTO public.book VALUES ('546357952-0', 'Seventh Cross, The', 'Suture scrotal lacerat', '$36.31', 'Biography', 1999, 3751459, 4.74, 193);
+INSERT INTO public.book VALUES ('936482083-5', 'Sorrow and the Pity, The (Le chagrin et la pitié)', 'Cls reduc-sep epiphy NEC', '$35.96', 'Short story', 2001, 3111282, 2.52, 145);
+INSERT INTO public.book VALUES ('298252107-5', 'Astro Boy', 'Remov vas deferens valve', '$18.34', 'Suspense', 1994, 8278796, 2.68, 126);
+INSERT INTO public.book VALUES ('984797181-1', 'Julian Po', 'Repair rectovag fistula', '$52.75', 'Alternate history', 2012, 8550753, 1.14, 16);
+INSERT INTO public.book VALUES ('135822340-8', 'Barbary Coast Gent (Gold Town) (Honest Thief, The)', 'Temp endovsc occls vessl', '$42.97', 'Fantasy', 2006, 8133539, 1.22, 178);
+INSERT INTO public.book VALUES ('055458067-5', 'Class Action', 'Applic ext fix dev NOS', '$71.83', 'Short story', 2000, 5078897, 3.95, 224);
+INSERT INTO public.book VALUES ('255096780-1', 'Two English Girls (Les deux anglaises et le continent)', 'Open incis hern-grft NEC', '$32.39', 'Mystery', 1995, 5283085, 1.06, 138);
+INSERT INTO public.book VALUES ('110551282-7', 'Mortadelo & Filemon: The Big Adventure (La gran aventura de Mortadelo y Filemón)', 'Thyr/parathy dx proc NEC', '$43.24', 'Picture book', 1997, 1317520, 2.6, 112);
+INSERT INTO public.book VALUES ('049149534-X', 'Under the North Star (Täällä Pohjantähden alla)', 'Upper GI series', '$72.62', 'Comic book', 2004, 8683035, 1.49, 230);
+INSERT INTO public.book VALUES ('912235265-1', 'Certified Copy (Copie conforme)', 'Unil femor hrn rep-grft', '$52.94', 'History', 2006, 7698326, 3.88, 216);
+INSERT INTO public.book VALUES ('415928600-3', 'Tokyo Sonata', 'Repl cardiodefib genratr', '$75.53', 'Short story', 2000, 4927833, 2.77, 58);
+INSERT INTO public.book VALUES ('225786832-3', 'Up in Arms', 'Remov vaginal diaphragm', '$64.06', 'Crafts/hobbies', 1996, 4648680, 4.31, 184);
+INSERT INTO public.book VALUES ('551029289-X', 'I''m Crazy About Iris Blond', 'Other fasciectomy', '$56.42', 'Chick lit', 1994, 7868545, 3.94, 178);
+INSERT INTO public.book VALUES ('804430979-9', 'Nanny, The', 'Leg vein resect/anastom', '$83.42', 'Horror', 1995, 3370247, 1.72, 61);
+INSERT INTO public.book VALUES ('392919280-2', 'Maria Bamford: The Special Special Special!', 'Perc ather intracran vsl', '$96.77', 'Science', 1990, 5014922, 3.61, 112);
+INSERT INTO public.book VALUES ('269045513-7', 'Mob, The', 'Tibia & fibula biopsy', '$54.63', 'Religion, spirituality, and new age', 1987, 8649568, 1.91, 176);
+INSERT INTO public.book VALUES ('610775534-9', '1911 (Xinhai geming)', 'Other transanal enema', '$54.30', 'Action and adventure', 2007, 7983871, 4.55, 71);
+INSERT INTO public.book VALUES ('057844142-X', 'Identity', 'Open coronry angioplasty', '$72.43', 'Prayer', 2005, 1008255, 2.94, 226);
+INSERT INTO public.book VALUES ('756692961-5', 'Shape of Things, The', 'Percu gastrojejunostomy', '$69.28', 'Western', 1999, 7447251, 4.82, 152);
+INSERT INTO public.book VALUES ('232333651-7', 'Son of the Bride (Hijo de la novia, El)', 'Disarticulation of ankle', '$8.88', 'Dictionary', 2012, 9086283, 3.87, 141);
+INSERT INTO public.book VALUES ('700767437-2', 'Distant (Uzak)', 'Upper arm reattachment', '$27.94', 'Suspense', 2000, 2465064, 3.35, 200);
+INSERT INTO public.book VALUES ('637158448-0', 'Knockout', 'Drug addict counselling', '$45.45', 'Drama', 2002, 8694173, 3.7, 219);
+INSERT INTO public.book VALUES ('468303695-9', 'Final, The', 'Partial sialoadenectomy', '$20.14', 'Picture book', 1996, 945231, 4.57, 162);
+INSERT INTO public.book VALUES ('581955340-3', 'Holy Man', 'Remove int fix face bone', '$31.87', 'Textbook', 2007, 2798872, 2.71, 232);
+INSERT INTO public.book VALUES ('637705024-0', 'Wolfman, The', 'Corneal incision', '$21.58', 'Suspense', 1992, 4236782, 4.84, 190);
+INSERT INTO public.book VALUES ('059906440-4', '127 Hours', 'Osteoclasis-chest cage', '$92.32', 'Guide', 2005, 9258517, 2.06, 219);
+INSERT INTO public.book VALUES ('299089474-8', 'Brain Dead', 'Gas hysterosalpingogram', '$44.34', 'Art/architecture', 2008, 3053235, 3.35, 70);
+INSERT INTO public.book VALUES ('985687655-9', 'Eros (Men and Women) (Noite Vazia)', 'Plethysmogram', '$36.02', 'Drama', 2011, 1856277, 2.37, 154);
+INSERT INTO public.book VALUES ('611895414-3', 'I Am Bruce Lee', 'Stern esophagocolos NEC', '$80.27', 'Art/architecture', 1997, 971856, 1.62, 114);
+INSERT INTO public.book VALUES ('618186888-7', 'In the Shadow of Doubt (Epäilyksen varjossa)', 'Arthrocentesis', '$20.14', 'Prayer', 1995, 8540875, 3.07, 69);
+INSERT INTO public.book VALUES ('749487553-0', 'Overlord', 'Int/comb version w extr', '$89.46', 'Suspense', 2001, 3637798, 3.51, 95);
+INSERT INTO public.book VALUES ('450576210-6', 'Vampyr', 'Pacemaker impedance chck', '$27.13', 'Young adult', 1986, 5402121, 3.76, 148);
+INSERT INTO public.book VALUES ('095825458-3', '17 Again', 'Hemodialysis', '$59.06', 'Children''s', 1984, 7353824, 1.98, 47);
+INSERT INTO public.book VALUES ('708925873-4', 'Panic in the Streets', 'Spleen operation NEC', '$11.97', 'Young adult', 1997, 2757736, 3.04, 38);
+INSERT INTO public.book VALUES ('560781563-3', 'Gurren Lagann: The Lights in the Sky are Stars (Gekijô ban Tengen toppa guren ragan: Ragan hen)', 'Repair conjunct lacerat', '$38.80', 'Romance', 1993, 7339924, 1.16, 188);
+INSERT INTO public.book VALUES ('924502256-0', 'Human Lanterns (Ren pi deng long)', 'Neurologic examination', '$80.01', 'Autobiography', 2001, 8443786, 4.68, 187);
+INSERT INTO public.book VALUES ('891764604-2', 'Sugar Town', 'Urethroves junct plicat', '$18.92', 'Fantasy', 2010, 4283885, 1.19, 163);
+INSERT INTO public.book VALUES ('741644622-8', 'Man on the Train (Homme du train, L'')', 'Lid lacer rx-prt th NEC', '$40.75', 'Encyclopedia', 2005, 2814398, 4.51, 198);
+INSERT INTO public.book VALUES ('987313498-0', 'Black Orchid, The', 'Ureteral operation NEC', '$97.01', 'Classic', 2004, 7263696, 1.37, 198);
+INSERT INTO public.book VALUES ('130987216-3', 'MacGyver: Lost Treasure of Atlantis', 'Male genital op NEC', '$83.32', 'Fantasy', 2006, 7470209, 4.13, 230);
+INSERT INTO public.book VALUES ('295525808-3', 'Our Man in Havana', 'Other brain dx procedure', '$88.49', 'Religion, spirituality, and new age', 2001, 9136720, 1.11, 199);
+INSERT INTO public.book VALUES ('825307248-1', 'Children of the Corn III', 'Total esophagectomy', '$64.98', 'Coming-of-age', 1994, 3016644, 3.28, 95);
+INSERT INTO public.book VALUES ('603718711-8', 'Life 2.0', 'Incision uterine septum', '$32.28', 'Home and garden', 1988, 1490769, 3.13, 81);
+INSERT INTO public.book VALUES ('472596990-7', 'Viola', 'Skin excision for graft', '$81.17', 'Western', 1995, 6655555, 2.03, 25);
+INSERT INTO public.book VALUES ('190938711-8', 'Persona', 'Esophagoscopy thru stoma', '$84.17', 'Science fiction', 1997, 2887578, 1.02, 56);
+INSERT INTO public.book VALUES ('394598519-6', 'Secret Garden, The', 'Excis metatar/tar-graft', '$16.82', 'Satire', 1996, 2735215, 1.06, 235);
+INSERT INTO public.book VALUES ('264072693-5', 'Laws of Attraction', 'Incis larynx trachea NEC', '$18.20', 'Suspense', 2000, 9372442, 1.67, 8);
+INSERT INTO public.book VALUES ('987599799-4', 'Devil''s Eye, The (Djävulens öga)', 'Adrenal incision', '$72.27', 'Autobiography', 2012, 2487166, 1.28, 178);
+INSERT INTO public.book VALUES ('273177602-1', 'Four Feathers, The', 'Nonexc destr cil bod les', '$58.25', 'Paranormal romance', 1997, 7270840, 4.66, 167);
+INSERT INTO public.book VALUES ('933661665-X', 'Friend Zone (Pagafantas)', 'Open lung biopsy', '$69.67', 'Prayer', 1991, 6520109, 4.03, 194);
+INSERT INTO public.book VALUES ('466677357-6', 'These Final Hours', 'Remove imp dev-metat/tar', '$97.21', 'Paranormal romance', 2002, 7818776, 4.53, 198);
+INSERT INTO public.book VALUES ('797823140-2', 'The Apocalypse', 'Thorac esophag anast NEC', '$78.01', 'Travel', 1996, 9549019, 4.72, 164);
+INSERT INTO public.book VALUES ('864197998-0', 'GasLand', 'Skel xray-upper limb NOS', '$5.48', 'Short story', 2010, 7320384, 3.15, 63);
+INSERT INTO public.book VALUES ('114584286-0', 'Lot Like Love, A', 'Pericardiocentesis', '$97.15', 'Fairytale', 1987, 4972831, 2.66, 15);
+INSERT INTO public.book VALUES ('452522709-5', 'Saints and Soldiers', 'Partial ostectomy NEC', '$47.47', 'Journal', 2009, 9703397, 3.86, 242);
+INSERT INTO public.book VALUES ('621854255-6', 'Curious George', 'Head/neck ves incis NEC', '$58.99', 'Art/architecture', 2009, 5672373, 2.01, 6);
+INSERT INTO public.book VALUES ('901153852-8', 'Vincent & Theo', 'Endo ins/re brnc val,mul', '$24.35', 'Cookbook', 1990, 4547506, 4.65, 188);
+INSERT INTO public.book VALUES ('785513696-7', 'Hypocrites', 'Evac ob hemat vulva/vag', '$57.20', 'Encyclopedia', 2006, 100578, 1.02, 245);
+INSERT INTO public.book VALUES ('983589321-7', 'iSteve', 'Ventr septa def rep NEC', '$34.26', 'Action and adventure', 1984, 4320328, 4.14, 179);
+INSERT INTO public.book VALUES ('462228616-5', 'Hickey and Boggs', 'Breast xerography', '$8.14', 'Diary', 2004, 5769464, 1.89, 87);
+INSERT INTO public.book VALUES ('755686002-7', 'Interrupters, The', 'Rubella vaccination', '$35.08', 'Fantasy', 2009, 336795, 3.67, 246);
+INSERT INTO public.book VALUES ('162357283-5', 'Alone (Issiz adam)', 'Dental x-ray NEC', '$66.73', 'True crime', 2006, 530707, 1.32, 96);
+INSERT INTO public.book VALUES ('660703244-3', 'Birth', 'Bile duct incision NEC', '$49.98', 'Drama', 1999, 6340730, 4.87, 183);
+INSERT INTO public.book VALUES ('125704596-2', '"Great Performances" Cats', 'Aortocor bypas-3 cor art', '$30.90', 'Travel', 1993, 5071859, 2.5, 49);
+INSERT INTO public.book VALUES ('970772357-2', 'Longest Yard, The', 'Peritoneal lavage', '$31.31', 'Encyclopedia', 1988, 2338452, 1.36, 24);
+INSERT INTO public.book VALUES ('587553305-6', 'Summer Place, A', 'Lap gastric restric proc', '$61.02', 'Science', 1998, 5603494, 3.27, 171);
+INSERT INTO public.book VALUES ('442512297-6', 'Class of 1999', 'Destruct peritoneal tiss', '$53.90', 'Paranormal romance', 2005, 6207782, 3.46, 166);
+INSERT INTO public.book VALUES ('813672755-4', 'Possession of Joel Delaney, The', 'Ins intra-ansm pres mntr', '$97.94', 'Chick lit', 2011, 6955086, 1.59, 118);
+INSERT INTO public.book VALUES ('496476054-5', 'Hideous Sun Demon, The', 'Bilateral vulvectomy', '$1.97', 'Home and garden', 1985, 7095775, 4.62, 61);
+INSERT INTO public.book VALUES ('257089292-0', 'Five Children and It', 'Totl reconstc breast NOS', '$21.18', 'Paranormal romance', 1986, 8345688, 3.44, 250);
+INSERT INTO public.book VALUES ('545395722-0', 'The Hire: Hostage', 'Cardiac mapping', '$18.91', 'Crime', 1999, 1932471, 1.36, 224);
+INSERT INTO public.book VALUES ('945918848-6', 'Tokyo Decadence (Topâzu)', 'Repl cardiodefib leads', '$75.47', 'Short story', 1998, 2270410, 2.13, 218);
+INSERT INTO public.book VALUES ('493111511-X', 'Saints and Soldiers', 'Choledochohepat intubat', '$12.10', 'Diary', 1996, 1287224, 2.77, 10);
+INSERT INTO public.book VALUES ('900954159-2', 'Final Approach', 'Sphenoidotomy', '$1.68', 'Journal', 2005, 2097175, 3.96, 136);
+INSERT INTO public.book VALUES ('033191203-1', 'Armadillo', 'Tm manipulation NEC', '$55.60', 'Travel', 2010, 4046578, 4.57, 210);
+INSERT INTO public.book VALUES ('779523141-1', 'Superman III', 'Tm contrast arthrogram', '$4.45', 'Political thriller', 2008, 8346611, 3.71, 245);
+INSERT INTO public.book VALUES ('714974033-2', 'Tall Guy, The', 'Op red-int fix tib/fibul', '$33.41', 'Diary', 2007, 2081048, 4.5, 88);
+INSERT INTO public.book VALUES ('326731155-1', 'Skeleton Crew', 'Other chest cage incis', '$66.76', 'True crime', 1990, 514552, 2.04, 133);
+INSERT INTO public.book VALUES ('685289132-1', 'Ju-on: The Curse 2', 'Esophagomyotomy', '$62.65', 'Drama', 2009, 3748675, 3.28, 161);
+INSERT INTO public.book VALUES ('761627436-6', 'Peppermint Candy (Bakha satang)', 'Limb lengthen proc NEC', '$32.43', 'Alternate history', 2002, 3428507, 2.29, 138);
+INSERT INTO public.book VALUES ('670638047-4', 'Skins', 'Homograft to skin', '$42.52', 'Cookbook', 2011, 9566108, 3.51, 21);
+INSERT INTO public.book VALUES ('850553356-9', 'Order, The', 'Ins/rep mul pul gn,rechg', '$60.63', 'Short story', 2012, 9698397, 4.86, 130);
+INSERT INTO public.book VALUES ('984908053-1', 'Blue Sunshine', 'Vent shunt extracran NEC', '$31.32', 'Math', 2003, 1149668, 1.58, 212);
+INSERT INTO public.book VALUES ('248605712-9', 'Caravaggio', 'Inject implant urethra', '$64.11', 'True crime', 2001, 2594192, 3.56, 220);
+INSERT INTO public.book VALUES ('171513250-5', 'East is East', 'Low forceps operation', '$36.59', 'Dictionary', 1992, 8401143, 1.89, 229);
+INSERT INTO public.book VALUES ('559666805-2', 'Bones Brigade: An Autobiography', 'Sympath nerve inject NEC', '$27.07', 'Graphic novel', 2007, 7325658, 4.52, 171);
+INSERT INTO public.book VALUES ('784837272-3', 'Hannie Caulder', 'Other tenonectomy', '$45.12', 'Children''s', 1993, 4053753, 3.99, 129);
+INSERT INTO public.book VALUES ('897587618-7', 'Allan Quatermain and the Temple of Skulls', 'Brain meninge repair NEC', '$76.12', 'Fairytale', 1999, 1726692, 3.33, 150);
+INSERT INTO public.book VALUES ('886828123-6', 'Commandos Strike at Dawn', 'Insert perm tube esophag', '$81.01', 'Science fiction', 2000, 8815387, 4.7, 127);
+INSERT INTO public.book VALUES ('333868171-2', 'Jungo Goes Bananas: Jungo III (Jungledyret Hugo: Fræk, flabet og fri)', 'Arth/pros rem wo re-wrst', '$24.68', 'Classic', 1997, 8538240, 4.02, 222);
+INSERT INTO public.book VALUES ('578416852-5', 'Dogwalker, The', 'Subtalr jt arthroereisis', '$76.03', 'Religion, spirituality, and new age', 2009, 5461145, 2.7, 198);
+INSERT INTO public.book VALUES ('568276930-9', 'Ainoat Oikeat', 'Rad subtot pancreatectom', '$6.50', 'Historical fiction', 2000, 1566496, 4.51, 33);
+INSERT INTO public.book VALUES ('329738049-7', 'Hogfather (Terry Pratchett''s Hogfather)', 'Multiple sinus incision', '$52.32', 'True crime', 2007, 6288246, 3.73, 249);
+INSERT INTO public.book VALUES ('379568142-1', 'Lady in Cement', 'Chorioret les rad implan', '$21.60', 'Religion, spirituality, and new age', 2012, 1564503, 2.39, 208);
+INSERT INTO public.book VALUES ('065382914-0', 'Rahtree: Flower of the Night (Buppha Rahtree)', 'Skin & subq dx proc NEC', '$39.82', 'Chick lit', 1964, 4856107, 1.1, 116);
+INSERT INTO public.book VALUES ('682257814-5', 'Rendez-vous d''Anna, Les (Meetings of Anna, The)', 'Adjust lid position NEC', '$90.03', 'Autobiography', 2000, 1709938, 1.91, 25);
+INSERT INTO public.book VALUES ('514395606-4', 'Rustlers'' Rhapsody', 'Stretching of foreskin', '$31.07', 'Prayer', 1995, 5065782, 2.69, 185);
+INSERT INTO public.book VALUES ('527756877-8', 'Innocent Blood', 'Other tracheal repair', '$35.57', 'Biography', 2008, 9225405, 1.04, 173);
+INSERT INTO public.book VALUES ('883379866-6', 'Reel Injun', 'Ther ultrasound of heart', '$14.88', 'Encyclopedia', 2003, 7980711, 4.69, 196);
+INSERT INTO public.book VALUES ('446515304-X', 'Pool Without Water, A (Mizu no nai puuru)', 'Remov post segmnt FB NOS', '$29.14', 'Math', 1993, 3094208, 3.39, 79);
+INSERT INTO public.book VALUES ('296602147-0', 'Night to Remember, A', 'Gingivoplasty', '$67.76', 'Chick lit', 2007, 7023065, 1.3, 171);
+INSERT INTO public.book VALUES ('766000120-5', 'Salt of the Earth', 'Cervical biopsy NEC', '$10.51', 'Journal', 2011, 6894287, 1.42, 10);
+INSERT INTO public.book VALUES ('280240332-X', 'ChromeSkull: Laid to Rest 2', 'Pelvic dye contrast xray', '$13.45', 'Picture book', 2003, 2559444, 4.98, 175);
+INSERT INTO public.book VALUES ('208851355-8', 'Saw III', 'Impl fallop tube prosth', '$32.88', 'Crime', 2010, 3617516, 3.87, 83);
+INSERT INTO public.book VALUES ('892803338-1', 'Pool of London', 'Saliv lesion excis NEC', '$15.53', 'Chick lit', 2008, 8770182, 2.79, 218);
+INSERT INTO public.book VALUES ('902926331-8', 'August (Elokuu) ', 'Ovarian wedge resection', '$33.30', 'True crime', 2010, 3299207, 1.92, 63);
+INSERT INTO public.book VALUES ('567122343-1', 'Looking for Eric', 'Root canal w apicoectomy', '$52.73', 'Memoir', 1984, 9057424, 4.47, 20);
+INSERT INTO public.book VALUES ('375459457-5', 'Glory Daze', 'Pelvic gas contrast xray', '$1.98', 'Thriller', 2008, 2118802, 4.63, 219);
+INSERT INTO public.book VALUES ('788626786-9', 'Summer Wishes, Winter Dreams', 'Sm bowel segment isolat', '$19.35', 'Travel', 2006, 6158379, 2.98, 33);
+INSERT INTO public.book VALUES ('133235316-9', 'Grand Canyon', 'Meninge vessel ligation', '$6.26', 'Science fiction', 1986, 5315109, 3.88, 196);
+INSERT INTO public.book VALUES ('329764334-X', 'Mr. Moto''s Gamble', 'Remov intrauterine pack', '$56.67', 'Classic', 1987, 565716, 4.08, 135);
+INSERT INTO public.book VALUES ('841931901-5', 'Grass', 'Mastoid incision', '$63.02', 'Science', 2001, 9239904, 1.34, 151);
+INSERT INTO public.book VALUES ('809226378-7', 'Lost Boys: The Tribe', 'Lap radical vaginal hyst', '$23.52', 'Dictionary', 2009, 6643117, 3.78, 194);
+INSERT INTO public.book VALUES ('445239445-0', 'Great Silence, The (Grande silenzio, Il)', 'Diagnostic imaging NOS', '$85.87', 'Humor', 2007, 2027630, 1.54, 159);
+INSERT INTO public.book VALUES ('493935519-5', 'King Lear (Korol Lir)', 'Simple sut-common duct', '$71.19', 'Journal', 2010, 2970720, 4.52, 88);
+INSERT INTO public.book VALUES ('997493694-2', 'Panic Button', 'Sphinct of oddi measure', '$70.21', 'Picture book', 2002, 8368208, 4.66, 237);
+INSERT INTO public.book VALUES ('016838251-2', 'Get on Up', 'Keratophakia', '$12.64', 'Horror', 2006, 5851643, 4.14, 207);
+INSERT INTO public.book VALUES ('646377394-8', 'Dead & Buried', 'Stapedect w replac incus', '$50.19', 'Anthology', 1963, 3623193, 4.37, 136);
+INSERT INTO public.book VALUES ('056743658-6', 'West Is West', 'Inject tendon of hand', '$86.62', 'Short story', 2008, 3680142, 3.59, 190);
+INSERT INTO public.book VALUES ('817962099-9', 'Valachi Papers,The', 'Proctopexy NEC', '$58.21', 'History', 2001, 9186353, 4.92, 223);
+INSERT INTO public.book VALUES ('803889509-6', 'Wild Geese, The', 'Rvrs totl shldr replacmt', '$5.21', 'Anthology', 2011, 4098418, 1.16, 169);
+INSERT INTO public.book VALUES ('903882619-2', 'Marriage Italian Style (Matrimonio all''italiana)', 'Revis bile tract anastom', '$67.78', 'Textbook', 1996, 2251305, 4.36, 206);
+INSERT INTO public.book VALUES ('920661357-X', 'White Hunter, Black Heart', 'Endo rem bronch devc/sub', '$67.36', 'Diary', 1989, 7532622, 3.78, 106);
+INSERT INTO public.book VALUES ('595282637-7', 'Man from Down Under, The', 'Neuroleptic therapy', '$60.64', 'Classic', 1996, 4362204, 2.43, 134);
+INSERT INTO public.book VALUES ('822800477-X', 'Stella Maris', 'Post nasal pac for epist', '$3.83', 'Crafts/hobbies', 1996, 2111202, 2.27, 237);
+INSERT INTO public.book VALUES ('025428193-1', 'Brainstorm', 'Pulmon art wedge monitor', '$44.65', 'Textbook', 2003, 7224993, 3.49, 58);
+INSERT INTO public.book VALUES ('267756349-5', 'Jesse Stone: Thin Ice', 'Open uterine ligament bx', '$28.81', 'Textbook', 2011, 8742220, 2.67, 61);
+INSERT INTO public.book VALUES ('986792926-8', 'Bomb It', 'Sphinct of oddi op NEC', '$74.84', 'Drama', 2000, 5531923, 2.63, 217);
+INSERT INTO public.book VALUES ('419090537-2', 'Like Minds (Murderous Intent)', 'Rehab for the blind NEC', '$70.25', 'Philosophy', 2010, 6284735, 4.0, 67);
+INSERT INTO public.book VALUES ('168115051-4', 'You''re Missing the Point', 'Procedure-three vessels', '$21.00', 'Journal', 2010, 2237758, 3.32, 46);
+INSERT INTO public.book VALUES ('355962207-7', 'Gas, Food, Lodging', 'Leg vein resect/anastom', '$59.59', 'Diary', 2009, 4136733, 4.41, 153);
+INSERT INTO public.book VALUES ('965436958-3', 'Kabul Express', 'Hemorr contrl post T & A', '$67.04', 'Humor', 2011, 7273436, 3.3, 118);
+INSERT INTO public.book VALUES ('329416658-3', 'Charlotte''s Web 2: Wilbur''s Great Adventure', 'Bone graft-metatar/tar', '$73.66', 'Philosophy', 2002, 4950133, 4.34, 85);
+INSERT INTO public.book VALUES ('416906563-8', 'Jesus'' Son', 'Contrast arthrogram', '$18.23', 'Fairytale', 1992, 7610161, 2.72, 36);
+INSERT INTO public.book VALUES ('377423422-1', 'Architecture of Doom, The (Undergångens arkitektur)', 'Urethral pressure profil', '$84.84', 'Art/architecture', 1989, 7888545, 1.52, 161);
+INSERT INTO public.book VALUES ('161622304-9', 'Blast from the Past', 'Salivary repair NEC', '$66.64', 'Mystery', 1984, 6623143, 1.17, 19);
+INSERT INTO public.book VALUES ('953489508-3', 'Machine Gun Kelly', 'Abdominal artery excis', '$44.46', 'True crime', 1994, 3906621, 4.5, 177);
+INSERT INTO public.book VALUES ('050555210-8', 'Relax... It''s Just Sex', 'Heart repair revision', '$76.89', 'Fantasy', 2007, 6172003, 4.67, 178);
+INSERT INTO public.book VALUES ('614189703-7', 'Inside Daisy Clover', 'Per nerve adhesiolys NEC', '$55.35', 'Cookbook', 2008, 1516018, 1.57, 29);
+INSERT INTO public.book VALUES ('027342942-6', 'Simple-Minded Murder, The (Enfaldige mördaren, Den)', 'Inject insulin', '$18.73', 'Cookbook', 2009, 4741241, 4.48, 132);
+INSERT INTO public.book VALUES ('519454738-2', 'Promise Me This (Zavet)', 'Other nasal sinus ops', '$43.04', 'Memoir', 2007, 7224398, 4.23, 238);
+INSERT INTO public.book VALUES ('860954062-6', 'Mass Transit', 'Oth arthrotomy-elbow', '$44.66', 'Short story', 2004, 3004684, 4.4, 158);
+INSERT INTO public.book VALUES ('851608780-8', 'Knife in the Water (Nóz w wodzie)', 'Isotope inject/instill', '$58.77', 'Alternate history', 2003, 5019682, 1.52, 127);
+INSERT INTO public.book VALUES ('527751168-7', 'Dylan Moran: Yeah, Yeah', 'Op bi dr/in ig hr-gr NEC', '$41.13', 'Suspense', 2007, 1210315, 4.35, 93);
+INSERT INTO public.book VALUES ('301768357-5', 'Moving Violations', 'Femur injury op NOS', '$70.71', 'Horror', 2011, 851560, 3.92, 82);
+INSERT INTO public.book VALUES ('694130412-X', 'Hippie Revolution, The', 'Delayed clos abd wound', '$4.27', 'Review', 1987, 4992382, 4.32, 14);
+INSERT INTO public.book VALUES ('743491433-5', 'Weird Woman', 'Intra-op electron rad rx', '$97.50', 'Autobiography', 2008, 6569452, 2.16, 110);
+INSERT INTO public.book VALUES ('101598473-8', 'Knowing', 'Arthrodesis of hip', '$75.52', 'Home and garden', 1997, 5587655, 2.24, 12);
+INSERT INTO public.book VALUES ('389792066-2', 'Skeletons', 'Other radius/ulna incis', '$58.97', 'Math', 2007, 5846131, 3.19, 34);
+INSERT INTO public.book VALUES ('675399726-1', 'Real McCoy, The', 'Oth op on >l extraoc mus', '$75.47', 'Thriller', 2011, 14833, 4.35, 72);
+INSERT INTO public.book VALUES ('809250742-2', 'Before and After', 'Arterial puncture NEC', '$80.75', 'Action and adventure', 2008, 9657459, 3.11, 222);
+INSERT INTO public.book VALUES ('574913292-7', 'Out to Sea', 'Repair of spleen', '$39.74', 'Journal', 1999, 168765, 3.53, 52);
+INSERT INTO public.book VALUES ('113493206-5', 'Jeanne Dielman, 23 Quai du Commerce, 1080 Bruxelles', 'Dx proc fetus/amnion NEC', '$69.08', 'Encyclopedia', 2006, 2387856, 3.63, 45);
+INSERT INTO public.book VALUES ('889332835-6', 'Tales from the Hood', 'Mri spinal canal', '$44.61', 'Drama', 1992, 3510757, 4.31, 7);
+INSERT INTO public.book VALUES ('283821856-5', 'Overlord', 'Educational therapy', '$65.17', 'Poetry', 2007, 8447700, 3.27, 141);
+INSERT INTO public.book VALUES ('096416549-X', 'Mr. Pip', 'Insert oropharyn airway', '$12.18', 'Crime', 2005, 746448, 2.39, 199);
+INSERT INTO public.book VALUES ('249753744-5', 'Ski Party', 'Residual root removal', '$2.36', 'Encyclopedia', 2003, 9685147, 5.0, 167);
+INSERT INTO public.book VALUES ('433346207-X', 'My Childhood', 'Cystostomy closure', '$13.89', 'Crafts/hobbies', 1993, 5554237, 1.42, 207);
+INSERT INTO public.book VALUES ('449296180-1', 'At Midnight I''ll Take Your Soul (À Meia-Noite Levarei Sua Alma)', 'Chorioretin les cryother', '$47.95', 'History', 2009, 963644, 4.72, 191);
+INSERT INTO public.book VALUES ('934944123-3', 'Pillow of Death', 'Mediastinal pneumogram', '$41.22', 'Short story', 1968, 4304291, 1.42, 41);
+INSERT INTO public.book VALUES ('032261152-0', 'In the Mirror of Maya Deren (Im Spiegel der Maya Deren)', 'Replace vag/vulv packing', '$90.61', 'Classic', 2003, 9712626, 3.0, 233);
+INSERT INTO public.book VALUES ('166827111-7', 'Vizontele Tuuba', 'Low cervical c-section', '$84.89', 'Humor', 2011, 3487815, 1.51, 192);
+INSERT INTO public.book VALUES ('866517390-0', 'Clone (Womb)', 'Radical excis skin les', '$60.88', 'Travel', 2007, 5206472, 2.27, 180);
+INSERT INTO public.book VALUES ('720455977-0', 'Freeway', 'Suture urethral lacerat', '$25.33', 'Business/economics', 2009, 2924198, 1.7, 240);
+INSERT INTO public.book VALUES ('019561007-5', 'Kill Theory', 'Enuc socket revis NEC', '$43.73', 'Biography', 2012, 1390638, 2.59, 17);
+INSERT INTO public.book VALUES ('949200254-X', 'Sleeping with the Enemy', 'Closed red-int fix femur', '$23.58', 'Thriller', 2001, 6261991, 2.07, 28);
+INSERT INTO public.book VALUES ('531182103-5', 'The Inspector', 'Excis cul-de-sac lesion', '$73.86', 'Horror', 2000, 9049872, 2.2, 165);
+INSERT INTO public.book VALUES ('850205702-2', 'Kids in the Hall: Brain Candy', 'Ippb', '$14.58', 'Fairytale', 2009, 1614567, 4.98, 186);
+INSERT INTO public.book VALUES ('967276006-X', 'It''s a Gift', 'Insert vasc access dev', '$31.55', 'Graphic novel', 2002, 4728258, 3.63, 44);
+INSERT INTO public.book VALUES ('586919215-3', 'Long Hello and Short Goodbye', 'Type 4 tympanoplasty', '$41.23', 'Fantasy', 1968, 4744506, 2.33, 6);
+INSERT INTO public.book VALUES ('928791370-6', 'Osmosis Jones', 'Replantation of scalp', '$23.55', 'Suspense', 2009, 8045357, 4.9, 237);
+INSERT INTO public.book VALUES ('913616867-X', 'Something Wild', 'Pyeloscopy', '$60.29', 'Math', 2005, 9840959, 3.84, 227);
+INSERT INTO public.book VALUES ('143487435-4', 'Search, The', 'Insertion of iud', '$36.03', 'Suspense', 2004, 2494616, 2.48, 30);
+INSERT INTO public.book VALUES ('649299294-6', 'Inbetweeners Movie, The', 'Pectus deformity repair', '$62.85', 'Textbook', 1992, 1893806, 3.36, 11);
+INSERT INTO public.book VALUES ('727406782-6', 'Pandemonium', 'Lap sigmoidectomy', '$50.14', 'Anthology', 1998, 1466799, 3.39, 195);
+INSERT INTO public.book VALUES ('889207288-9', 'Power and Terror: Noam Chomsky in Our Times', 'Polio vaccine administra', '$74.98', 'Cookbook', 2007, 6551505, 2.72, 142);
+INSERT INTO public.book VALUES ('051984010-0', 'Sugar Town', 'Other glossotomy', '$86.44', 'Religion, spirituality, and new age', 2011, 671428, 3.02, 152);
+INSERT INTO public.book VALUES ('271036017-9', 'Loser Takes All! (Qui perd gagne !)', 'Tooth implantation', '$68.85', 'Home and garden', 2012, 1740103, 2.85, 134);
+INSERT INTO public.book VALUES ('435361424-X', 'Heima', 'Oth spinal thecal shunt', '$94.14', 'Home and garden', 2003, 7526240, 2.18, 64);
+INSERT INTO public.book VALUES ('317318204-9', 'Scooby-Doo! The Mystery Begins', 'Manual reduc rect prolap', '$79.38', 'Humor', 2006, 1466539, 4.38, 208);
+INSERT INTO public.book VALUES ('692043203-X', 'Anarchist Cookbook, The', 'Endosc lg bowel thru st', '$35.17', 'Science fiction', 2006, 5911476, 2.52, 100);
+INSERT INTO public.book VALUES ('929121382-9', 'Purgatory', 'Pack ext auditory canal', '$28.41', 'Mystery', 2007, 2368944, 2.85, 54);
+INSERT INTO public.book VALUES ('624585427-X', 'Sita Sings the Blues', 'Pharyngoscopy', '$81.40', 'Math', 1986, 269360, 5.0, 139);
+INSERT INTO public.book VALUES ('853868979-7', 'How I Live Now', 'Oth transmyo revascular', '$62.35', 'Review', 2004, 4010882, 2.0, 60);
+INSERT INTO public.book VALUES ('080664477-X', 'Return of the Vampire, The', 'Cystostomy closure', '$43.06', 'Diary', 1989, 8830493, 4.73, 14);
+INSERT INTO public.book VALUES ('236861800-7', 'Pelle Svanslös', 'Atrial cardioversion', '$32.70', 'Business/economics', 1993, 840373, 2.8, 108);
+INSERT INTO public.book VALUES ('717006571-1', 'Black and White', 'Eye enuc/implan/musc att', '$79.19', 'Western', 1962, 5356681, 2.52, 43);
+INSERT INTO public.book VALUES ('004222471-3', 'Seven Swords (Chat gim)', 'Rejected kidney nephrect', '$51.50', 'Textbook', 1996, 6270369, 1.82, 104);
+INSERT INTO public.book VALUES ('253421158-7', 'Jessabelle', 'Inject/infuse electrolyt', '$52.94', 'Business/economics', 2008, 9075176, 3.7, 5);
+INSERT INTO public.book VALUES ('119493863-9', 'Elite Squad: The Enemy Within (Tropa de Elite 2 - O Inimigo Agora É Outro)', 'Interview & evaluat NEC', '$27.17', 'Action and adventure', 1986, 4374698, 4.56, 21);
+INSERT INTO public.book VALUES ('936326617-6', 'Four Feathers, The', 'Anal anastomosis', '$33.53', 'Anthology', 2005, 2784904, 4.53, 18);
+INSERT INTO public.book VALUES ('571594735-9', 'Rough Magic', 'Clos bx saliv gland/duct', '$80.55', 'Textbook', 2010, 6587507, 2.19, 100);
+INSERT INTO public.book VALUES ('422031947-6', 'Ill-Fated Love (Doomed Love) (Amor de Perdição)', 'Tu adhesiolysis bladder', '$73.97', 'True crime', 2008, 9352058, 1.48, 221);
+INSERT INTO public.book VALUES ('359496499-X', 'Class Act', 'Open reduct mandible fx', '$19.81', 'Alternate history', 2008, 4268982, 2.75, 236);
+INSERT INTO public.book VALUES ('131242321-8', 'Once Around', 'Delayed clos abd wound', '$86.60', 'Classic', 2008, 4809414, 4.37, 151);
+INSERT INTO public.book VALUES ('620402036-6', '2019: After the Fall of New York', 'Cervical spine x-ray NEC', '$27.93', 'Picture book', 2012, 4370877, 2.68, 126);
+INSERT INTO public.book VALUES ('814063892-7', 'Phase IV', 'Opn rep umb hrn-grft NEC', '$31.74', 'Travel', 1994, 1719430, 2.93, 174);
+INSERT INTO public.book VALUES ('586709303-4', 'Stag Night', 'Free skin graft NEC', '$74.77', 'Memoir', 2006, 3895329, 3.14, 155);
+INSERT INTO public.book VALUES ('315028214-4', 'Big Bad Wolf', 'Bladder neck dilation', '$13.86', 'History', 2002, 4774504, 3.2, 222);
+INSERT INTO public.book VALUES ('017376297-2', 'El tren de la memoria', 'Endarterectomy of aorta', '$37.43', 'Memoir', 2002, 2031949, 4.08, 229);
+INSERT INTO public.book VALUES ('085809405-3', 'Feed', 'Pros repair atria def-cl', '$34.04', 'Political thriller', 1996, 4292681, 1.28, 229);
+INSERT INTO public.book VALUES ('273736069-2', 'Three Wise Men (Kolme viisasta miestä)', 'Dermabrasion', '$75.62', 'Western', 2006, 6371022, 2.34, 124);
+INSERT INTO public.book VALUES ('922743000-8', 'Frontrunners', 'Construction of penis', '$62.57', 'Classic', 2000, 6536694, 4.04, 119);
+INSERT INTO public.book VALUES ('163739070-X', 'Old Man and the Sea, The', 'Part gast w jej transpos', '$84.03', 'Suspense', 1985, 4686000, 3.81, 15);
+INSERT INTO public.book VALUES ('323991176-0', 'What Ever Happened to Baby Jane?', 'Closure of mouth fistula', '$36.59', 'Humor', 2012, 1291832, 3.24, 174);
+INSERT INTO public.book VALUES ('661562407-9', 'Soldier, The', 'Endo emb hd/nk,bare coil', '$6.86', 'Memoir', 2000, 6182072, 3.76, 246);
+INSERT INTO public.book VALUES ('181954119-3', 'Librarian: Return to King Solomon''s Mines, The', 'Hrt revas byps anas NEC', '$43.27', 'Guide', 1987, 2680349, 4.31, 227);
+INSERT INTO public.book VALUES ('167836346-4', 'Repast (Meshi)', 'Nephrotomogram NEC', '$66.60', 'Classic', 2004, 9100267, 1.17, 214);
+INSERT INTO public.book VALUES ('117141265-7', 'Diamonds', 'Suture chest wall lacer', '$94.67', 'Suspense', 1988, 3686146, 2.15, 133);
+INSERT INTO public.book VALUES ('566564397-1', 'Code Conspiracy, The', 'Scleral fistula repair', '$86.46', 'Math', 2008, 9758341, 3.29, 113);
+INSERT INTO public.book VALUES ('349845049-2', 'Dive! (Dive!: Living off America''s Waste)', 'Cryotherap cornea lesion', '$24.82', 'Math', 1984, 4189519, 2.28, 92);
+INSERT INTO public.book VALUES ('070087873-4', 'Joshua', 'Choledochoplasty', '$14.16', 'Science', 2002, 1671895, 2.07, 210);
+INSERT INTO public.book VALUES ('402156218-4', 'Quatermass 2 (Enemy from Space)', 'Sutur capsul/ligamen arm', '$18.08', 'Travel', 1997, 904131, 2.25, 86);
+INSERT INTO public.book VALUES ('738391648-4', 'Nobody Loves Me (Keiner liebt mich)', 'Opn rep ind ing hern NEC', '$89.74', 'Self help', 1997, 8458979, 3.21, 184);
+INSERT INTO public.book VALUES ('310645434-2', 'Blood and Roses (Et mourir de plaisir) (To Die with Pleasure)', 'C-vasc scan/isotop funct', '$86.54', 'Health/fitness', 1993, 5758756, 2.33, 173);
+INSERT INTO public.book VALUES ('332485487-3', 'Rocks in my Pockets', 'Replace vaginal pessary', '$48.53', 'Political thriller', 2012, 3086701, 4.64, 143);
+INSERT INTO public.book VALUES ('416755800-9', 'Operation ''Y'' & Other Shurik''s Adventures', 'Removal superfic FB eye', '$33.90', 'Health/fitness', 2007, 9103269, 1.07, 72);
+INSERT INTO public.book VALUES ('249529400-6', 'Cactus Flower', 'Sm bowel segment isolat', '$94.50', 'Home and garden', 1992, 5517298, 2.17, 71);
+INSERT INTO public.book VALUES ('799712104-8', 'Not Fade Away', 'Fit below knee prosthes', '$41.11', 'Art/architecture', 2009, 8692286, 2.66, 94);
+INSERT INTO public.book VALUES ('501147207-8', 'Dragon Inn (Sun lung moon hak chan)', 'Other chordotomy', '$28.39', 'Romance', 2004, 3094656, 2.97, 213);
+INSERT INTO public.book VALUES ('364579669-X', 'Bedroom Window, The', 'Uterine repair NEC', '$17.49', 'Anthology', 2002, 517281, 2.27, 12);
+INSERT INTO public.book VALUES ('595526640-2', 'House of Wax', 'Hemorrhoid injection', '$39.92', 'Sports and leisure', 1998, 6200970, 1.78, 152);
+INSERT INTO public.book VALUES ('717860103-5', 'Whirlygirl', 'Excision of hydrocele', '$54.44', 'Mystery', 2008, 806085, 1.05, 26);
+INSERT INTO public.book VALUES ('347254513-5', 'Dark Blue World (Tmavomodrý svet)', 'Upper limb lymphangiogrm', '$76.41', 'Chick lit', 1998, 9039761, 4.6, 41);
+INSERT INTO public.book VALUES ('029434417-9', 'Time to Kill (Tempo di uccidere)', 'Sutur capsul/lig leg NEC', '$10.84', 'Comic book', 2004, 4339760, 1.93, 22);
+INSERT INTO public.book VALUES ('115855096-0', 'Allan Quatermain and the Temple of Skulls', 'Pancreatic tube irrigat', '$10.50', 'Autobiography', 2008, 1908299, 4.66, 9);
+INSERT INTO public.book VALUES ('220291156-1', 'Powder', 'Opn bx larynx or trachea', '$86.20', 'Review', 2008, 7349299, 4.14, 202);
+INSERT INTO public.book VALUES ('363719677-8', 'The Golden Voyage of Sinbad', 'Other acupuncture', '$48.65', 'Art/architecture', 1999, 4337972, 4.21, 30);
+INSERT INTO public.book VALUES ('296535889-7', 'Autómata (Automata)', 'Endoscopic ileal conduit', '$22.43', 'Western', 2006, 8787805, 1.64, 32);
+INSERT INTO public.book VALUES ('105556924-3', 'City Below, The (Unter dir die Stadt)', 'Pelvic evisceration', '$1.77', 'Horror', 2005, 1457461, 2.89, 129);
+INSERT INTO public.book VALUES ('267460045-4', 'The Raid', 'Lacrimal gland biopsy', '$28.75', 'Coming-of-age', 1986, 8811050, 4.25, 172);
+INSERT INTO public.book VALUES ('167647977-5', 'Three Smart Girls Grow Up', 'Destruct abd wall lesion', '$14.15', 'Biography', 1996, 6021430, 4.28, 173);
+INSERT INTO public.book VALUES ('582356881-9', 'Baghban', 'Int fix w/o fx reduc NOS', '$24.39', 'Mystery', 1998, 8226121, 2.99, 146);
+INSERT INTO public.book VALUES ('973016551-3', 'Chopping Mall (a.k.a. Killbots)', 'Visual field study', '$42.04', 'Health/fitness', 2003, 342061, 2.28, 68);
+INSERT INTO public.book VALUES ('834369229-2', 'Mother of Mine (Äideistä parhain)', 'Elbow joint biopsy', '$23.73', 'Paranormal romance', 1964, 6387280, 3.18, 226);
+INSERT INTO public.book VALUES ('457970599-8', 'Sokkotanssi', 'Open bladder biopsy', '$68.25', 'Satire', 2010, 4851974, 1.51, 56);
+INSERT INTO public.book VALUES ('646459739-6', 'Attack, The', 'Other femoral incision', '$78.59', 'Fantasy', 1999, 1773153, 3.42, 34);
+INSERT INTO public.book VALUES ('153542927-5', 'Fire on the Mountain', 'Prolapsed iris excision', '$7.92', 'Horror', 2011, 1713501, 2.63, 231);
+INSERT INTO public.book VALUES ('453171579-9', 'Babylon 5: The Gathering', 'Replace cast NEC', '$95.77', 'Guide', 2007, 1997130, 2.07, 19);
+INSERT INTO public.book VALUES ('916193377-5', 'Civil Brand', 'Lap tot intr-ab colectmy', '$28.04', 'Crime', 2003, 9043930, 3.05, 171);
+INSERT INTO public.book VALUES ('246550660-9', '10 minutes (10 minuta)', 'Proximal pancreatectomy', '$58.32', 'Alternate history', 2003, 807093, 3.37, 54);
+INSERT INTO public.book VALUES ('373338582-9', 'Rally On! (Ralliraita)', 'Abdominal tomography NEC', '$64.44', 'Business/economics', 2009, 6643863, 3.83, 124);
+INSERT INTO public.book VALUES ('470722880-1', 'Over Her Dead Body', 'Total wrist replacement', '$2.40', 'Paranormal romance', 2001, 3595526, 2.18, 174);
+INSERT INTO public.book VALUES ('023049136-7', 'Dragon Eyes', 'Vessel resect/replac NOS', '$62.93', 'Health/fitness', 1997, 2085754, 2.43, 206);
+INSERT INTO public.book VALUES ('206023506-5', 'Reality Bites', 'Ins bone void filler', '$59.78', 'Prayer', 1999, 9374137, 4.26, 130);
+INSERT INTO public.book VALUES ('415684273-8', 'If These Walls Could Talk 2', 'Omt to move tissue fluid', '$39.23', 'Cookbook', 2012, 5306390, 1.09, 21);
+INSERT INTO public.book VALUES ('287293886-9', 'Double Dare', 'Stern esophagogastrostom', '$30.45', 'Romance', 2006, 3486493, 1.42, 216);
+INSERT INTO public.book VALUES ('736556969-7', 'Blow-Up (Blowup)', 'Vascular cath irrigation', '$16.75', 'True crime', 2002, 3840352, 3.02, 232);
+INSERT INTO public.book VALUES ('393467053-9', 'Beasts of the Southern Wild', 'Rectal perirect op NEC', '$98.53', 'Paranormal romance', 2007, 2626480, 3.42, 28);
+INSERT INTO public.book VALUES ('919450036-3', 'Grace', 'Opn reduc disloc-ft/toe', '$96.49', 'History', 2001, 3122337, 3.69, 86);
+INSERT INTO public.book VALUES ('856221626-7', 'Just Visiting', 'Repl stent in bile duct', '$21.92', 'Children''s', 2012, 9304319, 4.35, 52);
+INSERT INTO public.book VALUES ('831485992-3', 'I Married a Monster from Outer Space', 'Oth dx proc-metacar/car', '$40.34', 'Political thriller', 1994, 2197950, 4.87, 174);
+INSERT INTO public.book VALUES ('437683075-5', 'Zeisters (Fat Guy Goes Nutzoid)', 'Contrast x-ray of orbit', '$96.34', 'Sports and leisure', 2008, 6645159, 1.77, 49);
+INSERT INTO public.book VALUES ('587066345-8', 'Invisible Woman, The', 'Blepharorrhaphy severing', '$57.24', 'Fairytale', 2003, 5313877, 2.34, 230);
+INSERT INTO public.book VALUES ('067252962-9', 'Offside', 'Distal pancreatectomy', '$9.73', 'Sports and leisure', 1992, 1222740, 3.39, 225);
+INSERT INTO public.book VALUES ('956317964-1', 'Crossfire Trail (Louis L''Amour''s ''Crossfire Trail'')', 'Extracap lens extrac NEC', '$58.57', 'Math', 2012, 675098, 1.37, 21);
+INSERT INTO public.book VALUES ('689541540-8', 'Boys Are Back, The', 'Culture-op wound', '$48.38', 'Children''s', 1996, 1393430, 3.02, 202);
+INSERT INTO public.book VALUES ('856000745-8', 'Terri', 'Oth exc/dest intvrt disc', '$80.08', 'True crime', 2004, 70629, 4.35, 66);
+INSERT INTO public.book VALUES ('381248910-4', 'Nightwing', 'Tendon sheath explorat', '$64.71', 'Prayer', 1972, 7591111, 4.3, 199);
+INSERT INTO public.book VALUES ('487898377-9', 'O Último Mergulho', 'Thorac incision thymus', '$71.46', 'Children''s', 2007, 3266528, 4.89, 210);
+INSERT INTO public.book VALUES ('955860017-2', 'Skin', 'Other heart/pericard ops', '$99.20', 'Drama', 2008, 1029694, 1.79, 169);
+INSERT INTO public.book VALUES ('812908378-7', 'Kotch', 'Gastric gavage', '$30.11', 'Home and garden', 1996, 2556404, 2.35, 134);
+INSERT INTO public.book VALUES ('607877822-6', 'Rent', 'Oth metacarp/carp incis', '$77.83', 'Cookbook', 1999, 1688620, 1.65, 126);
+INSERT INTO public.book VALUES ('226995063-1', 'Hugh Hefner: Playboy, Activist and Rebel', 'Repair of vessel NEC', '$90.46', 'Anthology', 2003, 2493080, 1.92, 67);
+INSERT INTO public.book VALUES ('337150800-5', 'South, The (Sur, El)', 'Pineal operation NEC', '$94.70', 'Review', 2004, 9978272, 4.04, 141);
+INSERT INTO public.book VALUES ('280846030-9', 'Rude', 'Replace prolapsed cord', '$30.43', 'Humor', 1985, 9009086, 2.47, 167);
+INSERT INTO public.book VALUES ('728806327-5', 'Chasing Amy', 'Lap radical abdomnl hyst', '$10.90', 'True crime', 1996, 3162438, 1.46, 250);
+INSERT INTO public.book VALUES ('036301747-X', 'Sweet Hereafter, The', 'Electrocochleography', '$90.05', 'Picture book', 1992, 683272, 1.12, 191);
+INSERT INTO public.book VALUES ('348057019-4', 'Rocket Gibraltar', 'Bact smear-peritoneum', '$63.85', 'Review', 1999, 302746, 1.17, 43);
+INSERT INTO public.book VALUES ('842026936-0', 'Aria', 'Remov urin drainage NEC', '$48.30', 'Poetry', 2001, 9401787, 1.11, 117);
+INSERT INTO public.book VALUES ('554286479-1', 'From Above', 'Nasal lesion excis NOS', '$93.92', 'Action and adventure', 2007, 2741196, 4.56, 84);
+INSERT INTO public.book VALUES ('347323445-1', 'Marquis', 'Exc maj les lid ful-thic', '$78.15', 'Comic book', 2000, 809606, 2.3, 183);
+INSERT INTO public.book VALUES ('017199855-3', 'Gregory Go Boom', 'Elbow joint biopsy', '$3.26', 'Health/fitness', 2001, 5513287, 2.96, 240);
+INSERT INTO public.book VALUES ('477280932-5', 'Thing with Two Heads, The', 'Rad pancreaticoduodenect', '$18.69', 'Coming-of-age', 1998, 5511722, 3.58, 184);
+INSERT INTO public.book VALUES ('648579857-9', 'Hitchcock', 'Esoph fistula repair NEC', '$77.49', 'Paranormal romance', 2001, 8624325, 3.82, 112);
+INSERT INTO public.book VALUES ('793595670-7', 'Piece of the Action, A', 'Ovarian wedge resection', '$91.68', 'Horror', 2009, 7192283, 2.59, 133);
+INSERT INTO public.book VALUES ('708677220-8', 'All Is Lost', 'Femoral division NEC', '$15.20', 'Science fiction', 1998, 7464632, 4.79, 84);
+INSERT INTO public.book VALUES ('804245477-5', 'RFK Must Die: The Assassination of Bobby Kennedy', 'Anoscopy', '$87.76', 'Children''s', 2009, 639429, 3.34, 175);
+INSERT INTO public.book VALUES ('519499644-6', 'Batman: Under the Red Hood', 'Vena cav angiocardiogram', '$73.75', 'Thriller', 1996, 7004248, 2.0, 183);
+INSERT INTO public.book VALUES ('546534789-9', 'Patriotism (Yûkoku)', 'Cl reduc disloc-hand/fng', '$78.84', 'Alternate history', 2002, 8272017, 4.76, 170);
+INSERT INTO public.book VALUES ('531793868-6', 'Lookin'' to Get Out', 'Open reduct face fx NEC', '$22.20', 'Satire', 2000, 9406743, 4.66, 74);
+INSERT INTO public.book VALUES ('571551337-5', 'Victim', 'Decompression chamber', '$53.80', 'Fairytale', 1995, 6541354, 2.39, 16);
+INSERT INTO public.book VALUES ('164145097-5', 'From the Sky Down', 'Intraspin nerve root div', '$69.77', 'Encyclopedia', 2013, 7028413, 2.09, 125);
+INSERT INTO public.book VALUES ('289164072-1', 'Good Neighbours (a.k.a. Good Neighbors)', 'Oth arthrotomy-foot/toe', '$7.78', 'Philosophy', 1994, 5973763, 3.76, 243);
+INSERT INTO public.book VALUES ('843157042-3', 'I''m So Excited (Los amantes pasajeros)', 'Toxicology-endocrine', '$1.42', 'Textbook', 2005, 6200564, 2.18, 11);
+INSERT INTO public.book VALUES ('862320205-8', 'Phantom', 'Oth exc, fus, repair toe', '$11.03', 'Drama', 1993, 7663365, 4.98, 133);
+INSERT INTO public.book VALUES ('555681127-X', 'Scorpio', 'Transab lg bowel endosc', '$94.48', 'Journal', 2004, 2792892, 4.19, 3);
+INSERT INTO public.book VALUES ('600090633-1', 'Reconstituirea (Reconstruction)', 'Postop vasc op hem contr', '$33.93', 'Historical fiction', 1994, 6429177, 3.47, 125);
+INSERT INTO public.book VALUES ('553085834-1', 'Phantom of the Paradise', 'Esophagogastroplasty', '$45.42', 'True crime', 2005, 9223017, 2.49, 49);
+INSERT INTO public.book VALUES ('919107922-5', 'Tipping the Velvet', 'Lysis cortical adhesion', '$66.73', 'Short story', 2002, 6569553, 2.4, 112);
+INSERT INTO public.book VALUES ('812300651-9', 'W Delta Z (a.k.a. The Killing Gene)', 'Intestinal op NEC', '$22.45', 'Anthology', 2004, 9743052, 1.77, 17);
+INSERT INTO public.book VALUES ('596219649-X', 'Champ, The', 'Dx ultrasound-vascular', '$14.01', 'Encyclopedia', 2007, 245698, 3.61, 34);
+INSERT INTO public.book VALUES ('867289177-5', 'Shifty', 'Extracran-intracr bypass', '$86.43', 'Fairytale', 1994, 1472934, 2.17, 245);
+INSERT INTO public.book VALUES ('991686751-8', 'Mirror, The (Zerkalo)', 'Appl ext fix-metatar/tar', '$8.74', 'Prayer', 1992, 1407610, 3.36, 3);
+INSERT INTO public.book VALUES ('988127899-6', 'Go for Zucker! (Alles auf Zucker!)', 'Facial bone/jnt op NEC', '$60.09', 'Science', 2012, 2057459, 3.98, 1);
+INSERT INTO public.book VALUES ('445021449-8', 'City of Sadness, A (Bei qing cheng shi)', 'Incise bartholin''s gland', '$38.89', 'Anthology', 2005, 4683734, 1.39, 241);
+INSERT INTO public.book VALUES ('519491786-4', 'Little Girl Who Conquered Time, The (Toki o kakeru shôjo)', 'Remove both testes', '$58.04', 'Encyclopedia', 2000, 8296543, 4.37, 228);
+INSERT INTO public.book VALUES ('059528283-0', 'Romance of Astrea and Celadon, The (Les amours d''Astrée et de Céladon)', 'Cranial osteoplasty NEC', '$46.24', 'True crime', 1994, 1277452, 4.2, 213);
+INSERT INTO public.book VALUES ('823895870-9', 'Battle in Seattle', 'Unspec op bone inj NOS', '$68.77', 'Crime', 1999, 8863770, 1.65, 183);
+INSERT INTO public.book VALUES ('430132456-9', 'Catch Me If You Can', 'Head soft tiss x-ray NEC', '$90.54', 'Business/economics', 2009, 3536560, 1.85, 97);
+INSERT INTO public.book VALUES ('932475725-3', 'Godfather: Part II, The', 'Other tenoplasty of hand', '$51.22', 'Fantasy', 1998, 7537035, 1.01, 136);
+INSERT INTO public.book VALUES ('753001788-8', 'Night Watch (Nochnoy dozor)', 'Micro exam-femal gen NEC', '$20.68', 'Fairytale', 2006, 4195955, 2.91, 138);
+INSERT INTO public.book VALUES ('708617794-6', 'Moonlighting', 'Other joint mobilization', '$13.53', 'Alternate history', 2005, 634068, 2.68, 78);
+INSERT INTO public.book VALUES ('326165997-1', 'Winter Break', 'Appl ext fix-radius/ulna', '$20.05', 'Young adult', 2006, 396026, 1.93, 122);
+INSERT INTO public.book VALUES ('274720391-3', 'Doctor Who', 'Bone graft to chest cage', '$22.63', 'Romance', 2003, 9131158, 1.32, 141);
+INSERT INTO public.book VALUES ('877680598-0', 'House on Telegraph Hill, The', 'Post nasal pac for epist', '$76.82', 'Guide', 1987, 2898626, 3.1, 153);
+INSERT INTO public.book VALUES ('523354551-9', 'Debt, The', 'Mastoidectomy revision', '$14.66', 'Anthology', 1993, 8555437, 4.41, 142);
+INSERT INTO public.book VALUES ('437077584-1', 'Pieta', 'Bronchoscopy thru stoma', '$20.31', 'Children''s', 2000, 2814086, 3.14, 99);
+INSERT INTO public.book VALUES ('638985428-5', 'Memories of Matsuko (Kiraware Matsuko no isshô)', 'Auxiliary liver transpl', '$87.51', 'Historical fiction', 2005, 1586622, 1.01, 15);
+INSERT INTO public.book VALUES ('661060210-7', 'The Radio Pirates', 'Alcohol detoxification', '$51.95', 'Prayer', 2003, 1138289, 2.57, 215);
+INSERT INTO public.book VALUES ('809581611-6', 'The Divine Woman', 'Facial bone incision NEC', '$89.65', 'Action and adventure', 1998, 1018085, 1.77, 8);
+INSERT INTO public.book VALUES ('909674142-0', 'Date with Judy, A', 'Intra-abd lg bowel manip', '$27.11', 'Short story', 2008, 7755389, 4.57, 21);
+INSERT INTO public.book VALUES ('737109515-4', 'Reclaim', 'Incis rectal stricture', '$87.07', 'Short story', 2005, 6491947, 2.83, 213);
+INSERT INTO public.book VALUES ('413935955-2', 'Three Smart Girls Grow Up', 'Thoracoscopc decort lung', '$48.09', 'Fantasy', 2003, 2187603, 2.71, 80);
+INSERT INTO public.book VALUES ('311253609-6', 'Sword of the Valiant', 'Total removal sm bowel', '$54.39', 'Religion, spirituality, and new age', 2009, 5048182, 3.08, 102);
+INSERT INTO public.book VALUES ('732537273-6', 'Egg and I, The', 'Internal fix-patella', '$81.18', 'Dictionary', 1997, 3800964, 4.1, 230);
+INSERT INTO public.book VALUES ('574016917-8', 'Hot Saturday', 'Incision of testes', '$18.44', 'Children''s', 2008, 6238398, 1.41, 22);
+INSERT INTO public.book VALUES ('285407383-5', 'Wer', 'Iridencleisis/iridotasis', '$62.54', 'Fairytale', 1994, 8119949, 3.59, 224);
+INSERT INTO public.book VALUES ('933151684-3', 'House of Fools', 'Adrenal vessel ligation', '$6.78', 'Horror', 2001, 403272, 1.31, 149);
+INSERT INTO public.book VALUES ('833053956-3', 'Hannibal', 'Transabdomin gastroscopy', '$71.58', 'True crime', 2004, 7548399, 3.52, 135);
+INSERT INTO public.book VALUES ('654117020-7', 'Lady and the Tramp II: Scamp''s Adventure', 'Ins/rep mul pul gn,rechg', '$78.44', 'Classic', 1991, 2369237, 3.04, 123);
+INSERT INTO public.book VALUES ('715876640-3', 'Three Burials of Melquiades Estrada, The', 'Lap hern ant abd-gft NEC', '$65.74', 'Fairytale', 2011, 8599371, 1.96, 219);
+INSERT INTO public.book VALUES ('774073311-3', 'Casanova''s Big Night', 'Close rectal fist NEC', '$86.65', 'Classic', 2009, 4734756, 2.83, 10);
+INSERT INTO public.book VALUES ('388053663-5', '1911 (Xinhai geming)', 'Meninge vessel ligation', '$44.08', 'Textbook', 2005, 1400306, 4.76, 126);
+INSERT INTO public.book VALUES ('067304123-9', 'Legend of Drunken Master, The (Jui kuen II)', 'Rev hip repl-liner/head', '$50.99', 'Thriller', 1989, 719800, 4.01, 34);
+INSERT INTO public.book VALUES ('200756859-4', 'Heartbeats (Les amours imaginaires)', 'Ther ult head & neck ves', '$44.19', 'Philosophy', 1993, 1765297, 1.65, 2);
+INSERT INTO public.book VALUES ('543638786-1', 'Shiloh', 'Peripheral nerve ops NEC', '$95.57', 'Political thriller', 1988, 5101010, 4.54, 18);
+INSERT INTO public.book VALUES ('111189791-3', 'Xanadu', 'Hand muscle reattachment', '$72.54', 'Philosophy', 2007, 2395090, 4.13, 72);
+INSERT INTO public.book VALUES ('899600131-7', 'Glorious Technicolor', 'Reimplan aberr renal ves', '$94.04', 'Crime', 1993, 4252309, 1.94, 9);
+INSERT INTO public.book VALUES ('268520013-4', 'Inside the Twin Towers', 'Bladder anastomosis NEC', '$33.35', 'Mystery', 2009, 4340379, 4.39, 59);
+INSERT INTO public.book VALUES ('098127157-X', 'Panic', 'Insert perm tube esophag', '$7.77', 'Philosophy', 1999, 2475, 3.43, 194);
+INSERT INTO public.book VALUES ('404812627-X', 'Grandma''s Boy', 'Temporary ileostomy', '$78.79', 'Review', 2011, 9484749, 3.97, 45);
+INSERT INTO public.book VALUES ('227470428-7', 'Prisoner of Zenda, The', 'Insert intercostal cath', '$82.64', 'Travel', 2002, 2803850, 2.54, 239);
+INSERT INTO public.book VALUES ('087876405-4', 'Crow: City of Angels, The', 'Shoulder disarticulation', '$26.83', 'Art/architecture', 1994, 7505411, 4.75, 180);
+INSERT INTO public.book VALUES ('886730172-1', 'Kid Galahad', 'Imp/rep schan coch pros', '$40.78', 'Historical fiction', 2007, 3190527, 1.26, 206);
+INSERT INTO public.book VALUES ('200134920-3', 'Last Remake of Beau Geste, The', 'Cholangiogram NEC', '$31.73', 'Horror', 2003, 4578438, 1.53, 104);
+INSERT INTO public.book VALUES ('164933482-6', 'Dark Girls', 'Rectocele repair', '$92.96', 'Business/economics', 1985, 6174054, 3.39, 130);
+INSERT INTO public.book VALUES ('809334023-8', 'No Small Affair', 'Operations on clitoris', '$64.69', 'Diary', 2010, 9878602, 3.45, 71);
+INSERT INTO public.book VALUES ('328630611-8', 'Papa', 'Percu bx gb/bile duct', '$60.55', 'Satire', 2006, 29136, 3.61, 41);
+INSERT INTO public.book VALUES ('159817092-9', 'Jack-Jack Attack', 'Tot osteoplasty maxilla', '$61.24', 'Crafts/hobbies', 2009, 8340038, 3.71, 161);
+INSERT INTO public.book VALUES ('549849176-X', 'Somewhere in the Night', 'Destruct cornea les NEC', '$29.32', 'Business/economics', 2007, 5841049, 1.53, 46);
+INSERT INTO public.book VALUES ('618435655-0', 'Next Three Days, The', 'Interruption vena cava', '$84.12', 'Chick lit', 2008, 774429, 3.95, 241);
+INSERT INTO public.book VALUES ('339348822-8', 'Paranormal Activity', 'Nasophary contrast x-ray', '$29.01', 'Satire', 2000, 7391951, 2.99, 165);
+INSERT INTO public.book VALUES ('928659391-0', 'Eversmile, New Jersey', 'Ins part disc pros lumb', '$82.24', 'Autobiography', 1991, 8584651, 3.2, 184);
+INSERT INTO public.book VALUES ('204154143-1', 'Stonewall', 'Op on 1 extraoc musc NEC', '$67.66', 'Philosophy', 2008, 9152852, 3.21, 197);
+INSERT INTO public.book VALUES ('713726123-X', 'Shot in the Dark, A', 'Arm ves resect w replace', '$97.68', 'Crime', 2011, 1790310, 4.46, 32);
+INSERT INTO public.book VALUES ('144348626-4', '1939: Hollywood''s Greatest Year', 'Lap total abdominal hyst', '$64.65', 'Anthology', 1994, 6725629, 2.71, 14);
+INSERT INTO public.book VALUES ('400088677-0', 'Sons of Perdition', 'Removal iud', '$6.04', 'Classic', 2008, 6046230, 3.71, 220);
+INSERT INTO public.book VALUES ('895919336-4', 'No Looking Back', 'Rev crtd sinus stm leads', '$82.40', 'Historical fiction', 1994, 6458441, 2.91, 13);
+INSERT INTO public.book VALUES ('799928971-X', 'Starbuck', 'Endarterectomy NOS', '$67.66', 'Fantasy', 2003, 9468477, 4.12, 158);
+INSERT INTO public.book VALUES ('325665536-X', '13Hrs', 'Stapedectomy NEC', '$67.94', 'Review', 2013, 895241, 2.73, 179);
+INSERT INTO public.book VALUES ('364668437-2', 'Secrets', 'Cell blk/pap-op wound', '$68.60', 'Drama', 1995, 5704584, 4.92, 10);
+INSERT INTO public.book VALUES ('320695670-6', 'Commandments', 'Aspir curett uterus NEC', '$67.57', 'Philosophy', 1997, 3162119, 2.5, 76);
+INSERT INTO public.book VALUES ('853548157-5', '2 + 2 (Dos más dos)', 'Intestinal op NEC', '$20.37', 'Crafts/hobbies', 1986, 3047317, 4.62, 202);
+INSERT INTO public.book VALUES ('098310166-3', 'Secret of NIMH, The', 'Total ostectomy NEC', '$13.60', 'Diary', 1994, 7705992, 3.52, 46);
+INSERT INTO public.book VALUES ('925160301-4', 'Railroaded!', 'Insert vasc access dev', '$47.78', 'Review', 1994, 4884002, 4.15, 189);
+INSERT INTO public.book VALUES ('588088642-5', 'Ready to Wear (Pret-A-Porter)', 'Metatar/tar division NEC', '$23.48', 'Diary', 2009, 142059, 3.01, 117);
+INSERT INTO public.book VALUES ('465838220-2', 'Letter, The', 'Dx ultrasound-thorax NEC', '$41.09', 'Business/economics', 2009, 3909886, 4.39, 105);
+INSERT INTO public.book VALUES ('087935617-0', 'Tonight and Every Night', 'Intracereb cth-burr hole', '$42.90', 'Review', 2012, 989982, 4.79, 23);
+INSERT INTO public.book VALUES ('576176060-6', 'Dark of the Sun', 'Tot mandibulec w reconst', '$6.73', 'Diary', 2011, 7687922, 2.37, 112);
 
 
 --
--- TOC entry 3040 (class 0 OID 18104)
--- Dependencies: 208
--- Data for Name: book_authors; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.book_authors VALUES ('565501303-7', 82);
-INSERT INTO public.book_authors VALUES ('745726166-4', 249);
-INSERT INTO public.book_authors VALUES ('141143158-8', 235);
-INSERT INTO public.book_authors VALUES ('721486502-5', 30);
-INSERT INTO public.book_authors VALUES ('905399284-7', 52);
-INSERT INTO public.book_authors VALUES ('163578512-X', 14);
-INSERT INTO public.book_authors VALUES ('625773853-9', 25);
-INSERT INTO public.book_authors VALUES ('528063907-9', 69);
-INSERT INTO public.book_authors VALUES ('837725458-1', 44);
-INSERT INTO public.book_authors VALUES ('962852031-8', 9);
-INSERT INTO public.book_authors VALUES ('479204029-9', 239);
-INSERT INTO public.book_authors VALUES ('935595550-2', 99);
-INSERT INTO public.book_authors VALUES ('289150352-X', 178);
-INSERT INTO public.book_authors VALUES ('797991817-7', 130);
-INSERT INTO public.book_authors VALUES ('663355652-7', 2);
-INSERT INTO public.book_authors VALUES ('175273118-2', 136);
-INSERT INTO public.book_authors VALUES ('779017789-3', 35);
-INSERT INTO public.book_authors VALUES ('244495322-3', 29);
-INSERT INTO public.book_authors VALUES ('521735461-5', 113);
-INSERT INTO public.book_authors VALUES ('231820653-8', 28);
-INSERT INTO public.book_authors VALUES ('858194346-2', 62);
-INSERT INTO public.book_authors VALUES ('368063051-4', 183);
-INSERT INTO public.book_authors VALUES ('169291605-X', 31);
-INSERT INTO public.book_authors VALUES ('600909947-1', 101);
-INSERT INTO public.book_authors VALUES ('651466403-2', 99);
-INSERT INTO public.book_authors VALUES ('823957154-9', 77);
-INSERT INTO public.book_authors VALUES ('567049390-7', 119);
-INSERT INTO public.book_authors VALUES ('349330131-6', 119);
-INSERT INTO public.book_authors VALUES ('270712836-8', 239);
-INSERT INTO public.book_authors VALUES ('155749938-1', 147);
-INSERT INTO public.book_authors VALUES ('911999032-4', 204);
-INSERT INTO public.book_authors VALUES ('062109822-1', 97);
-INSERT INTO public.book_authors VALUES ('841058014-4', 8);
-INSERT INTO public.book_authors VALUES ('914875553-2', 199);
-INSERT INTO public.book_authors VALUES ('764014865-0', 197);
-INSERT INTO public.book_authors VALUES ('503237818-6', 15);
-INSERT INTO public.book_authors VALUES ('845282192-1', 159);
-INSERT INTO public.book_authors VALUES ('359217434-7', 10);
-INSERT INTO public.book_authors VALUES ('476528037-3', 36);
-INSERT INTO public.book_authors VALUES ('711371002-6', 114);
-INSERT INTO public.book_authors VALUES ('637657825-X', 171);
-INSERT INTO public.book_authors VALUES ('037146821-3', 192);
-INSERT INTO public.book_authors VALUES ('796580315-1', 244);
-INSERT INTO public.book_authors VALUES ('068919983-X', 68);
-INSERT INTO public.book_authors VALUES ('012741986-1', 136);
-INSERT INTO public.book_authors VALUES ('007521393-1', 190);
-INSERT INTO public.book_authors VALUES ('358245000-7', 204);
-INSERT INTO public.book_authors VALUES ('725598712-5', 245);
-INSERT INTO public.book_authors VALUES ('587258898-4', 187);
-INSERT INTO public.book_authors VALUES ('256035178-1', 152);
-INSERT INTO public.book_authors VALUES ('357279663-6', 101);
-INSERT INTO public.book_authors VALUES ('012467595-6', 161);
-INSERT INTO public.book_authors VALUES ('399282166-8', 218);
-INSERT INTO public.book_authors VALUES ('496223091-3', 219);
-INSERT INTO public.book_authors VALUES ('758283987-0', 151);
-INSERT INTO public.book_authors VALUES ('779546661-3', 10);
-INSERT INTO public.book_authors VALUES ('210021148-X', 11);
-INSERT INTO public.book_authors VALUES ('020197894-6', 18);
-INSERT INTO public.book_authors VALUES ('705291331-3', 61);
-INSERT INTO public.book_authors VALUES ('689276258-1', 17);
-INSERT INTO public.book_authors VALUES ('859727177-9', 241);
-INSERT INTO public.book_authors VALUES ('714841295-1', 39);
-INSERT INTO public.book_authors VALUES ('915194193-7', 171);
-INSERT INTO public.book_authors VALUES ('772346633-1', 222);
-INSERT INTO public.book_authors VALUES ('680805713-3', 164);
-INSERT INTO public.book_authors VALUES ('179787434-9', 200);
-INSERT INTO public.book_authors VALUES ('979066769-8', 139);
-INSERT INTO public.book_authors VALUES ('089913188-3', 21);
-INSERT INTO public.book_authors VALUES ('349173947-0', 39);
-INSERT INTO public.book_authors VALUES ('585564762-5', 118);
-INSERT INTO public.book_authors VALUES ('204725391-8', 192);
-INSERT INTO public.book_authors VALUES ('056302205-1', 15);
-INSERT INTO public.book_authors VALUES ('956132571-3', 38);
-INSERT INTO public.book_authors VALUES ('452263482-X', 189);
-INSERT INTO public.book_authors VALUES ('795267525-7', 141);
-INSERT INTO public.book_authors VALUES ('798754430-2', 170);
-INSERT INTO public.book_authors VALUES ('661467673-3', 114);
-INSERT INTO public.book_authors VALUES ('831627765-4', 209);
-INSERT INTO public.book_authors VALUES ('916412825-3', 4);
-INSERT INTO public.book_authors VALUES ('306075133-1', 72);
-INSERT INTO public.book_authors VALUES ('420224614-4', 10);
-INSERT INTO public.book_authors VALUES ('532243709-6', 228);
-INSERT INTO public.book_authors VALUES ('387008359-X', 23);
-INSERT INTO public.book_authors VALUES ('182599326-2', 85);
-INSERT INTO public.book_authors VALUES ('094081671-7', 154);
-INSERT INTO public.book_authors VALUES ('490888836-1', 176);
-INSERT INTO public.book_authors VALUES ('681048275-X', 182);
-INSERT INTO public.book_authors VALUES ('863967300-4', 144);
-INSERT INTO public.book_authors VALUES ('953469093-7', 148);
-INSERT INTO public.book_authors VALUES ('129400156-6', 197);
-INSERT INTO public.book_authors VALUES ('216824768-4', 244);
-INSERT INTO public.book_authors VALUES ('869446853-0', 100);
-INSERT INTO public.book_authors VALUES ('048275792-2', 170);
-INSERT INTO public.book_authors VALUES ('197360679-8', 139);
-INSERT INTO public.book_authors VALUES ('616739403-2', 231);
-INSERT INTO public.book_authors VALUES ('784155968-2', 32);
-INSERT INTO public.book_authors VALUES ('752472954-5', 86);
-INSERT INTO public.book_authors VALUES ('634444131-3', 85);
-INSERT INTO public.book_authors VALUES ('012573390-9', 114);
-INSERT INTO public.book_authors VALUES ('996146139-8', 13);
-INSERT INTO public.book_authors VALUES ('373833352-5', 16);
-INSERT INTO public.book_authors VALUES ('529804966-4', 97);
-INSERT INTO public.book_authors VALUES ('817072394-9', 50);
-INSERT INTO public.book_authors VALUES ('391768959-6', 226);
-INSERT INTO public.book_authors VALUES ('063888040-8', 28);
-INSERT INTO public.book_authors VALUES ('629550450-7', 119);
-INSERT INTO public.book_authors VALUES ('235868244-6', 17);
-INSERT INTO public.book_authors VALUES ('245838298-3', 64);
-INSERT INTO public.book_authors VALUES ('253819714-7', 210);
-INSERT INTO public.book_authors VALUES ('933376029-6', 159);
-INSERT INTO public.book_authors VALUES ('765870162-9', 33);
-INSERT INTO public.book_authors VALUES ('448584918-X', 204);
-INSERT INTO public.book_authors VALUES ('002519595-6', 52);
-INSERT INTO public.book_authors VALUES ('489988033-2', 210);
-INSERT INTO public.book_authors VALUES ('494723217-X', 87);
-INSERT INTO public.book_authors VALUES ('759953884-4', 28);
-INSERT INTO public.book_authors VALUES ('592518419-X', 5);
-INSERT INTO public.book_authors VALUES ('808741882-4', 114);
-INSERT INTO public.book_authors VALUES ('195062912-0', 236);
-INSERT INTO public.book_authors VALUES ('683442384-2', 228);
-INSERT INTO public.book_authors VALUES ('112411821-7', 203);
-INSERT INTO public.book_authors VALUES ('847776827-7', 236);
-INSERT INTO public.book_authors VALUES ('266695649-0', 131);
-INSERT INTO public.book_authors VALUES ('663080344-2', 184);
-INSERT INTO public.book_authors VALUES ('255189015-2', 43);
-INSERT INTO public.book_authors VALUES ('634774350-7', 168);
-INSERT INTO public.book_authors VALUES ('241701753-9', 120);
-INSERT INTO public.book_authors VALUES ('935962845-X', 36);
-INSERT INTO public.book_authors VALUES ('779002953-3', 64);
-INSERT INTO public.book_authors VALUES ('484440151-3', 189);
-INSERT INTO public.book_authors VALUES ('410190780-3', 130);
-INSERT INTO public.book_authors VALUES ('260314263-1', 246);
-INSERT INTO public.book_authors VALUES ('826383883-5', 56);
-INSERT INTO public.book_authors VALUES ('579325145-6', 163);
-INSERT INTO public.book_authors VALUES ('891119616-9', 16);
-INSERT INTO public.book_authors VALUES ('304881958-4', 187);
-INSERT INTO public.book_authors VALUES ('288228019-X', 41);
-INSERT INTO public.book_authors VALUES ('439372847-5', 84);
-INSERT INTO public.book_authors VALUES ('388476736-4', 201);
-INSERT INTO public.book_authors VALUES ('789193562-9', 34);
-INSERT INTO public.book_authors VALUES ('546357952-0', 75);
-INSERT INTO public.book_authors VALUES ('936482083-5', 204);
-INSERT INTO public.book_authors VALUES ('298252107-5', 245);
-INSERT INTO public.book_authors VALUES ('984797181-1', 128);
-INSERT INTO public.book_authors VALUES ('135822340-8', 16);
-INSERT INTO public.book_authors VALUES ('055458067-5', 122);
-INSERT INTO public.book_authors VALUES ('255096780-1', 30);
-INSERT INTO public.book_authors VALUES ('110551282-7', 16);
-INSERT INTO public.book_authors VALUES ('049149534-X', 103);
-INSERT INTO public.book_authors VALUES ('912235265-1', 88);
-INSERT INTO public.book_authors VALUES ('415928600-3', 217);
-INSERT INTO public.book_authors VALUES ('225786832-3', 198);
-INSERT INTO public.book_authors VALUES ('551029289-X', 153);
-INSERT INTO public.book_authors VALUES ('804430979-9', 158);
-INSERT INTO public.book_authors VALUES ('392919280-2', 15);
-INSERT INTO public.book_authors VALUES ('269045513-7', 74);
-INSERT INTO public.book_authors VALUES ('610775534-9', 2);
-INSERT INTO public.book_authors VALUES ('057844142-X', 235);
-INSERT INTO public.book_authors VALUES ('756692961-5', 121);
-INSERT INTO public.book_authors VALUES ('232333651-7', 113);
-INSERT INTO public.book_authors VALUES ('700767437-2', 36);
-INSERT INTO public.book_authors VALUES ('637158448-0', 19);
-INSERT INTO public.book_authors VALUES ('468303695-9', 191);
-INSERT INTO public.book_authors VALUES ('581955340-3', 212);
-INSERT INTO public.book_authors VALUES ('637705024-0', 147);
-INSERT INTO public.book_authors VALUES ('059906440-4', 8);
-INSERT INTO public.book_authors VALUES ('299089474-8', 162);
-INSERT INTO public.book_authors VALUES ('985687655-9', 227);
-INSERT INTO public.book_authors VALUES ('611895414-3', 25);
-INSERT INTO public.book_authors VALUES ('618186888-7', 102);
-INSERT INTO public.book_authors VALUES ('749487553-0', 5);
-INSERT INTO public.book_authors VALUES ('450576210-6', 21);
-INSERT INTO public.book_authors VALUES ('095825458-3', 3);
-INSERT INTO public.book_authors VALUES ('708925873-4', 171);
-INSERT INTO public.book_authors VALUES ('560781563-3', 4);
-INSERT INTO public.book_authors VALUES ('924502256-0', 196);
-INSERT INTO public.book_authors VALUES ('891764604-2', 249);
-INSERT INTO public.book_authors VALUES ('741644622-8', 68);
-INSERT INTO public.book_authors VALUES ('987313498-0', 55);
-INSERT INTO public.book_authors VALUES ('130987216-3', 15);
-INSERT INTO public.book_authors VALUES ('295525808-3', 126);
-INSERT INTO public.book_authors VALUES ('825307248-1', 165);
-INSERT INTO public.book_authors VALUES ('603718711-8', 14);
-INSERT INTO public.book_authors VALUES ('472596990-7', 47);
-INSERT INTO public.book_authors VALUES ('190938711-8', 196);
-INSERT INTO public.book_authors VALUES ('394598519-6', 143);
-INSERT INTO public.book_authors VALUES ('264072693-5', 194);
-INSERT INTO public.book_authors VALUES ('987599799-4', 164);
-INSERT INTO public.book_authors VALUES ('273177602-1', 66);
-INSERT INTO public.book_authors VALUES ('933661665-X', 14);
-INSERT INTO public.book_authors VALUES ('466677357-6', 237);
-INSERT INTO public.book_authors VALUES ('797823140-2', 137);
-INSERT INTO public.book_authors VALUES ('864197998-0', 215);
-INSERT INTO public.book_authors VALUES ('114584286-0', 32);
-INSERT INTO public.book_authors VALUES ('452522709-5', 178);
-INSERT INTO public.book_authors VALUES ('621854255-6', 154);
-INSERT INTO public.book_authors VALUES ('901153852-8', 179);
-INSERT INTO public.book_authors VALUES ('785513696-7', 180);
-INSERT INTO public.book_authors VALUES ('983589321-7', 158);
-INSERT INTO public.book_authors VALUES ('462228616-5', 194);
-INSERT INTO public.book_authors VALUES ('755686002-7', 189);
-INSERT INTO public.book_authors VALUES ('162357283-5', 155);
-INSERT INTO public.book_authors VALUES ('660703244-3', 21);
-INSERT INTO public.book_authors VALUES ('125704596-2', 131);
-INSERT INTO public.book_authors VALUES ('970772357-2', 148);
-INSERT INTO public.book_authors VALUES ('587553305-6', 2);
-INSERT INTO public.book_authors VALUES ('442512297-6', 12);
-INSERT INTO public.book_authors VALUES ('813672755-4', 237);
-INSERT INTO public.book_authors VALUES ('496476054-5', 234);
-INSERT INTO public.book_authors VALUES ('257089292-0', 37);
-INSERT INTO public.book_authors VALUES ('545395722-0', 153);
-INSERT INTO public.book_authors VALUES ('945918848-6', 145);
-INSERT INTO public.book_authors VALUES ('493111511-X', 6);
-INSERT INTO public.book_authors VALUES ('900954159-2', 43);
-INSERT INTO public.book_authors VALUES ('033191203-1', 60);
-INSERT INTO public.book_authors VALUES ('779523141-1', 147);
-INSERT INTO public.book_authors VALUES ('714974033-2', 86);
-INSERT INTO public.book_authors VALUES ('326731155-1', 3);
-INSERT INTO public.book_authors VALUES ('685289132-1', 206);
-INSERT INTO public.book_authors VALUES ('761627436-6', 7);
-INSERT INTO public.book_authors VALUES ('670638047-4', 249);
-INSERT INTO public.book_authors VALUES ('850553356-9', 37);
-INSERT INTO public.book_authors VALUES ('984908053-1', 46);
-INSERT INTO public.book_authors VALUES ('248605712-9', 140);
-INSERT INTO public.book_authors VALUES ('171513250-5', 25);
-INSERT INTO public.book_authors VALUES ('559666805-2', 88);
-INSERT INTO public.book_authors VALUES ('784837272-3', 135);
-INSERT INTO public.book_authors VALUES ('897587618-7', 160);
-INSERT INTO public.book_authors VALUES ('886828123-6', 127);
-INSERT INTO public.book_authors VALUES ('333868171-2', 89);
-INSERT INTO public.book_authors VALUES ('578416852-5', 48);
-INSERT INTO public.book_authors VALUES ('568276930-9', 108);
-INSERT INTO public.book_authors VALUES ('329738049-7', 139);
-INSERT INTO public.book_authors VALUES ('379568142-1', 40);
-INSERT INTO public.book_authors VALUES ('065382914-0', 227);
-INSERT INTO public.book_authors VALUES ('682257814-5', 6);
-INSERT INTO public.book_authors VALUES ('514395606-4', 19);
-INSERT INTO public.book_authors VALUES ('527756877-8', 56);
-INSERT INTO public.book_authors VALUES ('883379866-6', 27);
-INSERT INTO public.book_authors VALUES ('446515304-X', 122);
-INSERT INTO public.book_authors VALUES ('296602147-0', 35);
-INSERT INTO public.book_authors VALUES ('766000120-5', 195);
-INSERT INTO public.book_authors VALUES ('280240332-X', 129);
-INSERT INTO public.book_authors VALUES ('208851355-8', 23);
-INSERT INTO public.book_authors VALUES ('892803338-1', 17);
-INSERT INTO public.book_authors VALUES ('902926331-8', 167);
-INSERT INTO public.book_authors VALUES ('567122343-1', 237);
-INSERT INTO public.book_authors VALUES ('375459457-5', 184);
-INSERT INTO public.book_authors VALUES ('788626786-9', 20);
-INSERT INTO public.book_authors VALUES ('133235316-9', 115);
-INSERT INTO public.book_authors VALUES ('329764334-X', 117);
-INSERT INTO public.book_authors VALUES ('841931901-5', 114);
-INSERT INTO public.book_authors VALUES ('809226378-7', 91);
-INSERT INTO public.book_authors VALUES ('445239445-0', 167);
-INSERT INTO public.book_authors VALUES ('493935519-5', 80);
-INSERT INTO public.book_authors VALUES ('997493694-2', 173);
-INSERT INTO public.book_authors VALUES ('016838251-2', 48);
-INSERT INTO public.book_authors VALUES ('646377394-8', 131);
-INSERT INTO public.book_authors VALUES ('056743658-6', 250);
-INSERT INTO public.book_authors VALUES ('817962099-9', 21);
-INSERT INTO public.book_authors VALUES ('803889509-6', 235);
-INSERT INTO public.book_authors VALUES ('903882619-2', 115);
-INSERT INTO public.book_authors VALUES ('920661357-X', 214);
-INSERT INTO public.book_authors VALUES ('595282637-7', 141);
-INSERT INTO public.book_authors VALUES ('822800477-X', 185);
-INSERT INTO public.book_authors VALUES ('025428193-1', 245);
-INSERT INTO public.book_authors VALUES ('267756349-5', 161);
-INSERT INTO public.book_authors VALUES ('986792926-8', 197);
-INSERT INTO public.book_authors VALUES ('419090537-2', 175);
-INSERT INTO public.book_authors VALUES ('168115051-4', 149);
-INSERT INTO public.book_authors VALUES ('355962207-7', 168);
-INSERT INTO public.book_authors VALUES ('965436958-3', 75);
-INSERT INTO public.book_authors VALUES ('329416658-3', 93);
-INSERT INTO public.book_authors VALUES ('416906563-8', 52);
-INSERT INTO public.book_authors VALUES ('377423422-1', 82);
-INSERT INTO public.book_authors VALUES ('161622304-9', 188);
-INSERT INTO public.book_authors VALUES ('953489508-3', 39);
-INSERT INTO public.book_authors VALUES ('050555210-8', 204);
-INSERT INTO public.book_authors VALUES ('614189703-7', 230);
-INSERT INTO public.book_authors VALUES ('027342942-6', 202);
-INSERT INTO public.book_authors VALUES ('519454738-2', 224);
-INSERT INTO public.book_authors VALUES ('860954062-6', 190);
-INSERT INTO public.book_authors VALUES ('851608780-8', 250);
-INSERT INTO public.book_authors VALUES ('527751168-7', 88);
-INSERT INTO public.book_authors VALUES ('301768357-5', 130);
-INSERT INTO public.book_authors VALUES ('694130412-X', 52);
-INSERT INTO public.book_authors VALUES ('743491433-5', 167);
-INSERT INTO public.book_authors VALUES ('101598473-8', 210);
-INSERT INTO public.book_authors VALUES ('389792066-2', 237);
-INSERT INTO public.book_authors VALUES ('675399726-1', 5);
-INSERT INTO public.book_authors VALUES ('809250742-2', 180);
-INSERT INTO public.book_authors VALUES ('574913292-7', 10);
-INSERT INTO public.book_authors VALUES ('113493206-5', 111);
-INSERT INTO public.book_authors VALUES ('889332835-6', 188);
-INSERT INTO public.book_authors VALUES ('283821856-5', 229);
-INSERT INTO public.book_authors VALUES ('096416549-X', 109);
-INSERT INTO public.book_authors VALUES ('249753744-5', 74);
-INSERT INTO public.book_authors VALUES ('433346207-X', 40);
-INSERT INTO public.book_authors VALUES ('449296180-1', 231);
-INSERT INTO public.book_authors VALUES ('934944123-3', 220);
-INSERT INTO public.book_authors VALUES ('032261152-0', 25);
-INSERT INTO public.book_authors VALUES ('166827111-7', 48);
-INSERT INTO public.book_authors VALUES ('866517390-0', 92);
-INSERT INTO public.book_authors VALUES ('720455977-0', 246);
-INSERT INTO public.book_authors VALUES ('019561007-5', 208);
-INSERT INTO public.book_authors VALUES ('949200254-X', 7);
-INSERT INTO public.book_authors VALUES ('531182103-5', 166);
-INSERT INTO public.book_authors VALUES ('850205702-2', 158);
-INSERT INTO public.book_authors VALUES ('967276006-X', 99);
-INSERT INTO public.book_authors VALUES ('586919215-3', 17);
-INSERT INTO public.book_authors VALUES ('928791370-6', 106);
-INSERT INTO public.book_authors VALUES ('913616867-X', 220);
-INSERT INTO public.book_authors VALUES ('143487435-4', 120);
-INSERT INTO public.book_authors VALUES ('649299294-6', 79);
-INSERT INTO public.book_authors VALUES ('727406782-6', 8);
-INSERT INTO public.book_authors VALUES ('889207288-9', 72);
-INSERT INTO public.book_authors VALUES ('051984010-0', 158);
-INSERT INTO public.book_authors VALUES ('271036017-9', 75);
-INSERT INTO public.book_authors VALUES ('435361424-X', 246);
-INSERT INTO public.book_authors VALUES ('317318204-9', 144);
-INSERT INTO public.book_authors VALUES ('692043203-X', 39);
-INSERT INTO public.book_authors VALUES ('929121382-9', 219);
-INSERT INTO public.book_authors VALUES ('624585427-X', 124);
-INSERT INTO public.book_authors VALUES ('853868979-7', 65);
-INSERT INTO public.book_authors VALUES ('080664477-X', 237);
-INSERT INTO public.book_authors VALUES ('236861800-7', 180);
-INSERT INTO public.book_authors VALUES ('717006571-1', 95);
-INSERT INTO public.book_authors VALUES ('004222471-3', 204);
-INSERT INTO public.book_authors VALUES ('253421158-7', 208);
-INSERT INTO public.book_authors VALUES ('119493863-9', 204);
-INSERT INTO public.book_authors VALUES ('936326617-6', 65);
-INSERT INTO public.book_authors VALUES ('571594735-9', 101);
-INSERT INTO public.book_authors VALUES ('422031947-6', 15);
-INSERT INTO public.book_authors VALUES ('359496499-X', 180);
-INSERT INTO public.book_authors VALUES ('131242321-8', 53);
-INSERT INTO public.book_authors VALUES ('620402036-6', 4);
-INSERT INTO public.book_authors VALUES ('814063892-7', 193);
-INSERT INTO public.book_authors VALUES ('586709303-4', 219);
-INSERT INTO public.book_authors VALUES ('315028214-4', 51);
-INSERT INTO public.book_authors VALUES ('017376297-2', 243);
-INSERT INTO public.book_authors VALUES ('085809405-3', 46);
-INSERT INTO public.book_authors VALUES ('273736069-2', 28);
-INSERT INTO public.book_authors VALUES ('922743000-8', 68);
-INSERT INTO public.book_authors VALUES ('163739070-X', 50);
-INSERT INTO public.book_authors VALUES ('323991176-0', 54);
-INSERT INTO public.book_authors VALUES ('661562407-9', 121);
-INSERT INTO public.book_authors VALUES ('181954119-3', 70);
-INSERT INTO public.book_authors VALUES ('167836346-4', 44);
-INSERT INTO public.book_authors VALUES ('117141265-7', 76);
-INSERT INTO public.book_authors VALUES ('566564397-1', 202);
-INSERT INTO public.book_authors VALUES ('349845049-2', 46);
-INSERT INTO public.book_authors VALUES ('070087873-4', 248);
-INSERT INTO public.book_authors VALUES ('402156218-4', 36);
-INSERT INTO public.book_authors VALUES ('738391648-4', 162);
-INSERT INTO public.book_authors VALUES ('310645434-2', 46);
-INSERT INTO public.book_authors VALUES ('332485487-3', 51);
-INSERT INTO public.book_authors VALUES ('416755800-9', 171);
-INSERT INTO public.book_authors VALUES ('249529400-6', 1);
-INSERT INTO public.book_authors VALUES ('799712104-8', 111);
-INSERT INTO public.book_authors VALUES ('501147207-8', 130);
-INSERT INTO public.book_authors VALUES ('364579669-X', 36);
-INSERT INTO public.book_authors VALUES ('595526640-2', 193);
-INSERT INTO public.book_authors VALUES ('717860103-5', 237);
-INSERT INTO public.book_authors VALUES ('347254513-5', 223);
-INSERT INTO public.book_authors VALUES ('029434417-9', 154);
-INSERT INTO public.book_authors VALUES ('115855096-0', 198);
-INSERT INTO public.book_authors VALUES ('220291156-1', 216);
-INSERT INTO public.book_authors VALUES ('363719677-8', 30);
-INSERT INTO public.book_authors VALUES ('296535889-7', 65);
-INSERT INTO public.book_authors VALUES ('105556924-3', 60);
-INSERT INTO public.book_authors VALUES ('267460045-4', 234);
-INSERT INTO public.book_authors VALUES ('167647977-5', 89);
-INSERT INTO public.book_authors VALUES ('582356881-9', 52);
-INSERT INTO public.book_authors VALUES ('973016551-3', 187);
-INSERT INTO public.book_authors VALUES ('834369229-2', 111);
-INSERT INTO public.book_authors VALUES ('457970599-8', 134);
-INSERT INTO public.book_authors VALUES ('646459739-6', 204);
-INSERT INTO public.book_authors VALUES ('153542927-5', 103);
-INSERT INTO public.book_authors VALUES ('453171579-9', 152);
-INSERT INTO public.book_authors VALUES ('916193377-5', 99);
-INSERT INTO public.book_authors VALUES ('246550660-9', 126);
-INSERT INTO public.book_authors VALUES ('373338582-9', 26);
-INSERT INTO public.book_authors VALUES ('470722880-1', 229);
-INSERT INTO public.book_authors VALUES ('023049136-7', 141);
-INSERT INTO public.book_authors VALUES ('206023506-5', 170);
-INSERT INTO public.book_authors VALUES ('415684273-8', 104);
-INSERT INTO public.book_authors VALUES ('287293886-9', 160);
-INSERT INTO public.book_authors VALUES ('736556969-7', 23);
-INSERT INTO public.book_authors VALUES ('393467053-9', 161);
-INSERT INTO public.book_authors VALUES ('919450036-3', 188);
-INSERT INTO public.book_authors VALUES ('856221626-7', 244);
-INSERT INTO public.book_authors VALUES ('831485992-3', 8);
-INSERT INTO public.book_authors VALUES ('437683075-5', 174);
-INSERT INTO public.book_authors VALUES ('587066345-8', 191);
-INSERT INTO public.book_authors VALUES ('067252962-9', 104);
-INSERT INTO public.book_authors VALUES ('956317964-1', 89);
-INSERT INTO public.book_authors VALUES ('689541540-8', 130);
-INSERT INTO public.book_authors VALUES ('856000745-8', 164);
-INSERT INTO public.book_authors VALUES ('381248910-4', 213);
-INSERT INTO public.book_authors VALUES ('487898377-9', 171);
-INSERT INTO public.book_authors VALUES ('955860017-2', 110);
-INSERT INTO public.book_authors VALUES ('812908378-7', 8);
-INSERT INTO public.book_authors VALUES ('607877822-6', 20);
-INSERT INTO public.book_authors VALUES ('226995063-1', 124);
-INSERT INTO public.book_authors VALUES ('337150800-5', 50);
-INSERT INTO public.book_authors VALUES ('280846030-9', 101);
-INSERT INTO public.book_authors VALUES ('728806327-5', 165);
-INSERT INTO public.book_authors VALUES ('036301747-X', 11);
-INSERT INTO public.book_authors VALUES ('348057019-4', 191);
-INSERT INTO public.book_authors VALUES ('842026936-0', 155);
-INSERT INTO public.book_authors VALUES ('554286479-1', 21);
-INSERT INTO public.book_authors VALUES ('347323445-1', 147);
-INSERT INTO public.book_authors VALUES ('017199855-3', 164);
-INSERT INTO public.book_authors VALUES ('477280932-5', 150);
-INSERT INTO public.book_authors VALUES ('648579857-9', 137);
-INSERT INTO public.book_authors VALUES ('793595670-7', 143);
-INSERT INTO public.book_authors VALUES ('708677220-8', 93);
-INSERT INTO public.book_authors VALUES ('804245477-5', 208);
-INSERT INTO public.book_authors VALUES ('519499644-6', 17);
-INSERT INTO public.book_authors VALUES ('546534789-9', 179);
-INSERT INTO public.book_authors VALUES ('531793868-6', 175);
-INSERT INTO public.book_authors VALUES ('571551337-5', 87);
-INSERT INTO public.book_authors VALUES ('164145097-5', 61);
-INSERT INTO public.book_authors VALUES ('289164072-1', 84);
-INSERT INTO public.book_authors VALUES ('843157042-3', 39);
-INSERT INTO public.book_authors VALUES ('862320205-8', 9);
-INSERT INTO public.book_authors VALUES ('555681127-X', 235);
-INSERT INTO public.book_authors VALUES ('600090633-1', 195);
-INSERT INTO public.book_authors VALUES ('553085834-1', 26);
-INSERT INTO public.book_authors VALUES ('919107922-5', 93);
-INSERT INTO public.book_authors VALUES ('812300651-9', 83);
-INSERT INTO public.book_authors VALUES ('596219649-X', 105);
-INSERT INTO public.book_authors VALUES ('867289177-5', 206);
-INSERT INTO public.book_authors VALUES ('991686751-8', 12);
-INSERT INTO public.book_authors VALUES ('988127899-6', 66);
-INSERT INTO public.book_authors VALUES ('445021449-8', 70);
-INSERT INTO public.book_authors VALUES ('519491786-4', 248);
-INSERT INTO public.book_authors VALUES ('059528283-0', 145);
-INSERT INTO public.book_authors VALUES ('823895870-9', 20);
-INSERT INTO public.book_authors VALUES ('430132456-9', 153);
-INSERT INTO public.book_authors VALUES ('932475725-3', 203);
-INSERT INTO public.book_authors VALUES ('753001788-8', 158);
-INSERT INTO public.book_authors VALUES ('708617794-6', 37);
-INSERT INTO public.book_authors VALUES ('326165997-1', 11);
-INSERT INTO public.book_authors VALUES ('274720391-3', 190);
-INSERT INTO public.book_authors VALUES ('877680598-0', 208);
-INSERT INTO public.book_authors VALUES ('523354551-9', 92);
-INSERT INTO public.book_authors VALUES ('437077584-1', 38);
-INSERT INTO public.book_authors VALUES ('638985428-5', 38);
-INSERT INTO public.book_authors VALUES ('661060210-7', 46);
-INSERT INTO public.book_authors VALUES ('809581611-6', 97);
-INSERT INTO public.book_authors VALUES ('909674142-0', 245);
-INSERT INTO public.book_authors VALUES ('737109515-4', 62);
-INSERT INTO public.book_authors VALUES ('413935955-2', 35);
-INSERT INTO public.book_authors VALUES ('311253609-6', 4);
-INSERT INTO public.book_authors VALUES ('732537273-6', 96);
-INSERT INTO public.book_authors VALUES ('574016917-8', 67);
-INSERT INTO public.book_authors VALUES ('285407383-5', 222);
-INSERT INTO public.book_authors VALUES ('933151684-3', 54);
-INSERT INTO public.book_authors VALUES ('833053956-3', 147);
-INSERT INTO public.book_authors VALUES ('654117020-7', 82);
-INSERT INTO public.book_authors VALUES ('715876640-3', 139);
-INSERT INTO public.book_authors VALUES ('774073311-3', 202);
-INSERT INTO public.book_authors VALUES ('388053663-5', 95);
-INSERT INTO public.book_authors VALUES ('067304123-9', 16);
-INSERT INTO public.book_authors VALUES ('200756859-4', 233);
-INSERT INTO public.book_authors VALUES ('543638786-1', 133);
-INSERT INTO public.book_authors VALUES ('111189791-3', 123);
-INSERT INTO public.book_authors VALUES ('899600131-7', 175);
-INSERT INTO public.book_authors VALUES ('268520013-4', 61);
-INSERT INTO public.book_authors VALUES ('098127157-X', 14);
-INSERT INTO public.book_authors VALUES ('404812627-X', 98);
-INSERT INTO public.book_authors VALUES ('227470428-7', 141);
-INSERT INTO public.book_authors VALUES ('087876405-4', 66);
-INSERT INTO public.book_authors VALUES ('886730172-1', 84);
-INSERT INTO public.book_authors VALUES ('200134920-3', 152);
-INSERT INTO public.book_authors VALUES ('164933482-6', 41);
-INSERT INTO public.book_authors VALUES ('809334023-8', 71);
-INSERT INTO public.book_authors VALUES ('328630611-8', 8);
-INSERT INTO public.book_authors VALUES ('159817092-9', 123);
-INSERT INTO public.book_authors VALUES ('549849176-X', 238);
-INSERT INTO public.book_authors VALUES ('618435655-0', 237);
-INSERT INTO public.book_authors VALUES ('339348822-8', 93);
-INSERT INTO public.book_authors VALUES ('928659391-0', 92);
-INSERT INTO public.book_authors VALUES ('204154143-1', 240);
-INSERT INTO public.book_authors VALUES ('713726123-X', 172);
-INSERT INTO public.book_authors VALUES ('144348626-4', 68);
-INSERT INTO public.book_authors VALUES ('400088677-0', 44);
-INSERT INTO public.book_authors VALUES ('895919336-4', 206);
-INSERT INTO public.book_authors VALUES ('799928971-X', 78);
-INSERT INTO public.book_authors VALUES ('325665536-X', 246);
-INSERT INTO public.book_authors VALUES ('364668437-2', 31);
-INSERT INTO public.book_authors VALUES ('320695670-6', 96);
-INSERT INTO public.book_authors VALUES ('853548157-5', 59);
-INSERT INTO public.book_authors VALUES ('098310166-3', 245);
-INSERT INTO public.book_authors VALUES ('925160301-4', 111);
-INSERT INTO public.book_authors VALUES ('588088642-5', 96);
-INSERT INTO public.book_authors VALUES ('465838220-2', 30);
-INSERT INTO public.book_authors VALUES ('087935617-0', 157);
-INSERT INTO public.book_authors VALUES ('576176060-6', 152);
-
-
---
--- TOC entry 3037 (class 0 OID 17827)
+-- TOC entry 3030 (class 0 OID 17827)
 -- Dependencies: 205
 -- Data for Name: credit_card; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1749,7 +1229,7 @@ INSERT INTO public.credit_card VALUES (250, 'wives3j@youku.com', '51087543637729
 
 
 --
--- TOC entry 3035 (class 0 OID 17803)
+-- TOC entry 3028 (class 0 OID 17803)
 -- Dependencies: 203
 -- Data for Name: shopping_cart; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2253,10 +1733,11 @@ INSERT INTO public.shopping_cart VALUES (496, 'cwatford1v@wordpress.org', '98759
 INSERT INTO public.shopping_cart VALUES (497, 'npasque2z@seesaa.net', '714974033-2');
 INSERT INTO public.shopping_cart VALUES (498, 'dtilling42@addthis.com', '804430979-9');
 INSERT INTO public.shopping_cart VALUES (499, 'psulter5l@creativecommons.org', '400088677-0');
+INSERT INTO public.shopping_cart VALUES (502, 'pgadd0@gov.uk', '565501303-7');
 
 
 --
--- TOC entry 3033 (class 0 OID 17740)
+-- TOC entry 3026 (class 0 OID 17740)
 -- Dependencies: 201
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2514,7 +1995,7 @@ INSERT INTO public.users VALUES ('sharte6x@csmonitor.com', 'qVn48HyIMI', 'Sarita
 
 
 --
--- TOC entry 3049 (class 0 OID 0)
+-- TOC entry 3041 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: authors_author_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -2523,7 +2004,7 @@ SELECT pg_catalog.setval('public.authors_author_id_seq', 1, false);
 
 
 --
--- TOC entry 3050 (class 0 OID 0)
+-- TOC entry 3042 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: credit_card_cc_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -2532,16 +2013,16 @@ SELECT pg_catalog.setval('public.credit_card_cc_id_seq', 1, false);
 
 
 --
--- TOC entry 3051 (class 0 OID 0)
+-- TOC entry 3043 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: shopping_cart_item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.shopping_cart_item_id_seq', 501, true);
+SELECT pg_catalog.setval('public.shopping_cart_item_id_seq', 502, true);
 
 
 --
--- TOC entry 2894 (class 2606 OID 18095)
+-- TOC entry 2890 (class 2606 OID 18095)
 -- Name: author authors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2550,16 +2031,7 @@ ALTER TABLE ONLY public.author
 
 
 --
--- TOC entry 2896 (class 2606 OID 18108)
--- Name: book_authors book_authors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.book_authors
-    ADD CONSTRAINT book_authors_pkey PRIMARY KEY (isbn, author_id);
-
-
---
--- TOC entry 2892 (class 2606 OID 17835)
+-- TOC entry 2888 (class 2606 OID 17835)
 -- Name: credit_card credit_card_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2568,7 +2040,7 @@ ALTER TABLE ONLY public.credit_card
 
 
 --
--- TOC entry 2890 (class 2606 OID 17811)
+-- TOC entry 2886 (class 2606 OID 17811)
 -- Name: shopping_cart shopping_cart_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2577,7 +2049,7 @@ ALTER TABLE ONLY public.shopping_cart
 
 
 --
--- TOC entry 2886 (class 2606 OID 18009)
+-- TOC entry 2882 (class 2606 OID 18009)
 -- Name: book uniqueisbn; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2586,7 +2058,7 @@ ALTER TABLE ONLY public.book
 
 
 --
--- TOC entry 2888 (class 2606 OID 17747)
+-- TOC entry 2884 (class 2606 OID 17747)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2595,25 +2067,16 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 2901 (class 2606 OID 18114)
--- Name: book_authors book_authors_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2891 (class 2606 OID 18214)
+-- Name: book book_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.book_authors
-    ADD CONSTRAINT book_authors_author_id_fkey FOREIGN KEY (author_id) REFERENCES public.author(author_id);
-
-
---
--- TOC entry 2900 (class 2606 OID 18109)
--- Name: book_authors book_authors_isbn_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.book_authors
-    ADD CONSTRAINT book_authors_isbn_fkey FOREIGN KEY (isbn) REFERENCES public.book(isbn);
+ALTER TABLE ONLY public.book
+    ADD CONSTRAINT book_author_id_fkey FOREIGN KEY (author_id) REFERENCES public.author(author_id);
 
 
 --
--- TOC entry 2899 (class 2606 OID 17836)
+-- TOC entry 2894 (class 2606 OID 17836)
 -- Name: credit_card credit_card_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2622,7 +2085,7 @@ ALTER TABLE ONLY public.credit_card
 
 
 --
--- TOC entry 2898 (class 2606 OID 18010)
+-- TOC entry 2893 (class 2606 OID 18010)
 -- Name: shopping_cart shopping_cart_isbn_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2631,7 +2094,7 @@ ALTER TABLE ONLY public.shopping_cart
 
 
 --
--- TOC entry 2897 (class 2606 OID 17812)
+-- TOC entry 2892 (class 2606 OID 17812)
 -- Name: shopping_cart shopping_cart_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2639,7 +2102,7 @@ ALTER TABLE ONLY public.shopping_cart
     ADD CONSTRAINT shopping_cart_username_fkey FOREIGN KEY (username) REFERENCES public.users(username);
 
 
--- Completed on 2021-07-13 11:33:07
+-- Completed on 2021-07-15 15:47:36
 
 --
 -- PostgreSQL database dump complete

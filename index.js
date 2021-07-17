@@ -20,8 +20,9 @@ app.use(express())
 
   //add your endpoints here
   app.get('/books/', bookqueries.getBooks)
-  app.get('/book/', bookdetails.getBookByISBN)
- 
+  app.get('/books/isbn', bookdetails.getBookByISBN)
+  app.get('/books/author', bookdetails.getBooksByAuthor)
+
   //add you options here
   app.options('/books/', options.bookOptions)
   app.options('/users/', options.PMOptions)

@@ -22,6 +22,7 @@ app.use(express())
   app.get('/books/', bookqueries.getBooks)
   app.get('/books/isbn', bookdetails.getBookByISBN)
   app.get('/books/author', bookdetails.getBooksByAuthor)
+  app.put('/books/author', bookdetails.createBook)
 
   //add you options here
   app.options('/books/', options.bookOptions)

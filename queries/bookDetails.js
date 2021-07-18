@@ -116,9 +116,42 @@ const getBooksByAuthor = (request, response) => {
     })
 }
 
+const createBook = (request, response) => {
+    const username = request.query.username
+    const password = request.query.password
+
+    var query = 'SELECT u.admin FROM users AS u WHERE u.username = '
+    query += "'" + username + "'" + ' AND u.password = ' + "'" + password + "'"
+    query += "AND u.admin = 'true'"
+    pool.query(query, (error, results) => {
+        if (error) {
+            response.status(400).json({
+                'Error': "Invalid username or password input.",
+                'username:': username,
+                'password': password
+            })
+            return
+        }
+        if (results.rows.length == 0) {
+            response.status(401).json({
+                'Error': "Unathorized.",
+                'username:': username,
+                'password': password
+            })
+            return
+        }
+        else {
+            console.log(results.rows[0])
+            response.status(200).json({ 'Result:': results.rows })
+        }
+    })
+
+}
+
   // Make sure your methods are exported
   // so they can be seen in index.java
   module.exports = {
       getBookByISBN,
-      getBooksByAuthor
+      getBooksByAuthor,
+      createBook
   }

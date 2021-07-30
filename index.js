@@ -22,8 +22,9 @@ app.use(express())
   app.get('/books/', bookqueries.getBooks)
   app.get('/books/isbn', bookdetails.getBookByISBN)
   app.get('/books/author', bookdetails.getBooksByAuthor)
-  app.put('/books/author', bookdetails.createBook)
-
+  app.post('/books/newAuthor', [bookdetails.verifyAdmin, bookdetails.createAuthor])
+  app.post('/books/newBook', [bookdetails.verifyAdmin, bookdetails.createBook])
+  
   //add you options here
   app.options('/books/', options.bookOptions)
   app.options('/users/', options.PMOptions)

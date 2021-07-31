@@ -36,9 +36,10 @@ app.use(express())
   app.delete('/shoppingcart/', shoppingcart.deleteBookFromShoppingCart)
 
   //Profile Management Endpoints
-  app.post('/user/create', userprofiles.createUser)
-  app.get('/user/retrieve', userprofiles.retrieveUser)
-  app.put('user/update', userprofiles.updateUser)
+  app.post('/user/create/', userprofiles.createUser)
+  app.get('/user/retrieve/', userprofiles.retrieveUser)
+  app.put('/user/update/', userprofiles.updateUser)
+  app.post('/user/createcc', userprofiles.createCC)
 
   app.listen(port, () => {
     console.log(`App running on port ${port}.`)

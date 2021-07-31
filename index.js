@@ -27,8 +27,6 @@ app.use(express())
   
   //add you options here
   app.options('/books/', options.bookOptions)
-  app.options('/users/', options.PMOptions)
-  app.options('/users/creditCard/', options.CCOptions)
   
   //Shopping Cart endpoints - Gilbert Gomez
   app.get('/shoppingcart/', shoppingcart.createShoppingCart)
